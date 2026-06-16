@@ -1,0 +1,1454 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مستر شورت‌فیلم | اخبار سینما و فیلم کوتاه</title>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --red: #C0392B;
+            --red-dark: #922B21;
+            --red-light: #F5B7B1;
+            --black: #111111;
+            --dark: #1a1a1a;
+            --gray-900: #222;
+            --gray-700: #444;
+            --gray-500: #777;
+            --gray-300: #bbb;
+            --gray-100: #f0f0f0;
+            --gray-50: #f8f8f8;
+            --white: #fff;
+            --gold: #c9a84c;
+            --font: 'Vazirmatn', Tahoma, Arial, sans-serif;
+        }
+
+        body {
+            font-family: var(--font);
+            background: var(--gray-50);
+            color: var(--gray-900);
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .topbar {
+            background: var(--black);
+            color: var(--gray-300);
+            font-size: 12px;
+            padding: 6px 0;
+            border-bottom: 1px solid #333;
+        }
+
+        .topbar-inner {
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .topbar a {
+            color: var(--gray-300);
+        }
+
+        .topbar a:hover {
+            color: var(--red-light);
+        }
+
+        .topbar-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .topbar-social {
+            display: flex;
+            gap: 12px;
+        }
+
+        .topbar-social a {
+            width: 26px;
+            height: 26px;
+            background: #333;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            transition: background 0.2s;
+        }
+
+        .topbar-social a:hover {
+            background: var(--red);
+        }
+
+        header {
+            background: var(--dark);
+            padding: 18px 0 0;
+            border-bottom: 3px solid var(--red);
+        }
+
+        .header-top {
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 16px 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .logo {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .logo-main {
+            font-size: 32px;
+            font-weight: 900;
+            color: var(--white);
+            letter-spacing: -1px;
+            line-height: 1;
+        }
+
+        .logo-main span {
+            color: var(--red);
+        }
+
+        .logo-sub {
+            font-size: 11px;
+            color: #999;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 3px;
+        }
+
+        .logo-film-strip {
+            display: flex;
+            gap: 3px;
+            margin-top: 5px;
+        }
+
+        .logo-film-strip span {
+            width: 8px;
+            height: 8px;
+            background: var(--red);
+            border-radius: 1px;
+        }
+
+        .logo-film-strip span:nth-child(even) {
+            background: #555;
+        }
+
+        .header-search {
+            flex: 1;
+            max-width: 380px;
+            position: relative;
+        }
+
+        .header-search input {
+            width: 100%;
+            padding: 10px 16px 10px 44px;
+            background: #2a2a2a;
+            border: 1px solid #444;
+            border-radius: 6px;
+            color: var(--white);
+            font-family: var(--font);
+            font-size: 14px;
+            direction: rtl;
+        }
+
+        .header-search input::placeholder {
+            color: #666;
+        }
+
+        .header-search input:focus {
+            outline: none;
+            border-color: var(--red);
+        }
+
+        .header-search .search-btn {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #888;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .header-date {
+            color: #999;
+            font-size: 12px;
+            text-align: left;
+            white-space: nowrap;
+        }
+
+        .header-date strong {
+            display: block;
+            color: var(--white);
+            font-size: 14px;
+        }
+
+        nav {
+            background: var(--black);
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 16px;
+            display: flex;
+            align-items: center;
+            gap: 0;
+            overflow-x: auto;
+        }
+
+        .nav-inner::-webkit-scrollbar {
+            height: 0;
+        }
+
+        nav a {
+            color: var(--gray-300);
+            font-size: 13.5px;
+            font-weight: 500;
+            padding: 14px 16px;
+            display: block;
+            white-space: nowrap;
+            border-bottom: 3px solid transparent;
+            transition: color 0.2s, border-color 0.2s;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: var(--white);
+            border-bottom-color: var(--red);
+        }
+
+        nav a.active {
+            background: #181818;
+        }
+
+        .ticker {
+            background: var(--red);
+            color: var(--white);
+            font-size: 13px;
+            padding: 8px 0;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .ticker-inner {
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 16px;
+            display: flex;
+            align-items: center;
+            gap: 0;
+        }
+
+        .ticker-label {
+            background: var(--white);
+            color: var(--red);
+            font-weight: 700;
+            font-size: 12px;
+            padding: 2px 10px;
+            border-radius: 3px;
+            margin-left: 16px;
+            flex-shrink: 0;
+        }
+
+        .ticker-track {
+            overflow: hidden;
+            flex: 1;
+        }
+
+        .ticker-items {
+            display: inline-flex;
+            gap: 40px;
+            animation: ticker-scroll 30s linear infinite;
+        }
+
+        .ticker-items span::before {
+            content: '◈ ';
+            opacity: 0.7;
+        }
+
+        @keyframes ticker-scroll {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        .main-layout {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 24px;
+            padding: 24px 0;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 16px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--gray-100);
+        }
+
+        .section-title h2 {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--gray-900);
+        }
+
+        .section-title .bar {
+            width: 4px;
+            height: 20px;
+            background: var(--red);
+            border-radius: 2px;
+        }
+
+        .section-title .more-link {
+            margin-right: auto;
+            font-size: 12px;
+            color: var(--red);
+            font-weight: 500;
+        }
+
+        .section-title .more-link:hover {
+            text-decoration: underline;
+        }
+
+        .featured-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 280px 200px;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .feat-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .feat-card:first-child {
+            grid-row: 1 / 3;
+        }
+
+        .feat-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.2) 50%, transparent 100%);
+            z-index: 1;
+        }
+
+        .feat-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .feat-card:hover img {
+            transform: scale(1.04);
+        }
+
+        .feat-info {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            padding: 16px;
+            z-index: 2;
+            color: var(--white);
+        }
+
+        .feat-cat {
+            display: inline-block;
+            background: var(--red);
+            color: var(--white);
+            font-size: 11px;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 3px;
+            margin-bottom: 6px;
+        }
+
+        .feat-card:first-child .feat-title {
+            font-size: 20px;
+            line-height: 1.4;
+        }
+
+        .feat-title {
+            font-size: 15px;
+            font-weight: 700;
+            line-height: 1.5;
+            margin-bottom: 6px;
+        }
+
+        .feat-meta {
+            font-size: 11px;
+            opacity: 0.75;
+            display: flex;
+            gap: 10px;
+        }
+
+        .news-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .news-item {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: 12px;
+            padding: 14px 0;
+            border-bottom: 1px solid var(--gray-100);
+            cursor: pointer;
+            transition: background 0.15s;
+        }
+
+        .news-item:hover {
+            background: #fafafa;
+        }
+
+        .news-item:last-child {
+            border-bottom: none;
+        }
+
+        .news-thumb {
+            width: 100px;
+            height: 68px;
+            border-radius: 5px;
+            overflow: hidden;
+            flex-shrink: 0;
+            background: var(--gray-100);
+        }
+
+        .news-cat {
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--red);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .news-title {
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 1.5;
+            color: var(--gray-900);
+            margin-bottom: 5px;
+        }
+
+        .news-item:hover .news-title {
+            color: var(--red);
+        }
+
+        .news-time {
+            font-size: 11px;
+            color: var(--gray-500);
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .video-card {
+            border-radius: 6px;
+            overflow: hidden;
+            background: var(--white);
+            border: 1px solid var(--gray-100);
+            cursor: pointer;
+        }
+
+        .video-thumb {
+            height: 120px;
+            position: relative;
+            background: var(--gray-100);
+            overflow: hidden;
+        }
+
+        .video-thumb img {
+            height: 100%;
+        }
+
+        .play-btn {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.35);
+            z-index: 2;
+        }
+
+        .play-btn::after {
+            content: '';
+            width: 38px;
+            height: 38px;
+            background: rgba(192, 57, 43, 0.9);
+            border-radius: 50%;
+            display: block;
+        }
+
+        .play-btn::before {
+            content: '▶';
+            position: absolute;
+            color: white;
+            font-size: 14px;
+            margin-right: -3px;
+            z-index: 3;
+        }
+
+        .video-info {
+            padding: 10px 12px 12px;
+        }
+
+        .video-title {
+            font-size: 13px;
+            font-weight: 600;
+            line-height: 1.5;
+            color: var(--gray-900);
+        }
+
+        .video-meta {
+            font-size: 11px;
+            color: var(--gray-500);
+            margin-top: 4px;
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .widget {
+            background: var(--white);
+            border: 1px solid #e8e8e8;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .widget-head {
+            background: var(--dark);
+            color: var(--white);
+            font-size: 13px;
+            font-weight: 700;
+            padding: 10px 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 2px solid var(--red);
+        }
+
+        .widget-body {
+            padding: 14px;
+        }
+
+        .hot-item {
+            display: flex;
+            gap: 10px;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--gray-100);
+            cursor: pointer;
+        }
+
+        .hot-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .hot-num {
+            font-size: 22px;
+            font-weight: 900;
+            color: var(--gray-100);
+            min-width: 28px;
+            line-height: 1;
+            padding-top: 2px;
+        }
+
+        .hot-item:nth-child(1) .hot-num {
+            color: var(--red);
+        }
+
+        .hot-item:nth-child(2) .hot-num {
+            color: var(--gold);
+        }
+
+        .hot-item:nth-child(3) .hot-num {
+            color: var(--gray-500);
+        }
+
+        .hot-title {
+            font-size: 13px;
+            font-weight: 600;
+            line-height: 1.5;
+            color: var(--gray-900);
+        }
+
+        .hot-item:hover .hot-title {
+            color: var(--red);
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+        }
+
+        .tag {
+            background: var(--gray-50);
+            border: 1px solid var(--gray-100);
+            color: var(--gray-700);
+            font-size: 12px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .tag:hover {
+            background: var(--red);
+            color: var(--white);
+            border-color: var(--red);
+        }
+
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .newsletter-form p {
+            font-size: 12.5px;
+            color: var(--gray-500);
+            line-height: 1.6;
+        }
+
+        .newsletter-form input {
+            width: 100%;
+            padding: 9px 12px;
+            border: 1px solid var(--gray-100);
+            border-radius: 5px;
+            font-family: var(--font);
+            font-size: 13px;
+            direction: rtl;
+            color: var(--gray-900);
+        }
+
+        .newsletter-form input:focus {
+            outline: none;
+            border-color: var(--red);
+        }
+
+        .newsletter-form button {
+            background: var(--red);
+            color: var(--white);
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: var(--font);
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .newsletter-form button:hover {
+            background: var(--red-dark);
+        }
+
+        .ad-box {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            color: #aaa;
+            font-size: 12px;
+            border: 1px dashed #444;
+            gap: 8px;
+        }
+
+        .ad-box strong {
+            color: #ddd;
+            font-size: 14px;
+        }
+
+        .cat-bar {
+            background: var(--white);
+            border: 1px solid #e8e8e8;
+            border-radius: 6px;
+            margin-bottom: 24px;
+            overflow: hidden;
+        }
+
+        .cat-bar-inner {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+        }
+
+        .cat-btn {
+            padding: 14px 10px;
+            text-align: center;
+            cursor: pointer;
+            border-left: 1px solid var(--gray-100);
+            transition: background 0.2s;
+        }
+
+        .cat-btn:last-child {
+            border-left: none;
+        }
+
+        .cat-btn:hover {
+            background: #fff5f5;
+        }
+
+        .cat-btn i {
+            font-size: 26px;
+            display: block;
+            margin-bottom: 5px;
+            color: var(--red);
+        }
+
+        .cat-btn span {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--gray-700);
+        }
+
+        footer {
+            background: var(--black);
+            color: var(--gray-300);
+            margin-top: 40px;
+        }
+
+        .footer-top {
+            max-width: 1200px;
+            margin: auto;
+            padding: 40px 16px 24px;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            border-bottom: 1px solid #2a2a2a;
+        }
+
+        .footer-about .logo-main {
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+
+        .footer-about p {
+            font-size: 13px;
+            line-height: 1.8;
+            color: #888;
+        }
+
+        .footer-col h3 {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 14px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #2a2a2a;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 8px;
+        }
+
+        .footer-col a {
+            font-size: 13px;
+            color: #888;
+        }
+
+        .footer-col a:hover {
+            color: var(--red-light);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: auto;
+            padding: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: #666;
+        }
+
+        .img-ph {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.5);
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 900px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .featured-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto;
+            }
+
+            .feat-card:first-child {
+                grid-row: auto;
+            }
+
+            .cat-bar-inner {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .video-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .header-top {
+                flex-wrap: wrap;
+            }
+
+            .header-search {
+                max-width: 100%;
+                order: 3;
+                width: 100%;
+            }
+
+            .topbar-links {
+                display: none;
+            }
+
+            .cat-bar-inner {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- TOP BAR -->
+    <div class="topbar">
+        <div class="topbar-inner">
+            <div class="topbar-links">
+                <a href="#">درباره ما</a>
+                <a href="#">تماس با ما</a>
+            </div>
+            <div style="display:flex;align-items:center;gap:16px;">
+                <span id="jalali-date">در حال بارگذاری...</span>
+                <div class="topbar-social">
+                    <a href="#" title="اینستاگرام"><i class="ri-instagram-line"></i></a>
+                    <a href="#" title="تلگرام"><i class="ri-telegram-fill"></i></a>
+                    <a href="#" title="یوتیوب"><i class="ri-youtube-fill"></i></a>
+                    <a href="#" title="توییتر"><i class="ri-twitter-x-fill"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- HEADER -->
+    <header>
+        <div class="header-top">
+            <div class="logo">
+                <div class="logo-main">mr<span>short</span>film</div>
+                <div class="logo-sub">پایگاه خبری فیلم کوتاه</div>
+                <div class="logo-film-strip">
+                    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+            </div>
+            <div class="header-search">
+                <input type="text" placeholder="جستجو در اخبار سینما..." />
+                <button class="search-btn"><i class="ri-search-line"></i></button>
+            </div>
+            <div class="header-date">
+                <strong>اخبار سینما</strong>
+                <span id="jalali-date-header">۱۴۰۵</span>
+            </div>
+        </div>
+
+        <!-- NAV -->
+        <nav>
+            <div class="nav-inner">
+                <a href="#" class="active">خانه</a>
+                <a href="#">فیلم کوتاه</a>
+                <a href="#">سینمای ایران</a>
+                <a href="#">سینمای جهان</a>
+                <a href="#">جشنواره‌ها</a>
+                <a href="#">مستند</a>
+                <a href="#">نقد و بررسی</a>
+                <a href="#">گفتگو</a>
+                <a href="#">ویدئو</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- BREAKING TICKER -->
+    <div class="ticker">
+        <div class="ticker-inner">
+            <div class="ticker-label"><i class="ri-flashlight-fill" style="vertical-align:-1px;"></i> فوری</div>
+            <div class="ticker-track">
+                <div class="ticker-items">
+                    <span>جشنواره فیلم کوتاه تهران تاریخ برگزاری خود را اعلام کرد</span>
+                    <span>فیلم کوتاه ایرانی به جشنواره کن راه یافت</span>
+                    <span>نتایج داوری بخش فیلم کوتاه فجر اعلام شد</span>
+                    <span>کارگاه‌های آموزشی فیلمسازی کوتاه در تهران برگزار می‌شود</span>
+                    <span>جشنواره فیلم کوتاه تهران تاریخ برگزاری خود را اعلام کرد</span>
+                    <span>فیلم کوتاه ایرانی به جشنواره کن راه یافت</span>
+                    <span>نتایج داوری بخش فیلم کوتاه فجر اعلام شد</span>
+                    <span>کارگاه‌های آموزشی فیلمسازی کوتاه در تهران برگزار می‌شود</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="container">
+
+        <div class="cat-bar" style="margin-top:20px;">
+            <div class="cat-bar-inner">
+                <div class="cat-btn"><i class="ri-film-line"></i><span>فیلم کوتاه</span></div>
+                <div class="cat-btn"><i class="ri-award-line"></i><span>جشنواره‌ها</span></div>
+                <div class="cat-btn"><i class="ri-video-line"></i><span>مستند</span></div>
+                <div class="cat-btn"><i class="ri-movie-2-line"></i><span>نقد فیلم</span></div>
+                <div class="cat-btn"><i class="ri-mic-line"></i><span>گفتگو</span></div>
+            </div>
+        </div>
+
+        <div class="main-layout">
+            <div class="content">
+
+                <div class="section-title">
+                    <div class="bar"></div>
+                    <h2>آخرین اخبار</h2>
+                    <a href="#" class="more-link">مشاهده همه ›</a>
+                </div>
+
+                <div class="featured-grid">
+                    <div class="feat-card">
+                        <div class="img-ph"
+                            style="background:linear-gradient(135deg,#1a1a2e,#c0392b);height:100%;position:relative;">
+                            <div
+                                style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0.25;">
+                                <i class="ri-clapperboard-line" style="font-size:80px;color:#fff;"></i>
+                            </div>
+                        </div>
+                        <div class="feat-info">
+                            <span class="feat-cat">فیلم کوتاه</span>
+                            <div class="feat-title">«ماندالا» برنده جایزه بهترین فیلم کوتاه جشنواره کن شد</div>
+                            <div class="feat-meta"><span>۲۵ خرداد ۱۴۰۵</span><span>•</span><span>۱۵ دقیقه پیش</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="feat-card">
+                        <div class="img-ph" style="background:linear-gradient(135deg,#16213e,#0f3460);height:100%;">
+                            <div
+                                style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0.25;">
+                                <i class="ri-award-fill" style="font-size:60px;color:#fff;"></i>
+                            </div>
+                        </div>
+                        <div class="feat-info">
+                            <span class="feat-cat">جشنواره</span>
+                            <div class="feat-title">اعلام اسامی داوران بخش فیلم کوتاه جشنواره فجر ۴۴</div>
+                            <div class="feat-meta"><span>۲۴ خرداد ۱۴۰۵</span></div>
+                        </div>
+                    </div>
+                    <div class="feat-card">
+                        <div class="img-ph" style="background:linear-gradient(135deg,#2d1b69,#11998e);height:100%;">
+                            <div
+                                style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0.25;">
+                                <i class="ri-vidicon-fill" style="font-size:60px;color:#fff;"></i>
+                            </div>
+                        </div>
+                        <div class="feat-info">
+                            <span class="feat-cat">مستند</span>
+                            <div class="feat-title">مرور مستندهای کوتاه برجسته سال ۱۴۰۴</div>
+                            <div class="feat-meta"><span>۲۳ خرداد ۱۴۰۵</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-title" style="margin-top:8px;">
+                    <div class="bar"></div>
+                    <h2>اخبار سینمای ایران</h2>
+                    <a href="#" class="more-link">مشاهده همه ›</a>
+                </div>
+
+                <div class="news-list">
+                    <div class="news-item">
+                        <div class="news-thumb">
+                            <div class="img-ph" style="background:linear-gradient(135deg,#833ab4,#fd1d1d);"><i
+                                    class="ri-clapperboard-line"
+                                    style="font-size:28px;color:rgba(255,255,255,0.5);"></i></div>
+                        </div>
+                        <div class="news-body">
+                            <div class="news-cat">فیلم کوتاه</div>
+                            <div class="news-title">فیلمساز جوان ایرانی با اثر کوتاه خود در جشنواره حضور یافت</div>
+                            <div class="news-time">۲ ساعت پیش</div>
+                        </div>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-thumb">
+                            <div class="img-ph" style="background:linear-gradient(135deg,#134e5e,#71b280);"><i
+                                    class="ri-building-line" style="font-size:28px;color:rgba(255,255,255,0.5);"></i>
+                            </div>
+                        </div>
+                        <div class="news-body">
+                            <div class="news-cat">جشنواره</div>
+                            <div class="news-title">برگزاری نشست تخصصی نقد و بررسی فیلم‌های کوتاه در خانه سینما</div>
+                            <div class="news-time">۴ ساعت پیش</div>
+                        </div>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-thumb">
+                            <div class="img-ph" style="background:linear-gradient(135deg,#c94b4b,#4b134f);"><i
+                                    class="ri-movie-line" style="font-size:28px;color:rgba(255,255,255,0.5);"></i></div>
+                        </div>
+                        <div class="news-body">
+                            <div class="news-cat">نقد</div>
+                            نقد فیلم کوتاه «ماندالا»: روایتی ظریف از تنهایی <div class="news-time">۶ ساعت پیش</div>
+                        </div>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-thumb">
+                            <div class="img-ph" style="background:linear-gradient(135deg,#1c3c4a,#2e86ab);"><i
+                                    class="ri-mic-2-line" style="font-size:28px;color:rgba(255,255,255,0.5);"></i></div>
+                        </div>
+                        <div class="news-body">
+                            <div class="news-cat">گفتگو</div>
+                            <div class="news-title">گفتگو با کارگردان «ماندالا»: فیلم کوتاه آینه‌ای است از جامعه</div>
+                            <div class="news-time">۸ ساعت پیش</div>
+                        </div>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-thumb">
+                            <div class="img-ph" style="background:linear-gradient(135deg,#3d5a80,#98c1d9);"><i
+                                    class="ri-graduation-cap-line"
+                                    style="font-size:28px;color:rgba(255,255,255,0.5);"></i></div>
+                        </div>
+                        <div class="news-body">
+                            <div class="news-cat">آموزش</div>
+                            <div class="news-title">کارگاه فیلمسازی کوتاه با حضور اساتید برجسته سینمای ایران</div>
+                            <div class="news-time">دیروز</div>
+                        </div>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-thumb">
+                            <div class="img-ph" style="background:linear-gradient(135deg,#4a0e0e,#c0392b);"><i
+                                    class="ri-film-fill" style="font-size:28px;color:rgba(255,255,255,0.5);"></i></div>
+                        </div>
+                        <div class="news-body">
+                            <div class="news-cat">اکران</div>
+                            <div class="news-title">مجموعه فیلم‌های کوتاه در جشنواره به نمایش درمی‌آید</div>
+                            <div class="news-time">دیروز</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-title" style="margin-top:28px;">
+                    <div class="bar"></div>
+                    <h2>ویدئو و تریلر</h2>
+                    <a href="#" class="more-link">مشاهده همه ›</a>
+                </div>
+
+                <div class="video-grid">
+                    <div class="video-card">
+                        <div class="video-thumb">
+                            <div class="img-ph"
+                                style="background:linear-gradient(135deg,#0d0d0d,#c0392b);height:120px;">
+                                <div class="play-btn"></div>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <div class="video-title">تریلر فیلم کوتاه «آخرین قاب»</div>
+                            <div class="video-meta">۱۲ دقیقه | ۳۲۰ بازدید</div>
+                        </div>
+                    </div>
+                    <div class="video-card">
+                        <div class="video-thumb">
+                            <div class="img-ph"
+                                style="background:linear-gradient(135deg,#1a1a2e,#e94560);height:120px;">
+                                <div class="play-btn"></div>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <div class="video-title">مصاحبه با برندگان جشنواره فیلم کوتاه</div>
+                            <div class="video-meta">۸ دقیقه | ۱۸۴ بازدید</div>
+                        </div>
+                    </div>
+                    <div class="video-card">
+                        <div class="video-thumb">
+                            <div class="img-ph"
+                                style="background:linear-gradient(135deg,#16213e,#533483);height:120px;">
+                                <div class="play-btn"></div>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <div class="video-title">نقد ویدئویی: بهترین فیلم‌های کوتاه سال</div>
+                            <div class="video-meta">۲۲ دقیقه | ۵۶۷ بازدید</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-title" style="margin-top:8px;">
+                    <div class="bar"></div>
+                    <h2>سینمای جهان</h2>
+                    <a href="#" class="more-link">مشاهده همه ›</a>
+                </div>
+
+                <div class="news-list">
+                    <div class="news-item">
+                        <div class="news-thumb">
+                            <div class="img-ph" style="background:linear-gradient(135deg,#2c3e50,#3498db);"><i
+                                    class="ri-earth-line" style="font-size:28px;color:rgba(255,255,255,0.5);"></i></div>
+                        </div>
+                        <div class="news-body">
+                            <div class="news-cat">سینمای جهان</div>
+                            <div class="news-title">برندگان بخش فیلم کوتاه اسکار ۲۰۲۵ معرفی شدند</div>
+                            <div class="news-time">۱ روز پیش</div>
+                        </div>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-thumb">
+                            <div class="img-ph" style="background:linear-gradient(135deg,#0f2027,#2c5364);"><i
+                                    class="ri-clapperboard-fill"
+                                    style="font-size:28px;color:rgba(255,255,255,0.5);"></i></div>
+                        </div>
+                        <div class="news-body">
+                            <div class="news-cat">جشنواره</div>
+                            <div class="news-title">فیلم‌های راه‌یافته به بخش فیلم کوتاه جشنواره برلین اعلام شد</div>
+                            <div class="news-time">۲ روز پیش</div>
+                        </div>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-thumb">
+                            <div class="img-ph" style="background:linear-gradient(135deg,#373b44,#4286f4);"><i
+                                    class="ri-award-fill" style="font-size:28px;color:rgba(255,255,255,0.5);"></i></div>
+                        </div>
+                        <div class="news-body">
+                            <div class="news-cat">گزارش</div>
+                            <div class="news-title">گزارش جشنواره فیلم کوتاه کلرمون فران: حضور پررنگ سینمای آسیا</div>
+                            <div class="news-time">۳ روز پیش</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <aside class="sidebar">
+
+                <div class="widget">
+                    <div class="widget-head">
+                        <i class="ri-fire-fill" style="color:#ff6b35;font-size:15px;"></i>
+                        داغ‌ترین اخبار
+                    </div>
+                    <div class="widget-body">
+                        <div class="hot-item">
+                            <div class="hot-num">1</div>
+                            <div class="hot-title">اعلام اسامی فیلم‌های کوتاه راه‌یافته به جشنواره فجر ۴۴</div>
+                        </div>
+                        <div class="hot-item">
+                            <div class="hot-num">2</div>
+                            <div class="hot-title">کارگردان ایرانی جایزه اول فیلم کوتاه جشنواره سانتاباربارا را برد
+                            </div>
+                        </div>
+                        <div class="hot-item">
+                            <div class="hot-num">3</div>
+                            <div class="hot-title">معرفی ۱۰ فیلم کوتاه برتر ایرانی در سال ۱۴۰۴</div>
+                        </div>
+                        <div class="hot-item">
+                            <div class="hot-num">4</div>
+                            <div class="hot-title">برگزاری کارگاه نوشتن فیلمنامه کوتاه در مشهد</div>
+                        </div>
+                        <div class="hot-item">
+                            <div class="hot-num">5</div>
+                            <div class="hot-title">گفتگو با تهیه‌کننده فیلم کوتاه مستقل درباره چالش‌های تامین مالی</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ad-box">
+                    <strong>فضای تبلیغاتی</strong>
+                    <!-- <span>تماس: ads@mrshortfilm.ir</span> -->
+                </div>
+
+                <div class="widget">
+                    <div class="widget-head">
+                        <i class="ri-price-tag-3-line" style="font-size:15px;color:#aaa;"></i>
+                        برچسب‌های پربازدید
+                    </div>
+                    <div class="widget-body">
+                        <div class="tags">
+                            <span class="tag">فیلم کوتاه</span>
+                            <span class="tag">جشنواره فجر</span>
+                            <span class="tag">کن ۲۰۲۵</span>
+                            <span class="tag">مستند</span>
+                            <span class="tag">نقد فیلم</span>
+                            <span class="tag">اسکار</span>
+                            <span class="tag">فیلمسازی</span>
+                            <span class="tag">برلین</span>
+                            <span class="tag">ونیز</span>
+                            <span class="tag">فیلمنامه</span>
+                            <span class="tag">کارگردانی</span>
+                            <span class="tag">سینمای مستقل</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="widget">
+                    <div class="widget-head">
+                        <i class="ri-mail-send-line" style="font-size:15px;color:#aaa;"></i>
+                        خبرنامه
+                    </div>
+                    <div class="widget-body">
+                        <div class="newsletter-form">
+                            <p>برای دریافت آخرین اخبار فیلم کوتاه در ایمیل خود، عضو خبرنامه ما شوید.</p>
+                            <input type="text" placeholder="نام و نام خانوادگی" />
+                            <input type="email" placeholder="آدرس ایمیل شما" />
+                            <button>عضویت در خبرنامه</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="widget">
+                    <div class="widget-head">
+                        <i class="ri-calendar-event-line" style="font-size:15px;color:#aaa;"></i>
+                        جشنواره‌های پیش‌رو
+                    </div>
+                    <div class="widget-body">
+                        <div style="display:flex;flex-direction:column;gap:12px;">
+                            <div
+                                style="display:flex;gap:12px;align-items:flex-start;padding-bottom:12px;border-bottom:1px solid var(--gray-100);">
+                                <div
+                                    style="background:var(--red);color:white;min-width:44px;height:44px;border-radius:6px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:11px;font-weight:700;line-height:1.2;">
+                                    <span style="font-size:18px;line-height:1;">۱۵</span><span>تیر</span>
+                                </div>
+                                <div>
+                                    <div style="font-size:13px;font-weight:600;">جشنواره فیلم کوتاه تهران</div>
+                                    <div style="font-size:11px;color:var(--gray-500);margin-top:2px;">تهران | ایران
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                style="display:flex;gap:12px;align-items:flex-start;padding-bottom:12px;border-bottom:1px solid var(--gray-100);">
+                                <div
+                                    style="background:#2c3e50;color:white;min-width:44px;height:44px;border-radius:6px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:11px;font-weight:700;line-height:1.2;">
+                                    <span style="font-size:18px;line-height:1;">۳</span><span>مرداد</span>
+                                </div>
+                                <div>
+                                    <div style="font-size:13px;font-weight:600;">جشنواره بین‌المللی لوکارنو</div>
+                                    <div style="font-size:11px;color:var(--gray-500);margin-top:2px;">لوکارنو | سوئیس
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="display:flex;gap:12px;align-items:flex-start;">
+                                <div
+                                    style="background:#1a6b3a;color:white;min-width:44px;height:44px;border-radius:6px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:11px;font-weight:700;line-height:1.2;">
+                                    <span style="font-size:18px;line-height:1;">۲۰</span><span>شهریور</span>
+                                </div>
+                                <div>
+                                    <div style="font-size:13px;font-weight:600;">جشنواره فیلم ونیز ۸۲</div>
+                                    <div style="font-size:11px;color:var(--gray-500);margin-top:2px;">ونیز | ایتالیا
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </aside>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-top">
+            <div class="footer-about">
+                <div class="logo-main">mr<span style="color:var(--red)">short</span>film</div>
+                <p style="margin-top:12px;">مستر شورت‌فیلم پایگاه خبری تخصصی فیلم کوتاه است. این سایت آخرین اخبار سینمای
+                    ایران و جهان، جشنواره‌های بین‌المللی، نقد فیلم و گفتگو با هنرمندان را پوشش می‌دهد.</p>
+                <div class="topbar-social" style="margin-top:16px;">
+                    <a href="#" title="اینستاگرام" style="width:32px;height:32px;"><i class="ri-instagram-line"></i></a>
+                    <a href="#" title="تلگرام" style="width:32px;height:32px;"><i class="ri-telegram-fill"></i></a>
+                    <a href="#" title="یوتیوب" style="width:32px;height:32px;"><i class="ri-youtube-fill"></i></a>
+                    <a href="#" title="توییتر" style="width:32px;height:32px;"><i class="ri-twitter-x-fill"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>بخش‌ها</h3>
+                <ul>
+                    <li><a href="#">فیلم کوتاه</a></li>
+                    <li><a href="#">سینمای ایران</a></li>
+                    <li><a href="#">سینمای جهان</a></li>
+                    <li><a href="#">جشنواره‌ها</a></li>
+                    <li><a href="#">مستند</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>لینک‌های مفید</h3>
+                <ul>
+                    <li><a href="#">درباره ما</a></li>
+                    <li><a href="#">تماس با ما</a></li>
+                    <li><a href="#">آگهی‌دهی</a></li>
+                    <li><a href="#">حریم خصوصی</a></li>
+                    <li><a href="#">خبرنامه</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>تماس با ما</h3>
+                <ul>
+                    <!-- <li><a href="#"><i class="ri-mail-line"
+                                style="vertical-align:-2px;margin-left:5px;"></i>info@mrshortfilm.ir</a></li>
+                    <li><a href="#"><i class="ri-advertisement-line"
+                                style="vertical-align:-2px;margin-left:5px;"></i>ads@mrshortfilm.ir</a></li> -->
+                    <li style="color:#666;font-size:13px;margin-top:8px;"><i class="ri-map-pin-line"
+                            style="vertical-align:-2px;margin-left:5px;"></i>تهران، ایران</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span id="footer-year-copy"><i class="ri-copyright-line"
+                    style="vertical-align:-2px;margin-left:4px;"></i>۱۴۰۵ مستر شورت‌فیلم — تمام حقوق محفوظ است</span>
+            <span><i class="ri-code-s-slash-line" style="vertical-align:-2px;margin-left:4px;"></i>طراحی و توسعه: تیم
+                مستر شورت‌فیلم</span>
+        </div>
+    </footer>
+
+    <script>
+        // ===== convert the date =====
+        function toJalali(gy, gm, gd) {
+            var g_d_m = [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334];
+            var jy = (gy <= 1600) ? 0 : 979;
+            gy -= (gy <= 1600) ? 621 : 1600;
+            var gy2 = (gm > 2) ? (gy + 1) : gy;
+            var days = (365 * gy) + (Math.floor((gy2 + 3) / 4)) - (Math.floor((gy2 + 99) / 100))
+                + (Math.floor((gy2 + 399) / 400)) - 80 + gd + g_d_m[gm - 1];
+            jy += 33 * Math.floor(days / 12053);
+            days %= 12053;
+            jy += 4 * Math.floor(days / 1461);
+            days %= 1461;
+            if (days > 365) { jy += Math.floor((days - 1) / 365); days = (days - 1) % 365; }
+            var jm = (days < 186) ? 1 + Math.floor(days / 31) : 7 + Math.floor((days - 186) / 30);
+            var jd = 1 + ((days < 186) ? (days % 31) : ((days - 186) % 30));
+            return [jy, jm, jd];
+        }
+
+        function toFarsiNum(n) {
+            var farsi = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+            return String(n).replace(/\d/g, d => farsi[d]);
+        }
+
+        function getJalaliDate() {
+            var now = new Date();
+            var jd = toJalali(now.getFullYear(), now.getMonth() + 1, now.getDate());
+            var weekDays = ['یکشنبه', 'دوشنبه', 'سه‌شنبه', 'چهارشنبه', 'پنج‌شنبه', 'جمعه', 'شنبه'];
+            var months = ['فروردین', 'اردیبهشت', 'خرداد', 'تیر', 'مرداد', 'شهریور',
+                'مهر', 'آبان', 'آذر', 'دی', 'بهمن', 'اسفند'];
+            var dayName = weekDays[now.getDay()];
+            var monthName = months[jd[1] - 1];
+            return {
+                full: dayName + ' ' + toFarsiNum(jd[2]) + ' ' + monthName + ' ' + toFarsiNum(jd[0]),
+                year: toFarsiNum(jd[0]),
+                monthDay: toFarsiNum(jd[2]) + ' ' + monthName + ' ' + toFarsiNum(jd[0])
+            };
+        }
+
+        function updateDates() {
+            var d = getJalaliDate();
+            var topbarEl = document.getElementById('jalali-date');
+            var headerEl = document.getElementById('jalali-date-header');
+            var footerEl = document.getElementById('footer-year-copy');
+
+            if (topbarEl) topbarEl.textContent = d.full;
+            if (headerEl) headerEl.textContent = d.monthDay;
+            if (footerEl) footerEl.innerHTML = '<i class="ri-copyright-line" style="vertical-align:-2px;margin-left:4px;"></i>' + d.year + ' مستر شورت‌فیلم — تمام حقوق محفوظ است';
+        }
+
+        updateDates();
+
+        // change the time at midnight
+        var now = new Date();
+        var midnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+        setTimeout(function () {
+            updateDates();
+            setInterval(updateDates, 86400000);
+        }, midnight - now);
+    </script>
+
+</body>
+
+</html>

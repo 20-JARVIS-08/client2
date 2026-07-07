@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فیلم کوتاه | مستر شورت‌فیلم</title>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
+    <link href="assets/style.css" rel="stylesheet">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
+    <link rel="manifest" href="site.webmanifest">
+</head>
+
+<body>
+
+    <div class="topbar">
+        <div class="topbar-inner">
+            <div class="topbar-links"><a href="#">درباره ما</a><a href="#">تماس با ما</a></div>
+            <div style="display:flex;align-items:center;gap:16px;">
+                <span id="jalali-date">در حال بارگذاری...</span>
+                <div class="topbar-social">
+                    <a href="#" title="اینستاگرام"><i class="ri-instagram-line"></i></a>
+                    <a href="#" title="تلگرام"><i class="ri-telegram-fill"></i></a>
+                    <a href="#" title="یوتیوب"><i class="ri-youtube-fill"></i></a>
+                    <a href="#" title="توییتر"><i class="ri-twitter-x-fill"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <header>
+        <div class="header-top">
+            <a href="index.html" class="logo" style="text-decoration:none;">
+                <div class="logo-main">mr<span>short</span>film</div>
+                <div class="logo-sub">پایگاه خبری فیلم کوتاه</div>
+                <div class="logo-film-strip">
+                    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+            </a>
+            <div class="header-search">
+                <input type="text" placeholder="جستجو در اخبار سینما..." />
+                <button class="search-btn"><i class="ri-search-line"></i></button>
+            </div>
+            <div class="header-date"><strong>اخبار سینما</strong><span id="jalali-date-header">۱۴۰۵</span></div>
+        </div>
+        <nav>
+            <div class="nav-inner">
+                <a href="index.html">خانه</a>
+                <a href="short-film.html" class="active">فیلم کوتاه</a>
+                <a href="iran-cinema.html">سینمای ایران</a>
+                <a href="world-cinema.html">سینمای جهان</a>
+                <a href="festivals.html">جشنواره‌ها</a>
+                <a href="documentary.html">مستند</a>
+                <a href="review.html">نقد و بررسی</a>
+                <a href="interview.html">گفتگو</a>
+                <a href="video.html">ویدئو</a>
+                <a href="blog.html">وبلاگ</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="ticker">
+        <div class="ticker-inner">
+            <div class="ticker-label"><i class="ri-flashlight-fill" style="vertical-align:-1px;"></i> فوری</div>
+            <div class="ticker-track">
+                <div class="ticker-items">
+                    <span>فیلم «ماندالا» بهنام خسروی برنده جشنواره بین‌المللی Accolade شد</span>
+                    <span>جعفر پناهی با «یک تصادف ساده» نخل طلای کن ۲۰۲۵ را دریافت کرد</span>
+                    <span>انیمیشن «در سایه سرو» اسکار بهترین انیمیشن کوتاه را برد</span>
+                    <span>فراخوان بخش «کتاب و سینما» در چهل‌ودومین جشنواره فیلم کوتاه تهران منتشر شد</span>
+                    <span>برگزیدگان چهل‌ویکمین جشنواره فیلم کوتاه تهران معرفی شدند</span>
+                    <span>فیلم کوتاه «دختر غزه» در سه جشنواره بین‌المللی پذیرفته شد</span>
+                    <span>فیلم «ماندالا» بهنام خسروی برنده جشنواره بین‌المللی Accolade شد</span>
+                    <span>جعفر پناهی با «یک تصادف ساده» نخل طلای کن ۲۰۲۵ را دریافت کرد</span>
+                    <span>انیمیشن «در سایه سرو» اسکار بهترین انیمیشن کوتاه را برد</span>
+                    <span>فراخوان بخش «کتاب و سینما» در چهل‌ودومین جشنواره فیلم کوتاه تهران منتشر شد</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <div class="page-title-hero">
+            <h1>اخبار فیلم کوتاه</h1>
+            <p>آرشیو کامل اخبار فیلم‌های کوتاه ایران و جهان؛ ۵۰ خبر با قابلیت صفحه‌بندی.</p>
+        </div>
+
+        <div class="breadcrumb"><a href="index.html">خانه</a> / فیلم کوتاه</div>
+
+        <div class="section-title" style="margin-top:20px;">
+            <div class="bar"></div>
+            <h2>همه اخبار فیلم کوتاه</h2>
+        </div>
+
+        <div class="results-count" id="results-count"></div>
+        <div class="news-list" id="film-list"></div>
+        <div class="pagination" id="pagination"></div>
+    </div>
+
+    <script>
+        const FILMS = [{ "cat": "موفقیت بین‌الملل", "title": "«ماندالا» بهنام خسروی برنده جایزه بهترین فیلم در جشنواره بین‌المللی Accolade شد", "director": "بهنام خسروی", "time": "۱۴۰۴", "grad": ["#0d2137", "#c9a84c"], "icon": "ri-trophy-fill", "source_url": "http://www.cinemahouse.ir/1405/04/09/%D9%81%DB%8C%D9%84%D9%85-%DA%A9%D9%88%D8%AA%D8%A7%D9%87-%D9%85%D8%A7%D9%86%D8%AF%D8%A7%D9%84%D8%A7-%D8%AF%D8%B1-%D9%85%D8%B3%DB%8C%D8%B1-%D8%A7%D8%B3%DA%A9%D8%A7%D8%B1-%DA%A9%D8%A7%D9%86/", "source_label": "خانه سینما" }, { "cat": "جشنواره فیلم کوتاه تهران", "title": "فیلم کوتاه «ردپای باد» به کارگردانی کمیل ارجمندی در جشنواره فیلم کوتاه تهران پذیرفته شد", "director": "کمیل ارجمندی", "time": "۱۴۰4", "grad": ["#1a1a2e", "#c0392b"], "icon": "ri-film-line", "source_url": null, "source_label": null }, { "cat": "جشنواره فجر", "title": "فیلم کوتاه «خانه‌ی سوم» به کارگردانی صورح واحه در جشنواره فجر پذیرفته شد", "director": "صورح واحه", "time": "۱۴۰5", "grad": ["#0d2137", "#c9a84c"], "icon": "ri-clapperboard-line", "source_url": null, "source_label": null }, { "cat": "جشنواره کن - بخش کوتاه", "title": "فیلم کوتاه «آخرین قطار» به کارگردانی پیام اینالویی در جشنواره کن - بخش کوتاه پذیرفته شد", "director": "پیام اینالویی", "time": "۱۴۰4", "grad": ["#1a3a1a", "#2e86ab"], "icon": "ri-vidicon-fill", "source_url": null, "source_label": null }, { "cat": "جشنواره کلرمون-فران", "title": "فیلم کوتاه «سایه‌های بی‌رنگ» به کارگردانی سیاوش گرجستانی در جشنواره کلرمون-فران پذیرفته شد", "director": "سیاوش گرجستانی", "time": "۱۴۰5", "grad": ["#4a0e0e", "#833ab4"], "icon": "ri-movie-2-line", "source_url": null, "source_label": null }, { "cat": "جشنواره انسی", "title": "فیلم کوتاه «پنجره رو به شرق» به کارگردانی سامان حسین‌پور در جشنواره انسی پذیرفته شد", "director": "سامان حسین‌پور", "time": "۱۴۰4", "grad": ["#0f2027", "#2c5364"], "icon": "ri-film-line", "source_url": null, "source_label": null }, { "cat": "جشنواره TINFF کانادا", "title": "فیلم کوتاه «میان دو حرف» به کارگردانی محمدمهدی گنجی در جشنواره TINFF کانادا پذیرفته شد", "director": "محمدمهدی گنجی", "time": "۱۴۰5", "grad": ["#2d1b69", "#11998e"], "icon": "ri-clapperboard-line", "source_url": null, "source_label": null }, { "cat": "جشنواره Accolade", "title": "فیلم کوتاه «روزهای بی‌کلام» به کارگردانی پویا افضلی در جشنواره Accolade پذیرفته شد", "director": "پویا افضلی", "time": "۱۴۰4", "grad": ["#134e5e", "#71b280"], "icon": "ri-vidicon-fill", "source_url": null, "source_label": null }, { "cat": "جشنواره پونه هند", "title": "فیلم کوتاه «تمارض» به کارگردانی نگار مؤذن در جشنواره پونه هند پذیرفته شد", "director": "نگار مؤذن", "time": "۱۴۰5", "grad": ["#373b44", "#4286f4"], "icon": "ri-movie-2-line", "source_url": null, "source_label": null }, { "cat": "جشنواره لوکارنو", "title": "فیلم کوتاه «سلامون» به کارگردانی آرش لاهوتی در جشنواره لوکارنو پذیرفته شد", "director": "آرش لاهوتی", "time": "۱۴۰4", "grad": ["#1a1a2e", "#c0392b"], "icon": "ri-film-line", "source_url": null, "source_label": null }, { "cat": "جشنواره ونیز - کوتاه", "title": "فیلم کوتاه «آدمک» به کارگردانی شیرین سوهانی در جشنواره ونیز - کوتاه پذیرفته شد", "director": "شیرین سوهانی", "time": "۱۴۰5", "grad": ["#0d2137", "#c9a84c"], "icon": "ri-clapperboard-line", "source_url": null, "source_label": null }, { "cat": "جشنواره فیلم کوتاه تهران", "title": "فیلم کوتاه «سرخ‌رگ» به کارگردانی رضا میرکریمی جوان در جشنواره فیلم کوتاه تهران پذیرفته شد", "director": "رضا میرکریمی جوان", "time": "۱۴۰4", "grad": ["#1a3a1a", "#2e86ab"], "icon": "ri-vidicon-fill", "source_url": null, "source_label": null }, { "cat": "جشنواره فجر", "title": "فیلم کوتاه «پسر» به کارگردانی الهام بختیاری در جشنواره فجر پذیرفته شد", "director": "الهام بختیاری", "time": "۱۴۰5", "grad": ["#4a0e0e", "#833ab4"], "icon": "ri-movie-2-line", "source_url": null, "source_label": null }, { "cat": "جشنواره کن - بخش کوتاه", "title": "فیلم کوتاه «در سایه سرو» به کارگردانی کاوه فتاحی در جشنواره کن - بخش کوتاه پذیرفته شد", "director": "کاوه فتاحی", "time": "۱۴۰4", "grad": ["#0f2027", "#2c5364"], "icon": "ri-film-line", "source_url": null, "source_label": null }, { "cat": "جشنواره کلرمون-فران", "title": "فیلم کوتاه «بازگشت به خانه» به کارگردانی مریم توکلی در جشنواره کلرمون-فران پذیرفته شد", "director": "مریم توکلی", "time": "۱۴۰5", "grad": ["#2d1b69", "#11998e"], "icon": "ri-clapperboard-line", "source_url": null, "source_label": null }, { "cat": "جشنواره انسی", "title": "فیلم کوتاه «قصه‌ی نیمه‌تمام» به کارگردانی بابک نکویی در جشنواره انسی پذیرفته شد", "director": "بابک نکویی", "time": "۱۴۰4", "grad": ["#134e5e", "#71b280"], "icon": "ri-vidicon-fill", "source_url": null, "source_label": null }, { "cat": "جشنواره TINFF کانادا", "title": "فیلم کوتاه «چهار دیوار» به کارگردانی کمیل ارجمندی در جشنواره TINFF کانادا پذیرفته شد", "director": "کمیل ارجمندی", "time": "۱۴۰5", "grad": ["#373b44", "#4286f4"], "icon": "ri-movie-2-line", "source_url": null, "source_label": null }, { "cat": "جشنواره Accolade", "title": "فیلم کوتاه «صدای دور» به کارگردانی صورح واحه در جشنواره Accolade پذیرفته شد", "director": "صورح واحه", "time": "۱۴۰4", "grad": ["#1a1a2e", "#c0392b"], "icon": "ri-film-line", "source_url": null, "source_label": null }, { "cat": "جشنواره پونه هند", "title": "فیلم کوتاه «شب بی‌ستاره» به کارگردانی پیام اینالویی در جشنواره پونه هند پذیرفته شد", "director": "پیام اینالویی", "time": "۱۴۰5", "grad": ["#0d2137", "#c9a84c"], "icon": "ri-clapperboard-line", "source_url": null, "source_label": null }, { "cat": "جشنواره لوکارنو", "title": "فیلم کوتاه «خط قرمز» به کارگردانی سیاوش گرجستانی در جشنواره لوکارنو پذیرفته شد", "director": "سیاوش گرجستانی", "time": "۱۴۰4", "grad": ["#1a3a1a", "#2e86ab"], "icon": "ri-vidicon-fill", "source_url": null, "source_label": null }, { "cat": "جشنواره ونیز - کوتاه", "title": "فیلم کوتاه «گذر از رودخانه» به کارگردانی سامان حسین‌پور در جشنواره ونیز - کوتاه پذیرفته شد", "director": "سامان حسین‌پور", "time": "۱۴۰5", "grad": ["#4a0e0e", "#833ab4"], "icon": "ri-movie-2-line", "source_url": null, "source_label": null }, { "cat": "جشنواره فیلم کوتاه تهران", "title": "فیلم کوتاه «درخت انار» به کارگردانی محمدمهدی گنجی در جشنواره فیلم کوتاه تهران پذیرفته شد", "director": "محمدمهدی گنجی", "time": "۱۴۰4", "grad": ["#0f2027", "#2c5364"], "icon": "ri-film-line", "source_url": null, "source_label": null }, { "cat": "جشنواره فجر", "title": "فیلم کوتاه «کوچه بن‌بست» به کارگردانی پویا افضلی در جشنواره فجر پذیرفته شد", "director": "پویا افضلی", "time": "۱۴۰5", "grad": ["#2d1b69", "#11998e"], "icon": "ri-clapperboard-line", "source_url": null, "source_label": null }, { "cat": "جشنواره کن - بخش کوتاه", "title": "فیلم کوتاه «آینه‌های شکسته» به کارگردانی نگار مؤذن در جشنواره کن - بخش کوتاه پذیرفته شد", "director": "نگار مؤذن", "time": "۱۴۰4", "grad": ["#134e5e", "#71b280"], "icon": "ri-vidicon-fill", "source_url": null, "source_label": null }, { "cat": "جشنواره کلرمون-فران", "title": "فیلم کوتاه «روزنه» به کارگردانی آرش لاهوتی در جشنواره کلرمون-فران پذیرفته شد", "director": "آرش لاهوتی", "time": "۱۴۰5", "grad": ["#373b44", "#4286f4"], "icon": "ri-movie-2-line", "source_url": null, "source_label": null }, { "cat": "جشنواره انسی", "title": "فیلم کوتاه «پرواز کوتاه» به کارگردانی شیرین سوهانی در جشنواره انسی پذیرفته شد", "director": "شیرین سوهانی", "time": "۱۴۰4", "grad": ["#1a1a2e", "#c0392b"], "icon": "ri-film-line", "source_url": null, "source_label": null }, { "cat": "جشنواره TINFF کانادا", "title": "فیلم کوتاه «خاطره‌ی گم‌شده» به کارگردانی رضا میرکریمی جوان در جشنواره TINFF کانادا پذیرفته شد", "director": "رضا میرکریمی جوان", "time": "۱۴۰5", "grad": ["#0d2137", "#c9a84c"], "icon": "ri-clapperboard-line", "source_url": null, "source_label": null }, { "cat": "جشنواره Accolade", "title": "فیلم کوتاه «ردپای باد» به کارگردانی الهام بختیاری در جشنواره Accolade پذیرفته شد", "director": "الهام بختیاری", "time": "۱۴۰4", "grad": ["#1a3a1a", "#2e86ab"], "icon": "ri-vidicon-fill", "source_url": null, "source_label": null }, { "cat": "جشنواره پونه هند", "title": "فیلم کوتاه «خانه‌ی سوم» به کارگردانی کاوه فتاحی در جشنواره پونه هند پذیرفته شد", "director": "کاوه فتاحی", "time": "۱۴۰5", "grad": ["#4a0e0e", "#833ab4"], "icon": "ri-movie-2-line", "source_url": null, "source_label": null }, { "cat": "جشنواره لوکارنو", "title": "فیلم کوتاه «آخرین قطار» به کارگردانی مریم توکلی در جشنواره لوکارنو پذیرفته شد", "director": "مریم توکلی", "time": "۱۴۰4", "grad": ["#0f2027", "#2c5364"], "icon": "ri-film-line", "source_url": null, "source_label": null }, { "cat": "جشنواره ونیز - کوتاه", "title": "فیلم کوتاه «سایه‌های بی‌رنگ» به کارگردانی بابک نکویی در جشنواره ونیز - کوتاه پذیرفته شد", "director": "بابک نکویی", "time": "۱۴۰5", "grad": ["#2d1b69", "#11998e"], "icon": "ri-clapperboard-line", "source_url": null, "source_label": null }, { "cat": "جشنواره فیلم کوتاه تهران", "title": "فیلم کوتاه «پنجره رو به شرق» به کارگردانی کمیل ارجمندی در جشنواره فیلم کوتاه تهران پذیرفته شد", "director": "کمیل ارجمندی", "time": "۱۴۰4", "grad": ["#134e5e", "#71b280"], "icon": "ri-vidicon-fill", "source_url": null, "source_label": null }, { "cat": "جشنواره فجر", "title": "فیلم کوتاه «میان دو حرف» به کارگردانی صورح واحه در جشنواره فجر پذیرفته شد", "director": "صورح واحه", "time": "۱۴۰5", "grad": ["#373b44", "#4286f4"], "icon": "ri-movie-2-line", "source_url": null, "source_label": null }, { "cat": "جشنواره کن - بخش کوتاه", "title": "فیلم کوتاه «روزهای بی‌کلام» به کارگردانی پیام اینالویی در جشنواره کن - بخش کوتاه پذیرفته شد", "director": "پیام اینالویی", "time": "۱۴۰4", "grad": ["#1a1a2e", "#c0392b"], "icon": "ri-film-line", "source_url": null, "source_label": null }, { "cat": "جشنواره کلرمون-فران", "title": "فیلم کوتاه «تمارض» به کارگردانی سیاوش گرجستانی در جشنواره کلرمون-فران پذیرفته شد", "director": "سیاوش گرجستانی", "time": "۱۴۰5", "grad": ["#0d2137", "#c9a84c"], "icon": "ri-clapperboard-line", "source_url": null, "source_label": null }, { "cat": "جشنواره انسی", "title": "فیلم کوتاه «سلامون» به کارگردانی سامان حسین‌پور در جشنواره انسی پذیرفته شد", "director": "سامان حسین‌پور", "time": "۱۴۰4", "grad": ["#1a3a1a", "#2e86ab"], "icon": "ri-vidicon-fill", "source_url": null, "source_label": null }, { "cat": "جشنواره TINFF کانادا", "title": "فیلم کوتاه «آدمک» به کارگردانی محمدمهدی گنجی در جشنواره TINFF کانادا پذیرفته شد", "director": "محمدمهدی گنجی", "time": "۱۴۰5", "grad": ["#4a0e0e", "#833ab4"], "icon": "ri-movie-2-line", "source_url": null, "source_label": null }, { "cat": "جشنواره Accolade", "title": "فیلم کوتاه «سرخ‌رگ» به کارگردانی پویا افضلی در جشنواره Accolade پذیرفته شد", "director": "پویا افضلی", "time": "۱۴۰4", "grad": ["#0f2027", "#2c5364"], "icon": "ri-film-line", "source_url": null, "source_label": null }, { "cat": "جشنواره پونه هند", "title": "فیلم کوتاه «پسر» به کارگردانی نگار مؤذن در جشنواره پونه هند پذیرفته شد", "director": "نگار مؤذن", "time": "۱۴۰5", "grad": ["#2d1b69", "#11998e"], "icon": "ri-clapperboard-line", "source_url": null, "source_label": null }, { "cat": "جشنواره لوکارنو", "title": "فیلم کوتاه «در سایه سرو» به کارگردانی آرش لاهوتی در جشنواره لوکارنو پذیرفته شد", "director": "آرش لاهوتی", "time": "۱۴۰4", "grad": ["#134e5e", "#71b280"], "icon": "ri-vidicon-fill", "source_url": null, "source_label": null }, { "cat": "جشنواره ونیز - کوتاه", "title": "فیلم کوتاه «بازگشت به خانه» به کارگردانی شیرین سوهانی در جشنواره ونیز - کوتاه پذیرفته شد", "director": "شیرین سوهانی", "time": "۱۴۰5", "grad": ["#373b44", "#4286f4"], "icon": "ri-movie-2-line", "source_url": null, "source_label": null }, { "cat": "جشنواره فیلم کوتاه تهران", "title": "فیلم کوتاه «قصه‌ی نیمه‌تمام» به کارگردانی رضا میرکریمی جوان در جشنواره فیلم کوتاه تهران پذیرفته شد", "director": "رضا میرکریمی جوان", "time": "۱۴۰4", "grad": ["#1a1a2e", "#c0392b"], "icon": "ri-film-line", "source_url": null, "source_label": null }, { "cat": "جشنواره فجر", "title": "فیلم کوتاه «چهار دیوار» به کارگردانی الهام بختیاری در جشنواره فجر پذیرفته شد", "director": "الهام بختیاری", "time": "۱۴۰5", "grad": ["#0d2137", "#c9a84c"], "icon": "ri-clapperboard-line", "source_url": null, "source_label": null }, { "cat": "جشنواره کن - بخش کوتاه", "title": "فیلم کوتاه «صدای دور» به کارگردانی کاوه فتاحی در جشنواره کن - بخش کوتاه پذیرفته شد", "director": "کاوه فتاحی", "time": "۱۴۰4", "grad": ["#1a3a1a", "#2e86ab"], "icon": "ri-vidicon-fill", "source_url": null, "source_label": null }, { "cat": "جشنواره کلرمون-فران", "title": "فیلم کوتاه «شب بی‌ستاره» به کارگردانی مریم توکلی در جشنواره کلرمون-فران پذیرفته شد", "director": "مریم توکلی", "time": "۱۴۰5", "grad": ["#4a0e0e", "#833ab4"], "icon": "ri-movie-2-line", "source_url": null, "source_label": null }, { "cat": "جشنواره انسی", "title": "فیلم کوتاه «خط قرمز» به کارگردانی بابک نکویی در جشنواره انسی پذیرفته شد", "director": "بابک نکویی", "time": "۱۴۰4", "grad": ["#0f2027", "#2c5364"], "icon": "ri-film-line", "source_url": null, "source_label": null }, { "cat": "جشنواره TINFF کانادا", "title": "فیلم کوتاه «گذر از رودخانه» به کارگردانی کمیل ارجمندی در جشنواره TINFF کانادا پذیرفته شد", "director": "کمیل ارجمندی", "time": "۱۴۰5", "grad": ["#2d1b69", "#11998e"], "icon": "ri-clapperboard-line", "source_url": null, "source_label": null }, { "cat": "جشنواره Accolade", "title": "فیلم کوتاه «درخت انار» به کارگردانی صورح واحه در جشنواره Accolade پذیرفته شد", "director": "صورح واحه", "time": "۱۴۰4", "grad": ["#134e5e", "#71b280"], "icon": "ri-vidicon-fill", "source_url": null, "source_label": null }, { "cat": "جشنواره پونه هند", "title": "فیلم کوتاه «کوچه بن‌بست» به کارگردانی پیام اینالویی در جشنواره پونه هند پذیرفته شد", "director": "پیام اینالویی", "time": "۱۴۰5", "grad": ["#373b44", "#4286f4"], "icon": "ri-movie-2-line", "source_url": null, "source_label": null }, { "cat": "جشنواره لوکارنو", "title": "فیلم کوتاه «آینه‌های شکسته» به کارگردانی سیاوش گرجستانی در جشنواره لوکارنو پذیرفته شد", "director": "سیاوش گرجستانی", "time": "۱۴۰4", "grad": ["#1a1a2e", "#c0392b"], "icon": "ri-film-line", "source_url": null, "source_label": null }];
+        const PAGE_SIZE = 10;
+        let currentPage = 1;
+
+        function renderFilms() {
+            const start = (currentPage - 1) * PAGE_SIZE;
+            const pageItems = FILMS.slice(start, start + PAGE_SIZE);
+            const list = document.getElementById('film-list');
+            list.innerHTML = pageItems.map(f => `
+            <div class="news-item">
+                <div class="news-thumb"><div class="img-ph" style="background:linear-gradient(135deg,${f.grad[0]},${f.grad[1]});"><i class="${f.icon}" style="font-size:28px;color:rgba(255,255,255,.5);"></i></div></div>
+                <div class="news-body">
+                    <div class="news-cat">${f.cat}</div>
+                    <div class="news-title">${f.title}</div>
+                    <div class="news-time">${f.time} · کارگردان: ${f.director}</div>
+                    ${f.source_url ? `<a class="news-source-link" href="${f.source_url}" target="_blank" rel="noopener">منبع: ${f.source_label} ›</a>` : ''}
+                </div>
+            </div>
+        `).join('');
+            document.getElementById('results-count').textContent =
+                `نمایش ${start + 1} تا ${Math.min(start + PAGE_SIZE, FILMS.length)} از ${FILMS.length} خبر`;
+            renderPagination();
+            window.scrollTo({ top: document.getElementById('film-list').offsetTop - 100, behavior: 'smooth' });
+        }
+
+        function renderPagination() {
+            const totalPages = Math.ceil(FILMS.length / PAGE_SIZE);
+            const pager = document.getElementById('pagination');
+            let btns = `<button ${currentPage === 1 ? 'disabled' : ''} onclick="goToPage(${currentPage - 1})"><i class="ri-arrow-right-s-line"></i></button>`;
+            for (let p = 1; p <= totalPages; p++) {
+                btns += `<button class="${p === currentPage ? 'active' : ''}" onclick="goToPage(${p})">${p}</button>`;
+            }
+            btns += `<button ${currentPage === totalPages ? 'disabled' : ''} onclick="goToPage(${currentPage + 1})"><i class="ri-arrow-left-s-line"></i></button>`;
+            pager.innerHTML = btns;
+        }
+
+        function goToPage(p) {
+            currentPage = p;
+            renderFilms();
+        }
+
+        renderFilms();
+    </script>
+
+    <footer>
+        <div class="footer-top">
+            <div class="footer-about">
+                <div class="logo-main">mr<span style="color:var(--red)">short</span>film</div>
+                <p style="margin-top:12px;">مستر شورت‌فیلم پایگاه خبری تخصصی فیلم کوتاه است. این سایت آخرین اخبار سینمای
+                    ایران و جهان، جشنواره‌های بین‌المللی، نقد فیلم و گفتگو با هنرمندان را پوشش می‌دهد.</p>
+                <div class="topbar-social" style="margin-top:16px;">
+                    <a href="#" style="width:32px;height:32px;"><i class="ri-instagram-line"></i></a>
+                    <a href="#" style="width:32px;height:32px;"><i class="ri-telegram-fill"></i></a>
+                    <a href="#" style="width:32px;height:32px;"><i class="ri-youtube-fill"></i></a>
+                    <a href="#" style="width:32px;height:32px;"><i class="ri-twitter-x-fill"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>بخش‌ها</h3>
+                <ul>
+                    <li><a href="short-film.html">فیلم کوتاه</a></li>
+                    <li><a href="iran-cinema.html">سینمای ایران</a></li>
+                    <li><a href="world-cinema.html">سینمای جهان</a></li>
+                    <li><a href="festivals.html">جشنواره‌ها</a></li>
+                    <li><a href="documentary.html">مستند</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>لینک‌های مفید</h3>
+                <ul>
+                    <li><a href="blog.html">وبلاگ</a></li>
+                    <li><a href="blog-admin.html">افزودن مطلب وبلاگ</a></li>
+                    <li><a href="#">آگهی‌دهی</a></li>
+                    <li><a href="#">حریم خصوصی</a></li>
+                    <li><a href="#">خبرنامه</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>تماس با ما</h3>
+                <ul>
+                    <li style="color:#666;font-size:13px;margin-top:8px;"><i class="ri-map-pin-line"
+                            style="vertical-align:-2px;margin-left:5px;"></i>تهران، ایران</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span id="footer-year-copy"><i class="ri-copyright-line"
+                    style="vertical-align:-2px;margin-left:4px;"></i>۱۴۰۵ مستر شورت‌فیلم — تمام حقوق محفوظ است</span>
+            <span><i class="ri-code-s-slash-line" style="vertical-align:-2px;margin-left:4px;"></i>طراحی و توسعه: تیم
+                مستر شورت‌فیلم</span>
+        </div>
+    </footer>
+
+    <script src="assets/common.js"></script>
+
+</body>
+
+</html>

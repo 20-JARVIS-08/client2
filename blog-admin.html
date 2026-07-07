@@ -10,6 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
     <link href="assets/style.css" rel="stylesheet">
 
+
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="shortcut icon" href="favicon.ico">
@@ -90,8 +91,8 @@
     <div class="container">
         <div class="page-title-hero">
             <h1>افزودن مطلب جدید به وبلاگ</h1>
-            <p>فرم زیر را پر کنید تا مطلب شما بلافاصله در صفحه وبلاگ نمایش داده شود. مطالب در مرورگر شما ذخیره می‌شوند.
-            </p>
+            <p>فرم زیر را پر کنید تا مطلب شما بلافاصله در صفحه وبلاگ منتشر شود. وضعیت اتصال به دیتابیس را در ستون کناری
+                ببینید.</p>
         </div>
         <div class="breadcrumb" style="margin-top:0;"><a href="index.html">خانه</a> / <a href="blog.html">وبلاگ</a> /
             افزودن مطلب</div>
@@ -151,8 +152,13 @@
             </div>
             <aside class="sidebar">
                 <div class="widget">
+                    <div class="widget-head"><i class="ri-cloud-line"></i> وضعیت اتصال</div>
+                    <div class="widget-body" id="backend-status" style="font-size:12.5px;line-height:1.9;">در حال
+                        بررسی...</div>
+                </div>
+                <div class="widget">
                     <div class="widget-head"><i class="ri-lightbulb-line"></i> راهنما</div>
-                    <div class="widget-body" style="font-size:1z.5px;color:var(--gray-500);line-height:1.9;">
+                    <div class="widget-body" style="font-size:12.5px;color:var(--gray-500);line-height:1.9;">
                         مطلب شما بلافاصله پس از انتشار در صفحه «وبلاگ» ظاهر می‌شود و یک صفحه اختصاصی دریافت می‌کند. برای
                         حذف یک مطلب، در صفحه وبلاگ روی آیکن سطل زباله روی کارت مطلب کلیک کنید.
                     </div>
@@ -213,8 +219,12 @@
     </footer>
 
     <script src="assets/common.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+    <script src="assets/firebase-config.js"></script>
     <script src="assets/blog.js"></script>
     <script>
+        renderBackendStatus('backend-status');
         let selectedColor = 0;
         document.querySelectorAll('#color-swatches span').forEach(el => {
             el.addEventListener('click', () => {
@@ -230,7 +240,7 @@
             return jd[0] + '-' + String(jd[1]).padStart(2, '0') + '-' + String(jd[2]).padStart(2, '0');
         }
 
-        function handleSubmit(e) {
+        async function handleSubmit(e) {
             e.preventDefault();
             const post = {
                 title: document.getElementById('f-title').value.trim(),
@@ -245,10 +255,20 @@
                 seed: false
             };
             if (!post.title || !post.content) return false;
-            const id = addPost(post);
-            const toast = document.getElementById('save-toast');
-            toast.classList.add('show');
-            setTimeout(() => { window.location.href = 'blog-post.html?id=' + encodeURIComponent(id); }, 900);
+            const submitBtn = document.querySelector('#post-form button[type="submit"]');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="ri-loader-4-line"></i> در حال انتشار...';
+            try {
+                const id = await addPost(post);
+                const toast = document.getElementById('save-toast');
+                toast.classList.add('show');
+                setTimeout(() => { window.location.href = 'blog-post.html?id=' + encodeURIComponent(id); }, 900);
+            } catch (err) {
+                console.error(err);
+                alert('خطا در انتشار مطلب. لطفا اتصال اینترنت و تنظیمات Firebase را بررسی کنید.');
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="ri-save-line"></i> انتشار مطلب';
+            }
             return false;
         }
     </script>

@@ -1,9 +1,19 @@
 /* =========================================================
-   موتور ساده وبلاگ مستر شورت‌فیلم
-   همه پست‌ها در localStorage مرورگر ذخیره می‌شوند.
-   برای افزودن پست جدید از صفحه blog-admin.html استفاده کنید.
+   موتور وبلاگ مستر شورت‌فیلم
+   -----------------------------------------------------------
+   این نسخه مطالب را در Firebase Firestore ذخیره می‌کند تا برای
+   همه بازدیدکننده‌های سایت (حتی روی GitHub Pages که فقط هاست
+   استاتیک است) مشترک و همیشگی باشد.
+
+   راه‌اندازی: فایل assets/firebase-config.js را با اطلاعات
+   پروژه رایگان Firebase خودتان پر کنید (راهنما در همان فایل).
+
+   اگر فایربیس هنوز تنظیم نشده باشد، به‌صورت خودکار روی حالت
+   localStorage (فقط همین مرورگر) سوییچ می‌کند تا در حین تست
+   هم کار کند.
    ========================================================= */
-const BLOG_KEY = 'mrshortfilm_blog_posts';
+
+const BLOG_LOCAL_KEY = 'mrshortfilm_blog_posts_local';
 
 const BLOG_GRADIENTS = [
     ['#1a1a2e', '#c0392b'],
@@ -14,8 +24,43 @@ const BLOG_GRADIENTS = [
     ['#2d1b69', '#11998e']
 ];
 
+/* ---------- تشخیص وضعیت اتصال Firebase ---------- */
+let db = null;
+let firestoreEnabled = false;
+try {
+    if (typeof firebaseConfig !== 'undefined' &&
+        firebaseConfig.apiKey &&
+        firebaseConfig.apiKey.indexOf('YOUR_') !== 0 &&
+        typeof firebase !== 'undefined') {
+        if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
+        db = firebase.firestore();
+        firestoreEnabled = true;
+    }
+} catch (e) {
+    console.warn('Firebase غیرفعال است، حالت محلی (localStorage) استفاده می‌شود.', e);
+    firestoreEnabled = false;
+}
+
+function isBlogBackendConnected() {
+    return firestoreEnabled;
+}
+
+/* ---------- مطالب پیش‌فرض (همیشه نمایش داده می‌شوند) ---------- */
 function seedPosts() {
     return [
+        {
+            id: 'seed-4',
+            title: 'ماندالا بار دیگر درخشید؛ دومین جایزه بین‌المللی برای فیلم کوتاه بهنام خسروی',
+            category: 'جشنواره‌ها',
+            summary: 'فیلم کوتاه «ماندالا» به کارگردانی بهنام خسروی جایزه Golden Standard Award را از چهارمین دوره جشنواره Stay Gold Film Festival دریافت کرد.',
+            content: 'فیلم کوتاه «ماندالا» به نویسندگی و کارگردانی بهنام خسروی در چهارمین حضور بین‌المللی خود، موفق به کسب جایزه Golden Standard Award از چهارمین دوره Stay Gold Film Festival شد.\n\nنمایش این فیلم در بخش رسمی جشنواره، روز ۲۸ ژوئن ۲۰۲۶ برگزار شد و نتایج نهایی و برندگان جشنواره در تاریخ ۴ جولای ۲۰۲۶ اعلام شدند. هیئت داوران این جشنواره، فیلم «ماندالا» را به دلیل روایت تأثیرگذار، کیفیت هنری، خلاقیت و استانداردهای بالای فیلمسازی مستقل، شایسته دریافت این جایزه دانستند.\n\nجشنواره Stay Gold Film Festival در پیام رسمی خود ضمن تبریک به بهنام خسروی اعلام کرد که فیلم «ماندالا» با داستان‌پردازی برجسته، کیفیت هنری و نگاه خلاقانه خود، داوران را تحت تأثیر قرار داده و به عنوان یکی از آثار شاخص این دوره موفق به دریافت جایزه Golden Standard Award شده است.',
+            date: '1405-04-16',
+            color: 1,
+            icon: 'ri-trophy-fill',
+            sourceLabel: 'اینستاگرام sevenskies.distribution',
+            sourceUrl: 'https://www.instagram.com/sevenskies.distribution/p/Dae9QwWI53J/',
+            seed: true
+        },
         {
             id: 'seed-1',
             title: 'بهنام خسروی: «ماندالا» روایتی از هویت و فراموشی است',
@@ -54,47 +99,84 @@ function seedPosts() {
     ];
 }
 
-function ensureSeeded() {
-    if (!localStorage.getItem(BLOG_KEY)) {
-        localStorage.setItem(BLOG_KEY, JSON.stringify(seedPosts()));
-    }
-}
+/* ---------- لایه ذخیره‌سازی ---------- */
 
-function getPosts() {
-    ensureSeeded();
+function readLocal() {
     try {
-        return JSON.parse(localStorage.getItem(BLOG_KEY)) || [];
+        return JSON.parse(localStorage.getItem(BLOG_LOCAL_KEY)) || [];
     } catch (e) {
-        return seedPosts();
+        return [];
     }
 }
 
-function savePosts(posts) {
-    localStorage.setItem(BLOG_KEY, JSON.stringify(posts));
+function writeLocal(posts) {
+    localStorage.setItem(BLOG_LOCAL_KEY, JSON.stringify(posts));
 }
 
-function addPost(post) {
-    const posts = getPosts();
-    post.id = 'post-' + Date.now();
+/* دریافت همه پست‌ها (پیش‌فرض + کاربرساخته)، جدیدترین‌ها اول */
+async function getPosts() {
+    const seeds = seedPosts();
+    if (firestoreEnabled) {
+        try {
+            const snap = await db.collection('posts').orderBy('createdAt', 'desc').get();
+            const remote = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+            return remote.concat(seeds);
+        } catch (e) {
+            console.error('خطا در خواندن از Firestore:', e);
+            return seeds;
+        }
+    }
+    return readLocal().concat(seeds);
+}
+
+async function getPostById(id) {
+    if (!id) return null;
+    if (id.indexOf('seed-') === 0) {
+        return seedPosts().find(p => p.id === id) || null;
+    }
+    if (firestoreEnabled) {
+        try {
+            const doc = await db.collection('posts').doc(id).get();
+            return doc.exists ? { id: doc.id, ...doc.data() } : null;
+        } catch (e) {
+            console.error(e);
+            return null;
+        }
+    }
+    return readLocal().find(p => p.id === id) || null;
+}
+
+/* افزودن پست جدید؛ id تولیدشده را برمی‌گرداند */
+async function addPost(post) {
+    if (firestoreEnabled) {
+        const ref = await db.collection('posts').add(Object.assign({}, post, {
+            createdAt: firebase.firestore.FieldValue.serverTimestamp()
+        }));
+        return ref.id;
+    }
+    const posts = readLocal();
+    post.id = 'local-' + Date.now();
     posts.unshift(post);
-    savePosts(posts);
+    writeLocal(posts);
     return post.id;
 }
 
-function deletePost(id) {
-    const posts = getPosts().filter(p => p.id !== id);
-    savePosts(posts);
+async function deletePost(id) {
+    if (firestoreEnabled && id.indexOf('seed-') !== 0) {
+        await db.collection('posts').doc(id).delete();
+        return;
+    }
+    if (!firestoreEnabled) {
+        writeLocal(readLocal().filter(p => p.id !== id));
+    }
 }
 
-function getPostById(id) {
-    return getPosts().find(p => p.id === id);
-}
+/* ---------- کمکی‌های نمایش ---------- */
 
 function farsiDateLabel(dateStr) {
-    /* Accepts already-Jalali "1404-04-09" style strings and returns a readable label */
     if (!dateStr) return '';
     const months = ['فروردین', 'اردیبهشت', 'خرداد', 'تیر', 'مرداد', 'شهریور', 'مهر', 'آبان', 'آذر', 'دی', 'بهمن', 'اسفند'];
-    const parts = dateStr.split('-');
+    const parts = String(dateStr).split('-');
     if (parts.length === 3) {
         const y = parts[0], m = parseInt(parts[1], 10), d = parseInt(parts[2], 10);
         const fa = n => String(n).replace(/\d/g, x => ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'][x]);
@@ -104,7 +186,7 @@ function farsiDateLabel(dateStr) {
 }
 
 function thumbGradient(post) {
-    const g = BLOG_GRADIENTS[post.color % BLOG_GRADIENTS.length];
+    const g = BLOG_GRADIENTS[(post.color || 0) % BLOG_GRADIENTS.length];
     return `background:linear-gradient(135deg,${g[0]},${g[1]});`;
 }
 
@@ -124,37 +206,39 @@ function blogCardHTML(post) {
     </a>`;
 }
 
-function handleDeleteClick(id) {
-    if (confirm('آیا از حذف این مطلب مطمئن هستید؟')) {
-        deletePost(id);
-        renderBlogGrid();
-    }
+async function handleDeleteClick(id) {
+    if (!confirm('آیا از حذف این مطلب مطمئن هستید؟')) return;
+    await deletePost(id);
+    await renderBlogGrid();
 }
 
-function renderBlogGrid() {
+async function renderBlogGrid() {
     const el = document.getElementById('blog-grid');
     if (!el) return;
-    const posts = getPosts();
+    el.innerHTML = '<div class="empty-state" style="grid-column:1/-1;"><i class="ri-loader-4-line"></i>در حال بارگذاری مطالب...</div>';
+    const posts = await getPosts();
+    const emptyEl = document.getElementById('blog-empty');
     if (!posts.length) {
         el.innerHTML = '';
-        document.getElementById('blog-empty').style.display = 'block';
+        if (emptyEl) emptyEl.style.display = 'block';
         return;
     }
-    document.getElementById('blog-empty').style.display = 'none';
+    if (emptyEl) emptyEl.style.display = 'none';
     el.innerHTML = posts.map(blogCardHTML).join('');
 }
 
-function renderSinglePost() {
+async function renderSinglePost() {
     const params = new URLSearchParams(window.location.search);
     const id = params.get('id');
-    const post = id ? getPostById(id) : null;
     const wrap = document.getElementById('post-wrap');
+    wrap.innerHTML = '<div class="empty-state"><i class="ri-loader-4-line"></i>در حال بارگذاری مطلب...</div>';
+    const post = id ? await getPostById(id) : null;
     if (!post) {
         wrap.innerHTML = `<div class="empty-state"><i class="ri-file-warning-line"></i>این مطلب یافت نشد یا حذف شده است.<br><br><a href="blog.html" class="btn-primary" style="display:inline-flex;text-decoration:none;">بازگشت به وبلاگ</a></div>`;
         return;
     }
     document.title = post.title + ' | وبلاگ مستر شورت‌فیلم';
-    const g = BLOG_GRADIENTS[post.color % BLOG_GRADIENTS.length];
+    const g = BLOG_GRADIENTS[(post.color || 0) % BLOG_GRADIENTS.length];
     const paragraphs = (post.content || '').split(/\n+/).filter(Boolean).map(p => `<p>${p}</p>`).join('');
     const sourceHTML = post.sourceUrl ? `<p style="margin-top:24px;padding-top:16px;border-top:1px solid var(--gray-100);font-size:13px;">منبع خبر: <a href="${post.sourceUrl}" target="_blank" rel="noopener" style="color:var(--red);font-weight:700;">${post.sourceLabel || post.sourceUrl}</a></p>` : '';
     wrap.innerHTML = `
@@ -170,4 +254,17 @@ function renderSinglePost() {
         </div>
         <div class="post-body">${paragraphs}${sourceHTML}</div>
     `;
+}
+
+/* نشان‌دهنده وضعیت اتصال، برای صفحه افزودن مطلب */
+function renderBackendStatus(elId) {
+    const el = document.getElementById(elId);
+    if (!el) return;
+    if (firestoreEnabled) {
+        el.innerHTML = '<i class="ri-cloud-line" style="color:#2ecc71;"></i> اتصال به Firebase برقرار است — مطالب برای همه بازدیدکنندگان سایت نمایش داده می‌شود.';
+        el.style.color = '#1a6b3a';
+    } else {
+        el.innerHTML = '<i class="ri-error-warning-line" style="color:#e67e22;"></i> Firebase هنوز تنظیم نشده؛ مطالب فقط در همین مرورگر ذخیره می‌شوند و برای بقیه بازدیدکننده‌ها نمایش داده نمی‌شوند. فایل assets/firebase-config.js را تکمیل کنید.';
+        el.style.color = '#a05a10';
+    }
 }

@@ -74,13 +74,11 @@
             <div class="ticker-track">
                 <div class="ticker-items">
                     <span>فیلم «ماندالا» بهنام خسروی برنده جشنواره بین‌المللی Accolade شد</span>
-                    <span>جعفر پناهی با «یک تصادف ساده» نخل طلای کن ۲۰۲۵ را دریافت کرد</span>
                     <span>انیمیشن «در سایه سرو» اسکار بهترین انیمیشن کوتاه را برد</span>
                     <span>فراخوان بخش «کتاب و سینما» در چهل‌ودومین جشنواره فیلم کوتاه تهران منتشر شد</span>
                     <span>برگزیدگان چهل‌ویکمین جشنواره فیلم کوتاه تهران معرفی شدند</span>
                     <span>فیلم کوتاه «دختر غزه» در سه جشنواره بین‌المللی پذیرفته شد</span>
                     <span>فیلم «ماندالا» بهنام خسروی برنده جشنواره بین‌المللی Accolade شد</span>
-                    <span>جعفر پناهی با «یک تصادف ساده» نخل طلای کن ۲۰۲۵ را دریافت کرد</span>
                     <span>انیمیشن «در سایه سرو» اسکار بهترین انیمیشن کوتاه را برد</span>
                     <span>فراخوان بخش «کتاب و سینما» در چهل‌ودومین جشنواره فیلم کوتاه تهران منتشر شد</span>
                 </div>
@@ -91,13 +89,24 @@
     <div class="container">
         <div class="page-title-hero">
             <h1>افزودن مطلب جدید به وبلاگ</h1>
-            <p>فرم زیر را پر کنید تا مطلب شما بلافاصله در صفحه وبلاگ منتشر شود. وضعیت اتصال به دیتابیس را در ستون کناری
-                ببینید.</p>
+            <p>این بخش مخصوص مدیر سایت است و برای عموم بازدیدکنندگان در دسترس نیست.</p>
         </div>
         <div class="breadcrumb" style="margin-top:0;"><a href="index.html">خانه</a> / <a href="blog.html">وبلاگ</a> /
             افزودن مطلب</div>
 
-        <div class="main-layout" style="grid-template-columns:1fr 300px; padding-top:20px;">
+        <div id="admin-locked" style="max-width:420px;margin:40px auto;text-align:center;">
+            <div class="widget" style="padding:24px;">
+                <i class="ri-lock-2-line" style="font-size:32px;color:var(--gold);"></i>
+                <p style="margin:14px 0;color:var(--gray-500);">برای ورود به بخش مدیریت، رمز عبور را وارد کنید.</p>
+                <input type="password" id="admin-pass" placeholder="رمز عبور"
+                    style="width:100%;padding:10px 12px;border-radius:8px;border:1px solid #333;background:#111;color:#fff;margin-bottom:12px;" />
+                <button type="button" class="btn-primary" onclick="checkAdminPassword()" style="width:100%;">ورود</button>
+                <div id="admin-pass-error" style="color:var(--red);font-size:13px;margin-top:10px;display:none;">رمز
+                    عبور اشتباه است.</div>
+            </div>
+        </div>
+
+        <div class="main-layout" id="admin-main" style="grid-template-columns:1fr 300px; padding-top:20px; display:none;">
             <div class="content">
                 <form class="admin-form" id="post-form" onsubmit="return handleSubmit(event)">
                     <div class="form-group">
@@ -123,6 +132,11 @@
                     <div class="form-group">
                         <label>متن کامل مطلب</label>
                         <textarea id="f-content" required placeholder="متن مطلب را اینجا بنویسید..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>لینک عکس مطلب <span class="hint">(اختیاری — آدرس یک عکس از اینترنت یا هاست شما)</span></label>
+                        <input type="url" id="f-image" placeholder="https://.../image.jpg" />
+                        <div class="hint" style="margin-top:6px;">اگر عکس مشخص نکنید، کارت مطلب با همان پس‌زمینه رنگی و آیکون قبلی نمایش داده می‌شود. برای عکس، آدرس یک فایل تصویری (jpg/png/webp) را از اینستاگرام، هاست خودتان یا سرویس‌هایی مثل imgur وارد کنید.</div>
                     </div>
                     <div class="form-group">
                         <label>لینک منبع <span class="hint">(اختیاری)</span></label>
@@ -196,7 +210,6 @@
                 <h3>لینک‌های مفید</h3>
                 <ul>
                     <li><a href="blog.html">وبلاگ</a></li>
-                    <li><a href="blog-admin.html">افزودن مطلب وبلاگ</a></li>
                     <li><a href="#">آگهی‌دهی</a></li>
                     <li><a href="#">حریم خصوصی</a></li>
                     <li><a href="#">خبرنامه</a></li>
@@ -224,7 +237,34 @@
     <script src="assets/firebase-config.js"></script>
     <script src="assets/blog.js"></script>
     <script>
-        renderBackendStatus('backend-status');
+        /* رمز عبور ورود به پنل مدیریت — این رمز را به دلخواه خودتان تغییر دهید */
+        const ADMIN_PASSWORD = 'mrshortfilm-admin-1405';
+
+        function checkAdminPassword() {
+            const input = document.getElementById('admin-pass').value;
+            if (input === ADMIN_PASSWORD) {
+                sessionStorage.setItem('mrshortfilm_admin_ok', '1');
+                unlockAdminPanel();
+            } else {
+                document.getElementById('admin-pass-error').style.display = 'block';
+            }
+        }
+
+        function unlockAdminPanel() {
+            document.getElementById('admin-locked').style.display = 'none';
+            document.getElementById('admin-main').style.display = 'grid';
+            renderBackendStatus('backend-status');
+        }
+
+        document.getElementById('admin-pass').addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') checkAdminPassword();
+        });
+
+        if (sessionStorage.getItem('mrshortfilm_admin_ok') === '1') {
+            unlockAdminPanel();
+        }
+    </script>
+    <script>
         let selectedColor = 0;
         document.querySelectorAll('#color-swatches span').forEach(el => {
             el.addEventListener('click', () => {
@@ -247,6 +287,7 @@
                 category: document.getElementById('f-category').value,
                 summary: document.getElementById('f-summary').value.trim(),
                 content: document.getElementById('f-content').value.trim(),
+                image: document.getElementById('f-image').value.trim(),
                 sourceUrl: document.getElementById('f-source-url').value.trim(),
                 sourceLabel: document.getElementById('f-source-label').value.trim(),
                 color: selectedColor,

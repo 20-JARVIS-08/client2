@@ -865,6 +865,46 @@ nav a.active {
     font-weight: 600
 }
 
+/* --- باکس ویژه‌ی مهم‌ترین خبر (برجسته‌تر از بقیه) --- */
+.special-news-box.snb-top {
+    position: relative;
+    border: 2px solid var(--gold);
+    background: linear-gradient(135deg, #2b2108 0%, #1a1a2e 55%, #0d2137 100%);
+    box-shadow: 0 0 0 4px rgba(201, 168, 76, .12), 0 14px 34px rgba(201, 168, 76, .22);
+    padding-top: 22px;
+    margin-bottom: 28px;
+    overflow: visible
+}
+
+.special-news-box.snb-top::before {
+    content: '⭐ مهم‌ترین خبر امروز';
+    position: absolute;
+    top: -14px;
+    right: 20px;
+    background: var(--red);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 900;
+    padding: 5px 14px;
+    border-radius: 20px;
+    letter-spacing: .3px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, .35)
+}
+
+.special-news-box.snb-top .snb-label {
+    background: var(--red);
+    color: #fff
+}
+
+.special-news-box.snb-top .snb-title {
+    font-size: 21px
+}
+
+.special-news-box.snb-top .snb-badges .snb-badge:first-child {
+    background: rgba(201, 168, 76, .25);
+    font-weight: 800
+}
+
 footer {
     background: var(--black);
     color: var(--gray-300);

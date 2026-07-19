@@ -472,7 +472,7 @@ function stripHtml(str) {
 
 function applySeoMeta(post, id) {
     const desc = stripHtml((post.seo && post.seo.metaDescription) || post.summary || (post.content || '').split(/\n+/)[0] || '').slice(0, 300);
-    const keywords = (post.seo && post.seo.keywords) || [post.category, 'فیلم کوتاه', 'مستر شورت‌فیلم'].filter(Boolean).join(', ');
+    const keywords = (post.seo && post.seo.keywords) || ['ماندالا', 'بهنام خسروی', post.category, 'فیلم کوتاه', 'مستر شورت‌فیلم'].filter(Boolean).join(', ');
     const pageUrl = absoluteUrl('blog-post.html?id=' + encodeURIComponent(id));
     const imageUrl = post.image ? absoluteUrl(post.image) : absoluteUrl('Images/mandala.jpg');
 

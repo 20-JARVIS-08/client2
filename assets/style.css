@@ -1711,3 +1711,300 @@ footer {
     white-space: nowrap;
     border: 0;
 }
+/* =========================================================
+   نظرسنجی فیلم‌ها (poll.html)
+   ========================================================= */
+.poll-card {
+    background: var(--white);
+    border: 1px solid var(--gray-100);
+    border-radius: 10px;
+    padding: 22px;
+    margin-bottom: 22px;
+}
+
+.poll-card .poll-q {
+    font-size: 17px;
+    font-weight: 800;
+    color: var(--gray-900);
+    margin-bottom: 4px;
+}
+
+.poll-card .poll-sub {
+    font-size: 12.5px;
+    color: var(--gray-500);
+    margin-bottom: 18px;
+}
+
+.poll-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.poll-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--gray-50);
+    border: 1px solid var(--gray-100);
+    border-radius: 8px;
+    padding: 10px 12px;
+    cursor: pointer;
+    text-align: right;
+    font-family: var(--font);
+    transition: all .18s;
+    position: relative;
+    overflow: hidden;
+}
+
+.poll-option:hover:not(.voted) {
+    border-color: var(--red);
+    background: #fff;
+}
+
+.poll-option.selected {
+    border-color: var(--red);
+    box-shadow: 0 0 0 1px var(--red) inset;
+}
+
+.poll-option .po-icon {
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 18px;
+}
+
+.poll-option .po-body {
+    flex: 1;
+    min-width: 0;
+}
+
+.poll-option .po-title {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: var(--gray-900);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.poll-option .po-director {
+    font-size: 11.5px;
+    color: var(--gray-500);
+    margin-top: 2px;
+}
+
+.poll-option .po-radio {
+    width: 18px;
+    height: 18px;
+    min-width: 18px;
+    border-radius: 50%;
+    border: 2px solid var(--gray-300);
+    position: relative;
+}
+
+.poll-option.selected .po-radio {
+    border-color: var(--red);
+}
+
+.poll-option.selected .po-radio::after {
+    content: '';
+    position: absolute;
+    inset: 3px;
+    border-radius: 50%;
+    background: var(--red);
+}
+
+.poll-actions {
+    margin-top: 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.poll-note {
+    font-size: 12px;
+    color: var(--gray-500);
+}
+
+.poll-results {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.poll-result-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.poll-result-row .pr-label {
+    width: 190px;
+    min-width: 190px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--gray-900);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.poll-result-row .pr-bar-wrap {
+    flex: 1;
+    background: var(--gray-100);
+    border-radius: 20px;
+    height: 22px;
+    overflow: hidden;
+    position: relative;
+}
+
+.poll-result-row .pr-bar {
+    height: 100%;
+    border-radius: 20px;
+    background: linear-gradient(90deg, var(--red), var(--red-dark));
+    transition: width .5s ease;
+    min-width: 4px;
+}
+
+.poll-result-row .pr-pct {
+    width: 54px;
+    min-width: 54px;
+    text-align: left;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--gray-700);
+}
+
+.poll-result-row.pr-winner .pr-label {
+    color: var(--red);
+}
+
+.poll-total {
+    font-size: 12.5px;
+    color: var(--gray-500);
+    margin-top: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.poll-status {
+    font-size: 12.5px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+@media (max-width: 700px) {
+    .poll-options {
+        grid-template-columns: 1fr;
+    }
+
+    .poll-result-row .pr-label {
+        width: 110px;
+        min-width: 110px;
+        font-size: 12px;
+    }
+}
+
+/* =========================================================
+   نمایش نتیجه نظرسنجی به سبک نظرسنجی‌های تلگرام
+   ========================================================= */
+.tg-poll-results {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.tg-poll-row {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.tg-poll-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.tg-poll-title {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--gray-900);
+}
+
+.tg-poll-row.tg-mine .tg-poll-title {
+    font-weight: 800;
+    color: var(--red);
+}
+
+.tg-poll-row.tg-winner .tg-poll-title {
+    font-weight: 800;
+}
+
+.tg-check {
+    width: 18px;
+    height: 18px;
+    min-width: 18px;
+    border-radius: 50%;
+    background: var(--red);
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+}
+
+.tg-crown {
+    color: #c9a84c;
+    font-size: 14px;
+}
+
+.tg-poll-pct {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--gray-900);
+    min-width: 44px;
+    text-align: left;
+}
+
+.tg-poll-row.tg-winner .tg-poll-pct {
+    color: var(--red);
+}
+
+.tg-poll-track {
+    width: 100%;
+    height: 10px;
+    border-radius: 20px;
+    background: var(--gray-100);
+    overflow: hidden;
+}
+
+.tg-poll-fill {
+    height: 100%;
+    border-radius: 20px;
+    background: linear-gradient(90deg, var(--red-light), var(--red));
+    transition: width .7s cubic-bezier(.22, .8, .32, 1);
+}
+
+.tg-poll-row.tg-winner .tg-poll-fill {
+    background: linear-gradient(90deg, var(--red), var(--red-dark));
+}
+
+.tg-poll-count {
+    font-size: 11px;
+    color: var(--gray-500);
+}

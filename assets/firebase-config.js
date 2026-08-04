@@ -65,10 +65,12 @@
 
 
 const firebaseConfig = {
-   apiKey: "YOUR_API_KEY",
-   authDomain: "YOUR_PROJECT.firebaseapp.com",
-   projectId: "YOUR_PROJECT_ID",
-   storageBucket: "YOUR_PROJECT.appspot.com",
-   messagingSenderId: "YOUR_SENDER_ID",
-   appId: "YOUR_APP_ID"
+   apiKey: "AIzaSyCVb-3PNqi5GfFe83a1IZ6PX3paKveFMOs",
+   authDomain: "mrshortfilm-97558.firebaseapp.com",
+   databaseURL: "https://mrshortfilm-97558-default-rtdb.asia-southeast1.firebasedatabase.app",
+   projectId: "mrshortfilm-97558",
+   storageBucket: "mrshortfilm-97558.firebasestorage.app",
+   messagingSenderId: "627286702725",
+   appId: "1:627286702725:web:0567503fd33467d2ca07ec",
+   measurementId: "G-XXWL5K45EH"
 };

@@ -137,4 +137,41 @@
         <lastmod>2026-07-19</lastmod>
         <priority>0.8</priority>
     </url>
+
+    <!-- صفحات رمان شکوفه‌های مرداب -->
+    <url>
+        <loc>https://mrshortfilm.com/shokoofeh-mordab-book.html</loc>
+        <lastmod>2026-08-06</lastmod>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://mrshortfilm.com/shokoofeh-mordab-author.html</loc>
+        <lastmod>2026-08-06</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://mrshortfilm.com/shokoofeh-mordab-publisher.html</loc>
+        <lastmod>2026-08-06</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://mrshortfilm.com/shokoofeh-mordab-cover.html</loc>
+        <lastmod>2026-08-06</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://mrshortfilm.com/shokoofeh-mordab-content.html</loc>
+        <lastmod>2026-08-06</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://mrshortfilm.com/shokoofeh-mordab-story.html</loc>
+        <lastmod>2026-08-06</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://mrshortfilm.com/shokoofeh-mordab-buy.html</loc>
+        <lastmod>2026-08-06</lastmod>
+        <priority>0.9</priority>
+    </url>
 </urlset>

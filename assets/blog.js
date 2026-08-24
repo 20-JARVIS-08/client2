@@ -233,7 +233,8 @@ const NEW_POSTS = [
         url: 'shokoofeh-mordab-author.html',
         date: '1405-05-10',
         color: 3,
-        icon: 'ri-user-star-line'
+        icon: 'ri-user-star-line',
+        image: 'Images/shokoofeh-mordab-discount.jpg',
     },
     {
         title: 'معرفی رمان «شکوفه‌های مرداب»؛ تازه‌ترین اثر داستانی بهنام خسروی',
@@ -242,7 +243,8 @@ const NEW_POSTS = [
         url: 'shokoofeh-mordab-book.html',
         date: '1405-05-11',
         color: 1,
-        icon: 'ri-book-open-line'
+        icon: 'ri-book-open-line',
+        image: 'Images/shokoofeh-mordab-discount.jpg',
     },
     {
         title: 'انتشارات سخنوران، ناشر رمان «شکوفه‌های مرداب»',
@@ -251,7 +253,8 @@ const NEW_POSTS = [
         url: 'shokoofeh-mordab-publisher.html',
         date: '1405-05-12',
         color: 2,
-        icon: 'ri-store-2-line'
+        icon: 'ri-store-2-line',
+        image: 'Images/shokoofeh-mordab-discount.jpg',
     },
     {
         title: 'طراحی جلد «شکوفه‌های مرداب»؛ وقتی تصویر روی جلد، چکیده یک رمان می‌شود',
@@ -260,7 +263,8 @@ const NEW_POSTS = [
         url: 'shokoofeh-mordab-cover.html',
         date: '1405-05-13',
         color: 4,
-        icon: 'ri-palette-line'
+        icon: 'ri-palette-line',
+        image: 'Images/shokoofeh-mordab-discount.jpg',
     },
     {
         title: 'محتوای «شکوفه‌های مرداب»؛ رمانی درباره رنج، آگاهی و صبوری',
@@ -269,7 +273,8 @@ const NEW_POSTS = [
         url: 'shokoofeh-mordab-content.html',
         date: '1405-05-14',
         color: 5,
-        icon: 'ri-file-list-3-line'
+        icon: 'ri-file-list-3-line',
+        image: 'Images/shokoofeh-mordab-discount.jpg',
     },
     {
         title: 'داستان «شکوفه‌های مرداب»؛ سفری در دل تاریخ یک خانواده کُرد',
@@ -278,7 +283,8 @@ const NEW_POSTS = [
         url: 'shokoofeh-mordab-story.html',
         date: '1405-05-15',
         color: 0,
-        icon: 'ri-quill-pen-line'
+        icon: 'ri-quill-pen-line',
+        image: 'Images/shokoofeh-mordab-discount.jpg',
     },
     {
         title: 'خرید رمان «شکوفه‌های مرداب» بهنام خسروی',
@@ -287,7 +293,8 @@ const NEW_POSTS = [
         url: 'shokoofeh-mordab-buy.html',
         date: '1405-05-16',
         color: 4,
-        icon: 'ri-shopping-bag-3-line'
+        icon: 'ri-shopping-bag-3-line',
+        image: 'Images/shokoofeh-mordab-discount.jpg',
     },
     {
         title: 'درخشش «تخت طاووس» ساخته شهاب حسینی؛ ۱۰ نامزدی در دهمین جشنواره بین‌المللی فیلم TINFF تورنتو',
@@ -325,6 +332,91 @@ const NEW_POSTS = [
         seo: {
             metaDescription: 'فیلم کوتاه «ماندالا» ساخته بهنام خسروی در دو بخش Best Experimental Student Short و Best Narrative Short Experimental دهمین دوره جشنواره بین‌المللی فیلم TINFF تورنتو نامزد دریافت جایزه شد. جزئیات کامل این خبر را در مستر شورت‌فیلم بخوانید.',
             keywords: 'ماندالا, بهنام خسروی, TINFF تورنتو, Best Experimental Student Short, Best Narrative Short Experimental, مستر شورت‌فیلم, سون‌اسکایز, جشنواره‌ها'
+        }
+    },
+    {
+        title: 'معرفی حکایت‌نامه «غریبستان»؛ تازه‌ترین اثر بهنام خسروی',
+        category: 'کتاب',
+        summary: 'معرفی کامل حکایت‌نامه «غریبستان»، تازه‌ترین اثر بهنام خسروی، نویسنده و کارگردان «ماندالا»؛ اثری ۴۰۰ صفحه‌ای درباره غربت وجودی انسان.',
+        url: 'gharibestan-book.html',
+        date: '1405-05-18',
+        color: 1,
+        icon: 'ri-book-3-line',
+        image: 'Images/gharibestan-book.jpg'
+    },
+    {
+        title: 'فلسفه غربت در «غریبستان»؛ وقتی جهان اقامتگاه نیست، گذرگاه است',
+        category: 'کتاب',
+        summary: 'نگاهی به فلسفه محوری حکایت‌نامه «غریبستان» اثر بهنام خسروی؛ کاوشی در غربت وجودی انسان و تأملی بر گذرا بودن هستی.',
+        url: 'gharibestan-philosophy.html',
+        date: '1405-05-19',
+        color: 5,
+        icon: 'ri-compass-3-line',
+        image: 'Images/gharibestan-book.jpg'
+    },
+    {
+        title: 'چهار ویژگی متمایز «غریبستان» در ادبیات داستانی فلسفی',
+        category: 'کتاب',
+        summary: 'بررسی درون‌مایه‌های اصلی و چهار ویژگی متمایز حکایت‌نامه «غریبستان» اثر بهنام خسروی در ادبیات داستانی فلسفی و عرفانی مدرن.',
+        url: 'gharibestan-themes.html',
+        date: '1405-05-20',
+        color: 3,
+        icon: 'ri-list-check-3',
+        image: 'Images/gharibestan-book.jpg'
+    },
+    {
+        title: 'بهنام خسروی در «غریبستان»؛ از فیلم‌سازی تا حکایت‌نامه‌نویسی',
+        category: 'کتاب',
+        summary: 'نگاهی به جایگاه بهنام خسروی، نویسنده و کارگردان «ماندالا»، در حکایت‌نامه «غریبستان» و مسیر او میان سینما و ادبیات داستانی.',
+        url: 'gharibestan-author.html',
+        date: '1405-05-21',
+        color: 2,
+        icon: 'ri-user-star-line',
+        image: 'Images/gharibestan-book.jpg'
+    },
+    {
+        title: 'گفت‌وگو با نویسنده و دیدگاه‌ها درباره «غریبستان»',
+        category: 'کتاب',
+        summary: 'مروری بر گفت‌وگوی بهنام خسروی درباره ایده‌ها و مسیر شکل‌گیری «غریبستان» و بازتاب‌های خوانندگان و منتقدان درباره این حکایت‌نامه.',
+        url: 'gharibestan-reviews.html',
+        date: '1405-05-22',
+        color: 0,
+        icon: 'ri-chat-quote-line',
+        image: 'Images/gharibestan-book.jpg'
+    },
+    {
+        title: 'خرید حکایت‌نامه «غریبستان» بهنام خسروی',
+        category: 'کتاب',
+        summary: 'راهنمای خرید حکایت‌نامه «غریبستان»، اثر بهنام خسروی؛ اثری ۴۰۰ صفحه‌ای در ژانر ادبیات داستانی فلسفی درباره غربت وجودی انسان.',
+        url: 'gharibestan-buy.html',
+        date: '1405-05-23',
+        color: 4,
+        icon: 'ri-shopping-bag-3-line',
+        image: 'Images/gharibestan-book.jpg'
+    },
+    {
+        title: 'کد تخفیف رمان «شکوفه‌های مرداب»؛ خرید ویژه با کد SM25',
+        category: 'کتاب',
+        summary: 'علاقه‌مندان به خرید رمان «شکوفه‌های مرداب» اثر بهنام خسروی می‌توانند با وارد کردن کد تخفیف SM25 در سایت فروش، از تخفیف ویژه این کتاب بهره‌مند شوند.',
+        content:
+            'خبر خوش برای علاقه‌مندان به خرید رمان «شکوفه‌های مرداب»، اثر بهنام خسروی، نویسنده و کارگردان فیلم کوتاه پرافتخار «ماندالا»: این رمان ۵۰۰ صفحه‌ای اکنون با یک کد تخفیف ویژه در دسترس خریداران قرار گرفته است.\\n\\n' +
+            'برای بهره‌مندی از این تخفیف، کافی است هنگام ثبت سفارش، وارد صفحه خرید کتاب شوید و در مرحله پرداخت، کد تخفیف SM25 را در بخش مربوطه وارد کنید تا مبلغ نهایی سفارش شما به‌صورت خودکار کاهش یابد.\\n\\n' +
+            '«شکوفه‌های مرداب» روایتی چندنسلی و عاشقانه از یک خانواده کُرد در بازه دهه ۴۰ تا دهه ۹۰ شمسی است؛ رمانی که هم‌زمان در ژانر عاشقانه و توسعه فردی جای می‌گیرد و با مفهوم محوری «صبوری آگاهانه» مخاطب را همراه می‌کند. این کتاب توسط انتشارات سخنوران منتشر شده است.\\n\\n' +
+            'برای استفاده از کد تخفیف SM25، مراحل زیر را دنبال کنید:\\n\\n' +
+            '۱. به صفحه خرید رمان شکوفه‌های مرداب مراجعه کنید.\\n' +
+            '۲. سفارش خود را ثبت و وارد مرحله پرداخت شوید.\\n' +
+            '۳. در قسمت «کد تخفیف»، عبارت SM25 را وارد کنید.\\n' +
+            '۴. تخفیف به‌صورت خودکار روی مبلغ نهایی اعمال می‌شود.\\n\\n' +
+            'این کد تخفیف تا اطلاع بعدی معتبر است و تیم مستر شورت‌فیلم هرگونه تغییر در شرایط آن را در همین بخش وبلاگ اطلاع‌رسانی خواهد کرد.',
+        date: '1405-05-19',
+        color: 4,
+        icon: 'ri-price-tag-3-line',
+        image: 'Images/shokoofeh-mordab-discount.jpg',
+        sourceLabel: 'خرید رمان شکوفه‌های مرداب',
+        sourceUrl: 'shokoofeh-mordab-buy.html',
+        seo: {
+            metaDescription: 'کد تخفیف SM25 برای خرید رمان «شکوفه‌های مرداب» اثر بهنام خسروی؛ راهنمای کامل استفاده از کد تخفیف در سایت فروش کتاب را در مستر شورت‌فیلم بخوانید.',
+            keywords: 'کد تخفیف شکوفه های مرداب, SM25, خرید رمان شکوفه های مرداب, تخفیف کتاب بهنام خسروی, خرید رمان با تخفیف, مستر شورت‌فیلم'
         }
     },
 ];

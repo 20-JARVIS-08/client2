@@ -1518,6 +1518,15 @@ footer {
     font-size: 15px
 }
 
+.post-body-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    border-radius: 8px;
+    margin-bottom: 20px
+}
+
 .post-header h1 {
     font-size: 24px;
     font-weight: 800;

@@ -920,7 +920,7 @@ const NEW_POSTS = [
         date: '1405-06-25',
         color: 0,
         icon: 'ri-award-fill',
-        image: 'images/poster_wide2.jpg',
+        image: 'Images/poster_wide2.jpg',
         seo: {
             metaDescription: 'فیلم کوتاه «ماندالا» به کارگردانی بهنام خسروی، برنده جایزه بهترین فیلم کوتاه تجربی از دهمین دوره جشنواره TINFF کانادا شد؛ جشنواره‌ای مورد تأیید جوایز سینمایی کانادا.',
             keywords: 'ماندالا, بهنام خسروی, TINFF, بهترین فیلم کوتاه تجربی, جشنواره سینمایی کانادا, فیلم کوتاه ایرانی'

@@ -37,6 +37,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 
     <link rel="manifest" href="site.webmanifest">
+    <script>(function(){try{var t=localStorage.getItem('mrsf-theme');if(t==='dark'){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
 </head>
 
 <body>
@@ -66,9 +67,13 @@
                 </div>
             </a>
             <div class="header-search">
-                <input type="text" placeholder="جستجو در اخبار سینما..." />
-                <button class="search-btn"><i class="ri-search-line"></i></button>
+                <input type="text" id="headerSearchInput" placeholder="جستجو در اخبار سینما..." />
+                <button class="search-btn" id="headerSearchBtn" aria-label="جستجو"><i class="ri-search-line"></i></button>
             </div>
+            <button class="theme-toggle" id="themeToggle" type="button" aria-label="تغییر حالت روشن/تاریک" title="حالت روشن/تاریک">
+                <i class="ri-moon-line theme-icon-dark"></i>
+                <i class="ri-sun-line theme-icon-light"></i>
+            </button>
             <div class="header-date"><strong>اخبار سینما</strong><span id="jalali-date-header">۱۴۰۵</span></div>
         </div>
         <nav>

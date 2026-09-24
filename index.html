@@ -60,6 +60,7 @@
 
     <link rel="manifest" href="site.webmanifest">
 
+    <script>(function(){try{var t=localStorage.getItem('mrsf-theme');if(t==='dark'){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
 </head>
 
 <body>
@@ -89,9 +90,13 @@
                 </div>
             </a>
             <div class="header-search">
-                <input type="text" placeholder="جستجو در اخبار سینما..." />
-                <button class="search-btn"><i class="ri-search-line"></i></button>
+                <input type="text" id="headerSearchInput" placeholder="جستجو در اخبار سینما..." />
+                <button class="search-btn" id="headerSearchBtn" aria-label="جستجو"><i class="ri-search-line"></i></button>
             </div>
+            <button class="theme-toggle" id="themeToggle" type="button" aria-label="تغییر حالت روشن/تاریک" title="حالت روشن/تاریک">
+                <i class="ri-moon-line theme-icon-dark"></i>
+                <i class="ri-sun-line theme-icon-light"></i>
+            </button>
             <div class="header-date"><strong>اخبار سینما</strong><span id="jalali-date-header">۱۴۰۵</span></div>
         </div>
         <nav>
@@ -150,15 +155,24 @@
                     <span>عکس یا لینک تبلیغ خود را اینجا قرار دهید</span>
                 </div>
                 <div class="ad-slide">
+                    <strong>جای بنر تبلیغاتی ۳</strong>
+                    <a href="https://www.instagram.com/p/DdQic2bOWE1/" target="_blank">
+                        <img src="Images/ad22.jpg" alt="">
+                    </a>
+                    <span>عکس یا لینک تبلیغ خود را اینجا قرار دهید</span>
+                </div>
+                <div class="ad-slide">
                     <strong>جای بنر تبلیغاتی ۲</strong>
                     <img src="Images/images.jfif" alt="">
                     <span>عکس یا لینک تبلیغ خود را اینجا قرار دهید</span>
                 </div>
-                <!-- <div class="ad-slide">
+                <div class="ad-slide">
                     <strong>جای بنر تبلیغاتی ۳</strong>
-                    <img src="Images/تبلیغات-شورت-سینما.jpg" alt="">
+                    <a href="https://www.instagram.com/8mm_filmschool/p/Dbx4_QKudLi/" target="_blank">
+                        <img src="Images/ad3.jpg" alt="">
+                    </a>
                     <span>عکس یا لینک تبلیغ خود را اینجا قرار دهید</span>
-                </div> -->
+                </div>
             </div>
         </div>
         <div class="ad-slider-dots"></div>
@@ -207,40 +221,37 @@
                     </div>
                 </a>
 
-                <a href="blog-post.html?id=code-55" style="text-decoration:none;">
+                <a href="blog-post.html?id=code-51" style="text-decoration:none;">
                     <div class="special-news-box">
-                        <div class="snb-label"><i class="ri-earth-fill"></i> درخشش در کانادا</div>
-                        <div class="snb-title">درخشش سینمای ایران در کانادا؛ جایزه بهترین فیلم کوتاه تجربی جشنواره
-                            TINFF به «ماندالا» رسید</div>
+                        <div class="snb-label"><i class="ri-earth-fill"></i> راهی آمریکا</div>
+                        <div class="snb-title">«لکه» به کارگردانی نیما شبقره عازم آمریکا شد؛ حضور در جشنواره UVT پس
+                            از ایسکیای ایتالیا</div>
                         <div class="snb-desc">
-                            فیلم کوتاه «ماندالا» به کارگردانی <strong style="color:var(--gold)">بهنام خسروی</strong>
-                            جایزه بهترین فیلم کوتاه تجربی <strong style="color:var(--gold)">دهمین دوره جشنواره
-                                TINFF</strong> را کسب کرد؛ جشنواره‌ای مورد تأیید جوایز سینمایی کانادا که پیش‌تر همین
-                            فیلم در دو بخش آن نامزد دریافت جایزه شده بود.
+                            فیلم کوتاه «لکه» به کارگردانی <strong style="color:var(--gold)">نیما شبقره</strong> در
+                            تازه‌ترین حضور بین‌المللی خود به جشنواره <strong style="color:var(--gold)">UVT</strong> در
+                            آمریکا راه یافت؛ حضوری که پس از نمایش این فیلم در جشنواره ایسکیای ایتالیا رقم خورده است.
                         </div>
                         <div class="snb-badges">
-                            <span class="snb-badge"><i class="ri-trophy-line"></i> بهترین فیلم کوتاه تجربی</span>
-                            <span class="snb-badge"><i class="ri-award-line"></i> جشنواره TINFF کانادا</span>
-                            <span class="snb-badge"><i class="ri-film-line"></i> سینمای کوتاه ایران</span>
+                            <span class="snb-badge"><i class="ri-earth-line"></i> راه‌یافته به جشنواره UVT آمریکا</span>
+                            <span class="snb-badge"><i class="ri-film-line"></i> کارگردانی نیما شبقره</span>
                         </div>
                     </div>
                 </a>
 
-                <a href="blog-post.html?id=code-54" style="text-decoration:none;">
+                <a href="blog-post.html?id=code-30" style="text-decoration:none;">
                     <div class="special-news-box">
-                        <div class="snb-label"><i class="ri-award-fill"></i> بهترین فیلم کوتاه تجربی</div>
-                        <div class="snb-title">«ماندالا» به کارگردانی بهنام خسروی برنده جایزه بهترین فیلم کوتاه تجربی
-                            از جشنواره TINFF کانادا شد</div>
+                        <div class="snb-label"><i class="ri-film-fill"></i> حضور بین‌المللی تازه</div>
+                        <div class="snb-title">فیلم کوتاه «ابراهیم» به کارگردانی عماد قره‌ای به جشنواره Wasteland
+                            Film Festival آمریکا راه یافت</div>
                         <div class="snb-desc">
-                            فیلم کوتاه «ماندالا» ساخته <strong style="color:var(--gold)">بهنام خسروی</strong>، برنده
-                            جایزه بهترین فیلم کوتاه تجربی از <strong style="color:var(--gold)">دهمین دوره جشنواره
-                                TINFF</strong> شد؛ جشنواره‌ای مورد تأیید جوایز سینمایی کانادا. سرکار خانم سحر این
-                            جایزه را به نمایندگی از فیلم در مراسم اختتامیه دریافت کرد.
+                            فیلم کوتاه «ابراهیم» (Abraham) به کارگردانی <strong
+                                style="color:var(--gold)">عماد قره‌ای</strong> به بخش رسمی چهاردهمین دوره جشنواره
+                            <strong style="color:var(--gold)">Wasteland Film Festival</strong> در آمریکا راه یافت؛
+                            جشنواره‌ای تخصصی در حوزه فیلم‌های کوتاه آخرالزمانی و علمی‌تخیلی.
                         </div>
                         <div class="snb-badges">
-                            <span class="snb-badge"><i class="ri-award-line"></i> برنده بهترین فیلم کوتاه تجربی</span>
-                            <span class="snb-badge"><i class="ri-earth-line"></i> جشنواره TINFF - کانادا</span>
-                            <span class="snb-badge"><i class="ri-calendar-line"></i> دهمین دوره جشنواره</span>
+                            <span class="snb-badge"><i class="ri-earth-line"></i> Wasteland Film Festival آمریکا</span>
+                            <span class="snb-badge"><i class="ri-film-line"></i> کارگردانی عماد قره‌ای</span>
                         </div>
                     </div>
                 </a>
@@ -470,6 +481,36 @@
     </div>
 
     <div class="news-list">
+        <div class="news-item">
+            <div class="news-thumb">
+                <div class="img-ph" style="background:linear-gradient(135deg,#0d2137,#c9a84c);"><i class="ri-film-line"
+                        style="font-size:28px;color:rgba(255,255,255,0.6);"></i>
+                </div>
+            </div>
+            <div class="news-body">
+                <div class="news-cat">جشنواره سلیمانیه <span class="news-genre-inline">· درام / اجتماعی</span></div>
+                <a href="blog-post.html?id=code-50">
+                    <div class="news-title">«بی‌ماری» به کارگردانی نعیم اسماعیلی به ششمین دوره جشنواره بین‌المللی
+                        فیلم سلیمانیه راه یافت</div>
+                </a>
+                <div class="news-time">شهریور ۱۴۰۵</div>
+            </div>
+        </div>
+        <div class="news-item">
+            <div class="news-thumb">
+                <div class="img-ph" style="background:linear-gradient(135deg,#2d1b69,#11998e);"><i class="ri-heart-line"
+                        style="font-size:28px;color:rgba(255,255,255,0.6);"></i>
+                </div>
+            </div>
+            <div class="news-body">
+                <div class="news-cat">TINFF کانادا <span class="news-genre-inline">· درام / اجتماعی</span></div>
+                <a href="blog-post.html?id=code-33">
+                    <div class="news-title">«من با تو و تو با منی» به کارگردانی مجید نیامراد نامزد بهترین کارگردانی
+                        TINFF کانادا شد</div>
+                </a>
+                <div class="news-time">شهریور ۱۴۰۵</div>
+            </div>
+        </div>
         <div class="news-item">
             <div class="news-thumb">
                 <img src="Images/mandala_Colortape.jpg"

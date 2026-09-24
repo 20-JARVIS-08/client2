@@ -148,3 +148,62 @@ updateDates();
     var initialGenre = params.get('genre') || 'all';
     applyFilter(initialGenre);
 })();
+
+// ===== حالت تاریک/روشن (Dark / Light theme) =====
+(function () {
+    var THEME_KEY = 'mrsf-theme';
+    var root = document.documentElement;
+    var btn = document.getElementById('themeToggle');
+
+    function getTheme() {
+        try { return localStorage.getItem(THEME_KEY) || 'light'; } catch (e) { return 'light'; }
+    }
+
+    function setTheme(theme) {
+        if (theme === 'dark') { root.setAttribute('data-theme', 'dark'); }
+        else { root.removeAttribute('data-theme'); }
+        try { localStorage.setItem(THEME_KEY, theme); } catch (e) { }
+    }
+
+    // هماهنگ‌سازی اولیه (اسکریپت داخل head هم این کار را زودتر انجام می‌دهد تا فلش رنگ نداشته باشیم)
+    setTheme(getTheme());
+
+    if (btn) {
+        btn.addEventListener('click', function () {
+            var next = getTheme() === 'dark' ? 'light' : 'dark';
+            setTheme(next);
+        });
+    }
+})();
+
+// ===== جستجوی سایت (باکس جستجوی هدر) =====
+(function () {
+    var input = document.getElementById('headerSearchInput');
+    var btn = document.getElementById('headerSearchBtn');
+    if (!input) return;
+
+    // اگر همین الان در صفحه وبلاگ با پارامتر جستجو هستیم، مقدار باکس را پر کن
+    var params = new URLSearchParams(window.location.search);
+    var currentQuery = params.get('s');
+    if (currentQuery) input.value = currentQuery;
+
+    function runSearch() {
+        var q = input.value.trim();
+        var onBlogPage = !!document.getElementById('blog-grid');
+
+        if (onBlogPage) {
+            var url = new URL(window.location.href);
+            if (q) url.searchParams.set('s', q); else url.searchParams.delete('s');
+            window.history.replaceState(null, '', url);
+            if (typeof renderBlogGrid === 'function') renderBlogGrid();
+        } else {
+            var target = 'blog.html' + (q ? ('?s=' + encodeURIComponent(q)) : '');
+            window.location.href = target;
+        }
+    }
+
+    if (btn) btn.addEventListener('click', function (e) { e.preventDefault(); runSearch(); });
+    input.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') { e.preventDefault(); runSearch(); }
+    });
+})();

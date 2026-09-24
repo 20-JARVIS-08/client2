@@ -19,6 +19,7 @@
     --gray-100: #f0f0f0;
     --gray-50: #f8f8f8;
     --white: #fff;
+    --surface: var(--white);
     --gold: #c9a84c;
     --font: 'Vazirmatn', Tahoma, Arial, sans-serif
 }
@@ -263,7 +264,7 @@ nav a.active {
 }
 
 .ticker-label {
-    background: var(--white);
+    background: var(--surface);
     color: var(--red);
     font-weight: 700;
     font-size: 12px;
@@ -318,19 +319,31 @@ nav a.active {
     gap: 10px;
     margin-bottom: 16px;
     padding-bottom: 10px;
-    border-bottom: 2px solid var(--gray-100)
+    border-bottom: 2px solid var(--gray-100);
+    position: relative
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: -2px;
+    width: 46px;
+    height: 2px;
+    background: var(--red)
 }
 
 .section-title h2 {
     font-size: 17px;
     font-weight: 700;
-    color: var(--gray-900)
+    color: var(--gray-900);
+    letter-spacing: -.2px
 }
 
 .section-title .bar {
     width: 4px;
     height: 20px;
-    background: var(--red);
+    background: linear-gradient(180deg, var(--red), var(--gold));
     border-radius: 2px
 }
 
@@ -400,8 +413,14 @@ nav a.active {
 .feat-card {
     position: relative;
     overflow: hidden;
-    border-radius: 6px;
-    cursor: pointer
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .08);
+    transition: box-shadow .25s ease
+}
+
+.feat-card:hover {
+    box-shadow: 0 10px 24px rgba(0, 0, 0, .18)
 }
 
 .feat-card:first-child {
@@ -573,7 +592,7 @@ nav a.active {
 .video-card {
     border-radius: 6px;
     overflow: hidden;
-    background: var(--white);
+    background: var(--surface);
     border: 1px solid var(--gray-100);
     cursor: pointer;
     position: relative
@@ -638,7 +657,7 @@ nav a.active {
 }
 
 .widget {
-    background: var(--white);
+    background: var(--surface);
     border: 1px solid #e8e8e8;
     border-radius: 6px;
     overflow: hidden
@@ -793,11 +812,12 @@ nav a.active {
 }
 
 .cat-bar {
-    background: var(--white);
+    background: var(--surface);
     border: 1px solid #e8e8e8;
-    border-radius: 6px;
+    border-radius: 8px;
     margin-bottom: 24px;
-    overflow: hidden
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .04)
 }
 
 .cat-bar-inner {
@@ -810,7 +830,7 @@ nav a.active {
     text-align: center;
     cursor: pointer;
     border-left: 1px solid var(--gray-100);
-    transition: background .2s
+    transition: background .2s, transform .2s
 }
 
 .cat-btn:last-child {
@@ -818,14 +838,20 @@ nav a.active {
 }
 
 .cat-btn:hover {
-    background: #fff5f5
+    background: #fff5f5;
+    transform: translateY(-2px)
+}
+
+.cat-btn:hover i {
+    color: var(--gold)
 }
 
 .cat-btn i {
     font-size: 26px;
     display: block;
     margin-bottom: 5px;
-    color: var(--red)
+    color: var(--red);
+    transition: color .2s
 }
 
 .cat-btn span {
@@ -839,7 +865,13 @@ nav a.active {
     border: 2px solid var(--gold);
     border-radius: 8px;
     padding: 16px;
-    margin-bottom: 24px
+    margin-bottom: 24px;
+    transition: transform .25s ease, box-shadow .25s ease
+}
+
+.special-news-box:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 26px rgba(0, 0, 0, .18)
 }
 
 .special-news-box .snb-label {
@@ -1011,7 +1043,7 @@ footer {
 }
 
 .news-card {
-    background: var(--white);
+    background: var(--surface);
     border: 1px solid var(--gray-100);
     border-radius: 6px;
     overflow: hidden;
@@ -1075,7 +1107,7 @@ footer {
     height: 36px;
     padding: 0 10px;
     border: 1px solid var(--gray-100);
-    background: var(--white);
+    background: var(--surface);
     color: var(--gray-700);
     border-radius: 6px;
     font-family: var(--font);
@@ -1142,7 +1174,7 @@ footer {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    background: var(--white);
+    background: var(--surface);
     color: var(--gray-700);
     border: 1px solid var(--gray-100);
     padding: 9px 16px;
@@ -1265,7 +1297,7 @@ footer {
 }
 
 .buy-info-item {
-    background: var(--white);
+    background: var(--surface);
     border: 1px solid var(--gray-100);
     border-radius: 8px;
     padding: 14px 16px;
@@ -1310,7 +1342,7 @@ footer {
 }
 
 .blog-card {
-    background: var(--white);
+    background: var(--surface);
     border: 1px solid var(--gray-100);
     border-radius: 8px;
     overflow: hidden;
@@ -1394,7 +1426,7 @@ footer {
 
 /* Admin form */
 .admin-form {
-    background: var(--white);
+    background: var(--surface);
     border: 1px solid var(--gray-100);
     border-radius: 8px;
     padding: 22px;
@@ -1447,7 +1479,7 @@ footer {
 .form-group textarea:focus {
     outline: none;
     border-color: var(--red);
-    background: var(--white)
+    background: var(--surface)
 }
 
 .color-swatches {
@@ -1801,7 +1833,7 @@ footer {
 }
 
 .genre-chip {
-    background: var(--white);
+    background: var(--surface);
     border: 1px solid var(--gray-100);
     color: var(--gray-700);
     font-size: 12.5px;
@@ -1867,7 +1899,7 @@ footer {
    نظرسنجی فیلم‌ها (poll.html)
    ========================================================= */
 .poll-card {
-    background: var(--white);
+    background: var(--surface);
     border: 1px solid var(--gray-100);
     border-radius: 10px;
     padding: 22px;
@@ -2159,4 +2191,104 @@ footer {
 .tg-poll-count {
     font-size: 11px;
     color: var(--gray-500);
+}
+
+/* =========================================================
+   حالت تاریک / روشن (Dark / Light Theme)
+   ========================================================= */
+
+/* دکمه تغییر تم، کنار باکس جستجو در هدر */
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    flex: none;
+    background: #2a2a2a;
+    border: 1px solid #444;
+    border-radius: 6px;
+    color: var(--white);
+    cursor: pointer;
+    font-size: 17px;
+    transition: background .2s, border-color .2s, transform .2s;
+}
+
+.theme-toggle:hover {
+    background: #333;
+    border-color: var(--red);
+}
+
+.theme-toggle:active {
+    transform: scale(.92);
+}
+
+.theme-toggle .theme-icon-light {
+    display: none;
+}
+
+[data-theme="dark"] .theme-toggle .theme-icon-dark {
+    display: none;
+}
+
+[data-theme="dark"] .theme-toggle .theme-icon-light {
+    display: block;
+}
+
+/* گذار نرم رنگ‌ها هنگام تعویض تم */
+body,
+.widget,
+.cat-bar,
+.news-item,
+.feat-card,
+.blog-card,
+.poll-option,
+header,
+footer {
+    transition: background-color .25s ease, color .25s ease, border-color .25s ease;
+}
+
+/* متغیرهای حالت تاریک — هدر/نوبار/فوتر همیشه تیره‌اند و تغییر نمی‌کنند؛
+   این بخش فقط سطح محتوای سایت (پس‌زمینه صفحه، کارت‌ها، متن‌ها) را تیره می‌کند */
+:root[data-theme="dark"] {
+    --gray-50: #121214;
+    --gray-100: #232327;
+    --gray-300: #3a3a40;
+    --gray-500: #9a9aa2;
+    --gray-700: #c7c7cf;
+    --gray-900: #f2f2f4;
+    --surface: #1c1c20;
+}
+
+/* چند مورد رنگ ثابت (نه متغیر) که در حالت روشن برای سطوح سفید/خاکستری روشن
+   استفاده شده و باید در حالت تاریک هماهنگ شوند */
+:root[data-theme="dark"] .widget,
+:root[data-theme="dark"] .cat-bar {
+    border-color: var(--gray-300);
+}
+
+:root[data-theme="dark"] .news-item:hover {
+    background: var(--gray-100);
+}
+
+:root[data-theme="dark"] .cat-btn:hover {
+    background: var(--gray-100);
+}
+
+:root[data-theme="dark"] .poll-option:hover:not(.voted) {
+    background: var(--gray-100);
+}
+
+:root[data-theme="dark"] img:not([src*=".svg"]) {
+    filter: brightness(.92);
+}
+
+@media (max-width:600px) {
+    .theme-toggle {
+        order: 2;
+    }
+
+    .header-search {
+        order: 3;
+    }
 }

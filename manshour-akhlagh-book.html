@@ -103,7 +103,7 @@
         <div class="topbar-inner">
             <div class="topbar-links"><a href="#">درباره ما</a><a href="#">تماس با ما</a></div>
             <div style="display:flex;align-items:center;gap:16px;">
-                <span id="jalali-date">در حال بارگذاری...</span>
+                <label class="switch" id="themeToggle" title="حالت روشن/تاریک"><input type="checkbox" id="themeSwitch" aria-label="تغییر حالت روشن/تاریک"><span class="slider"></span></label><span id="jalali-date">در حال بارگذاری...</span>
                 <div class="topbar-social">
                     <a href="#" title="اینستاگرام"><i class="ri-instagram-line"></i></a>
                     <a href="#" title="تلگرام"><i class="ri-telegram-fill"></i></a>
@@ -127,10 +127,7 @@
                 <input type="text" id="headerSearchInput" placeholder="جستجو در اخبار سینما..." />
                 <button class="search-btn" id="headerSearchBtn" aria-label="جستجو"><i class="ri-search-line"></i></button>
             </div>
-            <button class="theme-toggle" id="themeToggle" type="button" aria-label="تغییر حالت روشن/تاریک" title="حالت روشن/تاریک">
-                <i class="ri-moon-line theme-icon-dark"></i>
-                <i class="ri-sun-line theme-icon-light"></i>
-            </button>
+            
             <div class="header-date"><strong>اخبار سینما</strong><span id="jalali-date-header">۱۴۰۵</span></div>
         </div>
         <nav>
@@ -290,7 +287,7 @@
             <div class="footer-col">
                 <h3>لینک‌های مفید</h3>
                 <ul>
-                    <li><a href="blog.html">وبلاگ</a></li>
+                    <li><a href="blog.html">وبلاگ</a></li><li><a href="news/archive.html">آرشیو اخبار</a></li>
                     <li><a href="poll.html">نظرسنجی</a></li>
                     <li><a href="video.html">نمایش فیلم کوتاه</a></li>
                     <li><a href="#">آگهی‌دهی</a></li>

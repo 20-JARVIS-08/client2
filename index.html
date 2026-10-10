@@ -69,7 +69,7 @@
         <div class="topbar-inner">
             <div class="topbar-links"><a href="#">درباره ما</a><a href="#">تماس با ما</a></div>
             <div style="display:flex;align-items:center;gap:16px;">
-                <span id="jalali-date">در حال بارگذاری...</span>
+                <label class="switch" id="themeToggle" title="حالت روشن/تاریک"><input type="checkbox" id="themeSwitch" aria-label="تغییر حالت روشن/تاریک"><span class="slider"></span></label><span id="jalali-date">در حال بارگذاری...</span>
                 <div class="topbar-social">
                     <a href="#" title="اینستاگرام"><i class="ri-instagram-line"></i></a>
                     <a href="#" title="تلگرام"><i class="ri-telegram-fill"></i></a>
@@ -93,10 +93,7 @@
                 <input type="text" id="headerSearchInput" placeholder="جستجو در اخبار سینما..." />
                 <button class="search-btn" id="headerSearchBtn" aria-label="جستجو"><i class="ri-search-line"></i></button>
             </div>
-            <button class="theme-toggle" id="themeToggle" type="button" aria-label="تغییر حالت روشن/تاریک" title="حالت روشن/تاریک">
-                <i class="ri-moon-line theme-icon-dark"></i>
-                <i class="ri-sun-line theme-icon-light"></i>
-            </button>
+            
             <div class="header-date"><strong>اخبار سینما</strong><span id="jalali-date-header">۱۴۰۵</span></div>
         </div>
         <nav>
@@ -200,7 +197,7 @@
         <div class="main-layout">
             <div class="content">
 
-                <a href="blog-post.html?id=code-126" style="text-decoration:none;">
+                <a href="news/award-misaff-126.html" data-pid="code-126" style="text-decoration:none;">
                     <div class="special-news-box snb-top">
                         <div class="snb-label"><i class="ri-award-fill"></i> افتخار تازه بین‌المللی</div>
                         <div class="snb-title">«ماندالا» به جشنواره فیلم MISAFF کانادا راه یافت</div>
@@ -221,7 +218,7 @@
                     </div>
                 </a>
 
-                <a href="blog-post.html?id=code-56" style="text-decoration:none;">
+                <a href="news/poster-wide.html" data-pid="code-56" style="text-decoration:none;">
                     <div class="special-news-box">
                         <div class="snb-label"><i class="ri-trophy-fill"></i> افتخار تازه بین‌المللی</div>
                         <div class="snb-title">موفقیت بین‌المللی فیلم کوتاه بهنام خسروی؛ افتخاری دیگر در جشنواره
@@ -242,7 +239,7 @@
                     </div>
                 </a>
 
-                <a href="blog-post.html?id=code-51" style="text-decoration:none;">
+                <a href="news/lakeh-uvt.html" data-pid="code-51" style="text-decoration:none;">
                     <div class="special-news-box">
                         <div class="snb-label"><i class="ri-earth-fill"></i> راهی آمریکا</div>
                         <div class="snb-title">«لکه» به کارگردانی نیما شبقره عازم آمریکا شد؛ حضور در جشنواره UVT پس
@@ -259,7 +256,7 @@
                     </div>
                 </a>
 
-                <a href="blog-post.html?id=code-30" style="text-decoration:none;">
+                <a href="news/ebrahim-wasteland.html" data-pid="code-30" style="text-decoration:none;">
                     <div class="special-news-box">
                         <div class="snb-label"><i class="ri-film-fill"></i> حضور بین‌المللی تازه</div>
                         <div class="snb-title">فیلم کوتاه «ابراهیم» به کارگردانی عماد قره‌ای به جشنواره Wasteland
@@ -277,7 +274,7 @@
                     </div>
                 </a>
 
-                <a href="blog-post.html?id=code-41" style="text-decoration:none;">
+                <a href="news/rangha-zepfest.html" data-pid="code-41" style="text-decoration:none;">
                     <div class="special-news-box">
                         <div class="snb-label"><i class="ri-award-fill"></i> جایزه بهترین فیلم نوآر</div>
                         <div class="snb-title">«رنگ‌ها همه سیاه هستند» برنده جایزه بهترین فیلم نوآر از جشنواره
@@ -295,7 +292,7 @@
                     </div>
                 </a>
 
-                <a href="blog-post.html?id=code-44" style="text-decoration:none;">
+                <a href="news/seda-tokyo.html" data-pid="code-44" style="text-decoration:none;">
                     <div class="special-news-box">
                         <div class="snb-label"><i class="ri-quill-pen-fill"></i> جایزه بهترین نویسندگی</div>
                         <div class="snb-title">«صدا» در ژاپن درخشید؛ کسب جایزه بهترین نویسندگی در توکیو</div>
@@ -312,7 +309,7 @@
                     </div>
                 </a>
 
-                <a href="blog-post.html?id=code-14" style="text-decoration:none;">
+                <a href="news/nm-14.html" data-pid="code-14" style="text-decoration:none;">
                     <div class="special-news-box">
                         <div class="snb-label"><i class="ri-award-fill"></i> ۱۰ نامزدی بین‌المللی</div>
                         <div class="snb-title">درخشش «تخت طاووس» ساخته شهاب حسینی؛ ۱۰ نامزدی در دهمین جشنواره
@@ -334,7 +331,7 @@
                     </div>
                 </a>
 
-                <a href="blog-post.html?id=code-71" style="text-decoration:none;">
+                <a href="news/bimari-zambia-award.html" data-pid="code-71" style="text-decoration:none;">
                     <div class="special-news-box">
                         <div class="snb-label"><i class="ri-trophy-fill"></i> بهترین فیلم کوتاه بین‌المللی</div>
                         <div class="snb-title">«بی‌ماری» برنده جایزه بهترین فیلم کوتاه بین‌المللی جشنواره فیلم کوتاه
@@ -354,7 +351,7 @@
                     </div>
                 </a>
 
-                <a href="blog-post.html?id=code-59" style="text-decoration:none;">
+                <a href="news/pd.html" data-pid="code-59" style="text-decoration:none;">
                     <div class="special-news-box">
                         <div class="snb-label"><i class="ri-award-fill"></i> بهترین فیلم فیلمساز زن</div>
                         <div class="snb-title">«داستان پنجره روبه‌رویی» در دهمین دوره TINFF درخشید؛ کسب جایزه بهترین
@@ -372,7 +369,7 @@
                     </div>
                 </a>
 
-                <a href="blog-post.html?id=code-47" style="text-decoration:none;">
+                <a href="news/shelik-dovom-ipaaf.html" data-pid="code-47" style="text-decoration:none;">
                     <div class="special-news-box">
                         <div class="snb-label"><i class="ri-film-fill"></i> حضور بین‌المللی تازه</div>
                         <div class="snb-title">«شلیک دوم» به سی‌امین دوره جشنواره بین‌المللی هنرهای جایزه پلیس ایتالیا
@@ -390,7 +387,7 @@
                     </div>
                 </a>
 
-                <a href="blog-post.html?id=code-105" style="text-decoration:none;">
+                <a href="news/iran-cinema-105.html" data-pid="code-105" style="text-decoration:none;">
                     <div class="special-news-box">
                         <div class="snb-label"><i class="ri-trophy-fill"></i> جایزه تازه</div>
                         <div class="snb-title">جایزه تازه «افق‌های نوظهور»؛ بخش ویژه جشنواره فیلم کوتاه تهران برای
@@ -437,7 +434,7 @@
                 </div>
             </div>
             <div class="feat-card">
-                <a href="blog-post.html?id=seed-3">
+                <a href="news/shortfilm-seed-3.html" data-pid="seed-3">
 
                     <div style="background:linear-gradient(135deg,#1a1a2e,#c9a84c);height:100%;position:relative;">
                         <img src="Images/In the Shadow of the Cypress.jpg"
@@ -453,14 +450,14 @@
         </div>
 
         <div class="feat-card">
-            <a href="blog-post.html?id=seed-1">
+            <a href="news/mb-seed-1.html" data-pid="seed-1">
                 <div style="background:linear-gradient(135deg,#0d2137,#1a6b3a);height:100%;position:relative;">
                     <img src="Images/mandala.jpg"
                         alt="«ماندالا» بهنام خسروی جایزه بهترین فیلم Accolade را از آن خود کرد">
                 </div>
                 <div class="feat-info">
                     <span class="feat-cat">فیلم کوتاه</span><span class="feat-genre">درام / اجتماعی</span>
-                    <a href="blog-post.html?id=seed-1">
+                    <a href="news/mb-seed-1.html" data-pid="seed-1">
 
                         <div class="feat-title">«ماندالا» بهنام خسروی جایزه بهترین فیلم Accolade را از آن خود
                             کرد
@@ -487,7 +484,7 @@
             </div>
             <div class="news-body">
                 <div class="news-cat">جشنواره سلیمانیه <span class="news-genre-inline">· درام / اجتماعی</span></div>
-                <a href="blog-post.html?id=code-50">
+                <a href="news/bimari-sulaymaniyah.html" data-pid="code-50">
                     <div class="news-title">«بی‌ماری» به کارگردانی نعیم اسماعیلی به ششمین دوره جشنواره بین‌المللی
                         فیلم سلیمانیه راه یافت</div>
                 </a>
@@ -502,7 +499,7 @@
             </div>
             <div class="news-body">
                 <div class="news-cat">TINFF کانادا <span class="news-genre-inline">· درام / اجتماعی</span></div>
-                <a href="blog-post.html?id=code-33">
+                <a href="news/man-ba-to-tinff.html" data-pid="code-33">
                     <div class="news-title">«من با تو و تو با منی» به کارگردانی مجید نیامراد نامزد بهترین کارگردانی
                         TINFF کانادا شد</div>
                 </a>
@@ -519,7 +516,7 @@
             </div>
             <div class="news-body">
                 <div class="news-cat">حضور بین‌الملل <span class="news-genre-inline">· درام / اجتماعی</span></div>
-                <a href="blog-post.html?id=code-23">
+                <a href="news/mandala-colortape.html" data-pid="code-23">
                     <div class="news-title">ادامه درخشش‌های «ماندالا» در عرصه بین‌المللی؛ راه‌یابی به جشنواره
                         Colortape استرالیا</div>
                 </a>
@@ -536,7 +533,7 @@
             </div>
             <div class="news-body">
                 <div class="news-cat">نامزدی بین‌الملل <span class="news-genre-inline">· درام / اجتماعی</span></div>
-                <a href="blog-post.html?id=code-14">
+                <a href="news/nm-14.html" data-pid="code-14">
                     <div class="news-title">«ماندالا» در دو بخش دهمین دوره جشنواره بین‌المللی فیلم TINFF تورنتو
                         نامزد دریافت جایزه شد</div>
                 </a>
@@ -552,7 +549,7 @@
             </div>
             <div class="news-body">
                 <div class="news-cat">نامزدی بین‌الملل <span class="news-genre-inline">· درام / تاریخی</span></div>
-                <a href="blog-post.html?id=code-14">
+                <a href="news/nm-14.html" data-pid="code-14">
                     <div class="news-title">درخشش «تخت طاووس» ساخته شهاب حسینی؛ ۱۰ نامزدی در دهمین جشنواره
                         بین‌المللی فیلم TINFF تورنتو</div>
                 </a>
@@ -569,7 +566,7 @@
             </div>
             <div class="news-body">
                 <div class="news-cat">حضور بین‌الملل <span class="news-genre-inline">· درام / اجتماعی</span></div>
-                <a href="blog-post.html?id=code-1">
+                <a href="news/award-seaiff.html" data-pid="code-1">
                     <div class="news-title">پنجمین حضور بین‌المللی «ماندالا»؛ راه‌یابی به جشنواره بین‌المللی فیلم جنوب
                         شرق آسیا (SEAIFF) در تایلند</div>
                 </a>
@@ -586,7 +583,7 @@
             </div>
             <div class="news-body">
                 <div class="news-cat">بهترین بازیگری <span class="news-genre-inline">· درام / اجتماعی</span></div>
-                <a href="blog-post.html?id=code-0">
+                <a href="news/p11.html" data-pid="code-0">
                     <div class="news-title">بهنام خسروی برنده جایزه بهترین بازیگر نقش اول مرد «ماندالا» از جشنواره
                         Accolade شد</div>
                 </a>
@@ -603,7 +600,7 @@
             </div>
             <div class="news-body">
                 <div class="news-cat">موفقیت بین‌الملل <span class="news-genre-inline">· درام / اجتماعی</span></div>
-                <a href="blog-post.html?id=seed-1">
+                <a href="news/mb-seed-1.html" data-pid="seed-1">
                     <div class="news-title">«ماندالا» بهنام خسروی برنده جایزه بهترین فیلم در جشنواره Accolade شد
                     </div>
                 </a>
@@ -621,7 +618,7 @@
 
             <div class="news-body">
                 <div class="news-cat">نامزدی بین‌الملل <span class="news-genre-inline">· درام / اجتماعی</span></div>
-                <a href="blog-post.html?id=seed-4">
+                <a href="news/award-staygold-seed-4.html" data-pid="seed-4">
                     <div class="news-title">ماندالا بار دیگر درخشید؛ دومین جایزه بین‌المللی برای فیلم کوتاه بهنام خسروی
                     </div>
                 </a>
@@ -639,7 +636,7 @@
 
             <div class="news-body">
                 <div class="news-cat">نامزدی بین‌الملل <span class="news-genre-inline">· درام / اجتماعی</span></div>
-                <a href="blog-post.html?id=seed-6">
+                <a href="news/mandala-seed-6.html" data-pid="seed-6">
                     <div class="news-title">«ماندالا» نامزد بهترین کارگردانی در دهمین جشنواره بین‌المللی فیلم
                         TINFF کانادا شد</div>
                 </a>
@@ -656,7 +653,7 @@
             </div>
             <div class="news-body">
                 <div class="news-cat">جشنواره هند <span class="news-genre-inline">· درام / اجتماعی</span></div>
-                <a href="blog-post.html?id=seed-7">
+                <a href="news/award-accolade-2-seed-7.html" data-pid="seed-7">
                     <div class="news-title">فیلم کوتاه «ماندالا» در جشنواره بین‌المللی فیلم پونه هندوستان حضور
                         یافت</div>
                 </a>
@@ -672,7 +669,7 @@
             </div>
             <div class="news-body">
                 <div class="news-cat">نقد و بررسی</div>
-                <a href="blog-post.html?id=seed-8">
+                <a href="news/p8-seed-8.html" data-pid="seed-8">
                     <div class="news-title">درباره «ماندالا»؛ روایتی از هویت و فراموشی</div>
                 </a>
                 <div class="news-time">۱۴۰۴</div>
@@ -687,7 +684,7 @@
             </div>
             <div class="news-body">
                 <div class="news-cat">گفتگو</div>
-                <a href="blog-post.html?id=seed-9">
+                <a href="news/p10-seed-9.html" data-pid="seed-9">
                     <div class="news-title">بهنام خسروی، کارگردان «ماندالا»؛ نگاهی به مسیر فیلمسازی او</div>
                 </a>
                 <div class="news-time">۱۴۰۴</div>
@@ -703,7 +700,7 @@
             </div>
             <div class="news-body">
                 <div class="news-cat">گفتگو</div>
-                <a href="blog-post.html?id=seed-10">
+                <a href="news/personal-picture2-seed-10.html" data-pid="seed-10">
                     <div class="news-title">بهنام خسروی، نویسنده «ماندالا»؛ از رمان‌نویسی تا فیلمنامه‌نویسی</div>
                 </a>
                 <div class="news-time">۱۴۰۴</div>
@@ -718,7 +715,7 @@
             </div>
             <div class="news-body">
                 <div class="news-cat">فیلم کوتاه</div>
-                <a href="blog-post.html?id=seed-11">
+                <a href="news/p2-seed-11.html" data-pid="seed-11">
                     <div class="news-title">آغاز فیلم‌برداری «ماندالا»؛ نخستین گام فیلم کوتاه بهنام خسروی</div>
                 </a>
                 <div class="news-time">۱۴۰۳</div>
@@ -734,7 +731,7 @@
             </div>
             <div class="news-body">
                 <div class="news-cat">فیلم کوتاه</div>
-                <a href="blog-post.html?id=seed-12">
+                <a href="news/p6-seed-12.html" data-pid="seed-12">
                     <div class="news-title">پایان فیلم‌برداری «ماندالا»؛ فیلم کوتاه بهنام خسروی وارد مرحله پس‌تولید شد
                     </div>
                 </a>
@@ -870,7 +867,7 @@
             </div>
             <div class="news-body">
                 <div class="news-cat">حضور بین‌الملل</div>
-                <a href="blog-post.html?id=code-1">
+                <a href="news/award-seaiff.html" data-pid="code-1">
                     <div class="news-title">پنجمین حضور بین‌المللی «ماندالا»؛ راه‌یابی به جشنواره SEAIFF در تایلند
                     </div>
                 </a>
@@ -916,7 +913,7 @@
             <div class="widget-body">
                 <div class="hot-item">
                     <div class="hot-num">1</div>
-                    <a href="blog-post.html?id=code-23">
+                    <a href="news/mandala-colortape.html" data-pid="code-23">
                         <div class="hot-title">«ماندالا» به نهمین دوره جشنواره بین‌المللی فیلم Colortape استرالیا راه
                             یافت</div>
                     </a>
@@ -924,21 +921,21 @@
 
                 <div class="hot-item">
                     <div class="hot-num">2</div>
-                    <a href="blog-post.html?id=seed-6">
+                    <a href="news/mandala-seed-6.html" data-pid="seed-6">
                         <div class="hot-title">«ماندالا» دو نامزدی تازه در جشنواره TINFF تورنتو گرفت</div>
                     </a>
                 </div>
 
                 <div class="hot-item">
                     <div class="hot-num">3</div>
-                    <a href="blog-post.html?id=code-14">
+                    <a href="news/nm-14.html" data-pid="code-14">
                         <div class="hot-title">«تخت طاووس» شهاب حسینی؛ ۱۰ نامزدی در جشنواره TINFF تورنتو</div>
                     </a>
                 </div>
 
                 <div class="hot-item">
                     <div class="hot-num">4</div>
-                    <a href="blog-post.html?id=code-1">
+                    <a href="news/award-seaiff.html" data-pid="code-1">
                         <div class="hot-title">پنجمین حضور بین‌المللی «ماندالا»؛ راه‌یابی به جشنواره SEAIFF در تایلند
                         </div>
                     </a>
@@ -946,13 +943,13 @@
 
                 <div class="hot-item">
                     <div class="hot-num">5</div>
-                    <a href="blog-post.html?id=code-0">
+                    <a href="news/p11.html" data-pid="code-0">
                         <div class="hot-title">بهنام خسروی برنده جایزه بهترین بازیگر نقش اول مرد «ماندالا» شد</div>
                     </a>
                 </div>
 
                 <div class="hot-item">
-                    <a href="blog-post.html?id=seed-4">
+                    <a href="news/award-staygold-seed-4.html" data-pid="seed-4">
                         <div class="hot-num">6</div>
                         <div class="hot-title">دومین جایزه بین‌المللی برای فیلم کوتاه بهنام خسروی
                     </a>
@@ -1039,7 +1036,7 @@
                         </div>
                     </div>
                 </div>
-                <a href="blog-post.html?id=seed-1" class="btn-outline"
+                <a href="news/mb-seed-1.html" data-pid="seed-1" class="btn-outline"
                     style="display:flex;justify-content:center;margin-top:12px;text-decoration:none;">مصاحبه
                     کامل را بخوانید</a>
             </div>
@@ -1135,7 +1132,7 @@
             <div class="footer-col">
                 <h3>لینک‌های مفید</h3>
                 <ul>
-                    <li><a href="blog.html">وبلاگ</a></li>
+                    <li><a href="blog.html">وبلاگ</a></li><li><a href="news/archive.html">آرشیو اخبار</a></li>
                     <li><a href="poll.html">نظرسنجی</a></li>
                     <li><a href="video.html">نمایش فیلم کوتاه</a></li>
                     <li><a href="#">آگهی‌دهی</a></li>

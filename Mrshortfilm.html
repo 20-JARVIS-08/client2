@@ -2,6 +2,8 @@
 <html lang="fa" dir="rtl">
 
 <head>
+    <meta name="robots" content="noindex, follow">
+    <link rel="canonical" href="https://mrshortfilm.com/">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>مستر شورت‌فیلم | اخبار سینما و فیلم کوتاه</title>
@@ -28,7 +30,7 @@
         <div class="topbar-inner">
             <div class="topbar-links"><a href="#">درباره ما</a><a href="#">تماس با ما</a></div>
             <div style="display:flex;align-items:center;gap:16px;">
-                <span id="jalali-date">در حال بارگذاری...</span>
+                <label class="switch" id="themeToggle" title="حالت روشن/تاریک"><input type="checkbox" id="themeSwitch" aria-label="تغییر حالت روشن/تاریک"><span class="slider"></span></label><span id="jalali-date">در حال بارگذاری...</span>
                 <div class="topbar-social">
                     <a href="#" title="اینستاگرام"><i class="ri-instagram-line"></i></a>
                     <a href="#" title="تلگرام"><i class="ri-telegram-fill"></i></a>
@@ -52,10 +54,7 @@
                 <input type="text" id="headerSearchInput" placeholder="جستجو در اخبار سینما..." />
                 <button class="search-btn" id="headerSearchBtn" aria-label="جستجو"><i class="ri-search-line"></i></button>
             </div>
-            <button class="theme-toggle" id="themeToggle" type="button" aria-label="تغییر حالت روشن/تاریک" title="حالت روشن/تاریک">
-                <i class="ri-moon-line theme-icon-dark"></i>
-                <i class="ri-sun-line theme-icon-light"></i>
-            </button>
+            
             <div class="header-date"><strong>اخبار سینما</strong><span id="jalali-date-header">۱۴۰۵</span></div>
         </div>
         <nav>
@@ -113,7 +112,7 @@
         <div class="main-layout">
             <div class="content">
 
-                <a href="blog-post.html?id=seed-1" style="text-decoration:none;">
+                <a href="news/mb-seed-1.html" data-pid="seed-1" style="text-decoration:none;">
                     <div class="special-news-box">
                         <div class="snb-label"><i class="ri-trophy-fill"></i> افتخار سینمای ایران</div>
                         <div class="snb-title">«ماندالا» بهنام خسروی؛ درخشش فیلم کوتاه ایرانی در جشنواره‌های بین‌المللی
@@ -185,7 +184,7 @@
                 </div>
             </div>
             <div class="feat-card">
-                <a href="blog-post.html?id=seed-3">
+                <a href="news/shortfilm-seed-3.html" data-pid="seed-3">
 
                     <div style="background:linear-gradient(135deg,#1a1a2e,#c9a84c);height:100%;position:relative;">
                         <img src="Images/In the Shadow of the Cypress.jpg" alt="">
@@ -200,7 +199,7 @@
         </div>
 
         <div class="feat-card">
-            <a href="blog-post.html?id=seed-1">
+            <a href="news/mb-seed-1.html" data-pid="seed-1">
                 <div style="background:linear-gradient(135deg,#0d2137,#1a6b3a);height:100%;position:relative;">
                     <img src="Images/mandala.jpg" alt="">
                 </div>
@@ -234,7 +233,7 @@
             </div>
             <div class="news-body">
                 <div class="news-cat">موفقیت بین‌الملل</div>
-                <a href="blog-post.html?id=seed-1">
+                <a href="news/mb-seed-1.html" data-pid="seed-1">
                     <div class="news-title">«ماندالا» بهنام خسروی برنده جایزه بهترین فیلم در جشنواره Accolade شد
                     </div>
                 </a>
@@ -442,7 +441,7 @@
             <div class="widget-body">
                 <div class="hot-item">
                     <div class="hot-num">1</div>
-                    <a href="blog-post.html?id=seed-1">
+                    <a href="news/mb-seed-1.html" data-pid="seed-1">
                         <div class="hot-title">«ماندالا» بهنام خسروی برنده جشنواره بین‌المللی Accolade شد</div>
                     </a>
                 </div>
@@ -522,7 +521,7 @@
                         </div>
                     </div>
                 </div>
-                <a href="blog-post.html?id=seed-1" class="btn-outline"
+                <a href="news/mb-seed-1.html" data-pid="seed-1" class="btn-outline"
                     style="display:flex;justify-content:center;margin-top:12px;text-decoration:none;">مصاحبه
                     کامل را بخوانید</a>
             </div>
@@ -618,7 +617,7 @@
             <div class="footer-col">
                 <h3>لینک‌های مفید</h3>
                 <ul>
-                    <li><a href="blog.html">وبلاگ</a></li>
+                    <li><a href="blog.html">وبلاگ</a></li><li><a href="news/archive.html">آرشیو اخبار</a></li>
                     <li><a href="poll.html">نظرسنجی</a></li>
                     <li><a href="video.html">نمایش فیلم کوتاه</a></li>
                     <li><a href="#">آگهی‌دهی</a></li>

@@ -2292,3 +2292,198 @@ footer {
         order: 3;
     }
 }
+
+
+/* =========================================================
+   طراحی نسخه ۲: تم تاریک بهتر، سوییچ تم، انیمیشن‌های سبک
+   ========================================================= */
+
+/* ---- رنگ ثابت هدر/نوبار/فوتر (مستقل از تم؛ همیشه خوانا روی پس‌زمینه تیره) ---- */
+.topbar { color: #c4c7d0; }
+.topbar a { color: #c4c7d0; }
+.topbar a:hover { color: #fff; }
+nav a { color: #c9ccd6; }
+nav a:hover, nav a.active { color: #fff; }
+.header-date { color: #b4b8c4; }
+.header-search input::placeholder { color: #8f94a3; }
+.header-search .search-btn { color: #b4b8c4; }
+.header-search .search-btn:hover { color: #fff; }
+footer { color: #c4c7d0; }
+.footer-about p { color: #aeb2be; }
+.footer-col a { color: #b4b8c4; transition: color .2s, padding-right .2s; }
+.footer-col a:hover { color: #fff; padding-right: 4px; }
+.footer-col h3 { color: #fff; border-bottom-color: #2f3340; }
+.footer-top { border-bottom-color: #2f3340; }
+.footer-bottom { color: #9a9fae; }
+.ticker-label { background: #fff; color: var(--red-dark); }
+.topbar-social a { color: #d6d9e2; background: #2c303b; }
+
+/* ---- پالت تاریک دقیق‌تر ---- */
+:root[data-theme="dark"] {
+    --gray-50: #0f1014;
+    --gray-100: #22252d;
+    --gray-300: #343845;
+    --gray-500: #a3a7b5;
+    --gray-700: #cfd2dc;
+    --gray-900: #f1f2f6;
+    --surface: #181a21;
+    --red: #E4533F;
+    --red-light: #f6b8b0;
+    --gold: #dcbb5e;
+    --black: #0a0b0e;
+    --dark: #14161c;
+}
+:root[data-theme="dark"] body { background: var(--gray-50); color: var(--gray-900); }
+:root[data-theme="dark"] header { border-bottom-color: var(--red); }
+:root[data-theme="dark"] nav a.active { background: #15171d; }
+:root[data-theme="dark"] ::selection { background: var(--red); color: #fff; }
+:root[data-theme="dark"] .news-card,
+:root[data-theme="dark"] .blog-card,
+:root[data-theme="dark"] .feat-card { border-color: var(--gray-100); }
+:root[data-theme="dark"] .post-body,
+:root[data-theme="dark"] .post-body p { color: #dfe1e8; }
+:root[data-theme="dark"] .cat-btn:hover { background: #2a1c1b; }
+:root[data-theme="dark"] .poll-option:hover:not(.voted) { background: var(--gray-100); }
+:root[data-theme="dark"] .breadcrumb,
+:root[data-theme="dark"] .breadcrumb a { color: var(--gray-500); }
+:root[data-theme="dark"] .breadcrumb a:hover { color: var(--red-light); }
+:root[data-theme="dark"] a:focus-visible,
+:root[data-theme="dark"] button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
+
+/* ---- سوییچ تم (ماه/خورشید) ---- */
+.theme-toggle {
+    position: relative;
+    width: 64px;
+    height: 32px;
+    padding: 0;
+    border-radius: 999px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #3a4256, #232834);
+    border: 1px solid #555c70;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, .45);
+    font-size: 15px;
+    transition: background .4s, border-color .3s, box-shadow .3s, transform .2s;
+}
+.theme-toggle::before {
+    content: "";
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #ffe08a, #f2a900);
+    box-shadow: 0 0 10px rgba(255, 190, 40, .55);
+    transform: translateX(0) rotate(0);
+    transition: transform .5s cubic-bezier(.34, 1.56, .64, 1), background .4s, box-shadow .4s;
+}
+.theme-toggle .theme-icon-dark,
+.theme-toggle .theme-icon-light {
+    display: block !important;
+    position: absolute;
+    top: 50%;
+    margin-top: -8px;
+    line-height: 16px;
+    z-index: 1;
+    transition: color .35s, opacity .35s, transform .5s;
+}
+.theme-toggle .theme-icon-light { left: 8px; color: #6b4500; }          /* خورشید روی دکمه */
+.theme-toggle .theme-icon-dark { right: 8px; color: #9aa1b8; }          /* ماه کم‌رنگ */
+.theme-toggle:hover { border-color: var(--red); }
+[data-theme="dark"] .theme-toggle {
+    background: linear-gradient(135deg, #1a1f33, #0d1020);
+    border-color: #4a5170;
+}
+[data-theme="dark"] .theme-toggle::before {
+    transform: translateX(32px) rotate(360deg);
+    background: radial-gradient(circle at 35% 30%, #f4f6ff, #aab4e8);
+    box-shadow: 0 0 12px rgba(160, 175, 255, .55);
+}
+[data-theme="dark"] .theme-toggle .theme-icon-light { color: #7d839c; transform: rotate(-90deg); }
+[data-theme="dark"] .theme-toggle .theme-icon-dark { color: #23294a; }
+
+/* ---- جزئیات سبک ---- */
+.ticker:hover .ticker-items { animation-play-state: paused; }
+
+/* نوار پیشرفت مطالعه و دکمه بازگشت به بالا */
+#read-progress {
+    position: fixed; top: 0; right: 0; width: 100%; height: 3px; z-index: 10000;
+    background: linear-gradient(270deg, var(--red), var(--gold));
+    transform-origin: right center; transform: scaleX(0); pointer-events: none;
+}
+.to-top {
+    position: fixed; bottom: 22px; left: 22px; width: 42px; height: 42px; border-radius: 50%;
+    background: var(--red); color: #fff; border: none; cursor: pointer; font-size: 20px;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, .35);
+    opacity: 0; transform: translateY(14px); pointer-events: none;
+    transition: opacity .3s, transform .3s, background .2s; z-index: 9000;
+}
+.to-top.show { opacity: 1; transform: none; pointer-events: auto; }
+.to-top:hover { background: var(--red-dark); }
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+/* متن‌های درون‌خطی فوتر که رنگ ثابت کم‌کنتراست دارند */
+.footer-col li[style], .footer-col li[style] i { color: #9a9fae !important; }
+
+
+
+/* =========================================================
+   سوییچ تم روشن/تاریک (Uiverse.io by satyamchaudharydev) — در نوار بالای سایت
+   ========================================================= */
+.switch {
+    display: block;
+    --width-of-switch: 3.5em;
+    --height-of-switch: 2em;
+    --size-of-icon: 1.4em;
+    --slider-offset: 0.3em;
+    font-size: 11px;
+    position: relative;
+    width: var(--width-of-switch);
+    height: var(--height-of-switch);
+    flex: none;
+}
+.switch input { opacity: 0; width: 0; height: 0; }
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #f4f4f5;
+    transition: .4s;
+    border-radius: 30px;
+}
+.slider:before {
+    position: absolute;
+    content: "";
+    height: var(--size-of-icon, 1.4em);
+    width: var(--size-of-icon, 1.4em);
+    border-radius: 20px;
+    left: var(--slider-offset, 0.3em);
+    top: 50%;
+    transform: translateY(-50%);
+    background: linear-gradient(40deg, #ff0080, #ff8c00 70%);
+    transition: .4s;
+}
+input:checked + .slider { background-color: #303136; box-shadow: 0 0 0 1px #5a5f6e; }
+input:checked + .slider:before {
+    left: calc(100% - (var(--size-of-icon, 1.4em) + var(--slider-offset, 0.3em)));
+    background: #303136;
+    box-shadow: inset -3px -2px 5px -2px #8983f7, inset -10px -4px 0 0 #a3dafb;
+}
+input:focus-visible + .slider { outline: 2px solid #8983f7; outline-offset: 2px; }
+.topbar .switch { margin: 0; }
+
+
+/* آمار عددی مطالب وبلاگ */
+.blog-stats { background: var(--surface); border: 1px solid var(--gray-100); border-radius: 8px; padding: 14px 16px; margin: 0 0 18px; }
+.blog-stats .bs-total { display: flex; align-items: baseline; gap: 10px; margin-bottom: 12px; }
+.blog-stats .bs-num { font-size: 30px; font-weight: 900; color: var(--red); line-height: 1; }
+.blog-stats .bs-label { font-size: 14px; font-weight: 700; color: var(--gray-900); }
+.blog-stats .bs-label small { font-weight: 400; color: var(--gray-500); }
+.blog-stats .bs-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.blog-stats .genre-chip b { margin-right: 4px; padding: 0 6px; border-radius: 10px; background: rgba(128, 128, 128, .18); font-size: 11px; font-weight: 700; }
+.blog-stats .genre-chip.active b { background: rgba(255, 255, 255, .25); }

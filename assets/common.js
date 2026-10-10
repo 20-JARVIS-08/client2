@@ -153,7 +153,7 @@ updateDates();
 (function () {
     var THEME_KEY = 'mrsf-theme';
     var root = document.documentElement;
-    var btn = document.getElementById('themeToggle');
+    var sw = document.getElementById('themeSwitch');
 
     function getTheme() {
         try { return localStorage.getItem(THEME_KEY) || 'light'; } catch (e) { return 'light'; }
@@ -165,13 +165,11 @@ updateDates();
         try { localStorage.setItem(THEME_KEY, theme); } catch (e) { }
     }
 
-    // هماهنگ‌سازی اولیه (اسکریپت داخل head هم این کار را زودتر انجام می‌دهد تا فلش رنگ نداشته باشیم)
     setTheme(getTheme());
-
-    if (btn) {
-        btn.addEventListener('click', function () {
-            var next = getTheme() === 'dark' ? 'light' : 'dark';
-            setTheme(next);
+    if (sw) {
+        sw.checked = getTheme() === 'dark';
+        sw.addEventListener('change', function () {
+            setTheme(sw.checked ? 'dark' : 'light');
         });
     }
 })();
@@ -197,7 +195,7 @@ updateDates();
             window.history.replaceState(null, '', url);
             if (typeof renderBlogGrid === 'function') renderBlogGrid();
         } else {
-            var target = 'blog.html' + (q ? ('?s=' + encodeURIComponent(q)) : '');
+            var target = (location.pathname.indexOf('/news/') !== -1 ? '../' : '') + 'blog.html' + (q ? ('?s=' + encodeURIComponent(q)) : '');
             window.location.href = target;
         }
     }
@@ -206,4 +204,48 @@ updateDates();
     input.addEventListener('keydown', function (e) {
         if (e.key === 'Enter') { e.preventDefault(); runSearch(); }
     });
+})();
+
+
+// ===== جلوه‌های سبک: ظاهر شدن تدریجی، نوار مطالعه، بازگشت به بالا، گذار تم =====
+(function () {
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var root = document.documentElement;
+
+    // نوار پیشرفت مطالعه (فقط صفحه مطلب)
+    var body = document.querySelector('.post-body');
+    var bar = null;
+    if (body) {
+        bar = document.createElement('div');
+        bar.id = 'read-progress';
+        document.body.appendChild(bar);
+    }
+
+    // دکمه بازگشت به بالا
+    var up = document.createElement('button');
+    up.className = 'to-top';
+    up.type = 'button';
+    up.setAttribute('aria-label', 'بازگشت به بالا');
+    up.innerHTML = '<i class="ri-arrow-up-line"></i>';
+    up.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }); });
+    document.body.appendChild(up);
+
+    var ticking = false;
+    function onScroll() {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(function () {
+            ticking = false;
+            var y = window.scrollY || root.scrollTop;
+            up.classList.toggle('show', y > 600);
+            if (bar && body) {
+                var r = body.getBoundingClientRect();
+                var total = r.height - window.innerHeight * 0.6;
+                var p = total > 0 ? Math.min(1, Math.max(0, (-r.top + window.innerHeight * 0.2) / total)) : 1;
+                bar.style.transform = 'scaleX(' + p + ')';
+            }
+        });
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
 })();

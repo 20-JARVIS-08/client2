@@ -3820,4 +3820,34 @@
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
     </url>
+    <url>
+        <loc>https://mrshortfilm.com/news/behnam-khosravi-profile.html</loc>
+        <lastmod>2026-10-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://mrshortfilm.com/news/mandala-festival-journey.html</loc>
+        <lastmod>2026-10-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://mrshortfilm.com/news/mandala-starling-uk.html</loc>
+        <lastmod>2026-10-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://mrshortfilm.com/news/starling-festival-guide.html</loc>
+        <lastmod>2026-10-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://mrshortfilm.com/news/mandala-starling-screening.html</loc>
+        <lastmod>2026-10-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
 </urlset>

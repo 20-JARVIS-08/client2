@@ -7806,6 +7806,12 @@ async function renderSinglePost() {
         wrap.innerHTML = `<div class="empty-state"><i class="ri-file-warning-line"></i>این مطلب یافت نشد یا حذف شده است.<br><br><a href="blog.html" class="btn-primary" style="display:inline-flex;text-decoration:none;">بازگشت به وبلاگ</a></div>`;
         return;
     }
+    if (post.url && !/^https?:/.test(post.url) ) {
+        const cl = document.getElementById('canonical-link');
+        if (cl) cl.href = absoluteUrl(post.url);
+        window.location.replace(post.url);
+        return;
+    }
     document.title = post.title + ' | وبلاگ مستر شورت‌فیلم';
     applySeoMeta(post, id);
     const paragraphs = (post.content || '').split(/\n+/).filter(Boolean).map(p => p.startsWith('## ') ? `<h2>${p.slice(3)}</h2>` : `<p>${p}</p>`).join('');

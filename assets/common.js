@@ -249,3 +249,166 @@ updateDates();
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
 })();
+
+
+/* =====================================================================
+   منوی بازشوی پشتیبانی + بهینه‌سازی‌های سبک نمایش
+   ===================================================================== */
+/* ★ تنظیمات پشتیبانی — فقط همین مقادیر را پر کنید ★
+   email    : ایمیل پشتیبانی/تبلیغات (مثلاً 'ads@mrshortfilm.com')
+   telegram : آی‌دی تلگرام بدون @ (مثلاً 'mrshortfilm_support')
+   whatsapp : شماره با کد کشور بدون + (مثلاً '989121234567')
+   هر کدام را خالی بگذارید، دکمهٔ آن در فرم نمایش داده نمی‌شود. */
+var SUPPORT_CONFIG = { email: 'offcialmrstlortfilm@gmail.com', telegram: '', whatsapp: '' };
+
+(function () {
+    if (window.__spInit) return; window.__spInit = true;
+    function ready(fn) { if (document.readyState !== 'loading') fn(); else document.addEventListener('DOMContentLoaded', fn); }
+
+    ready(function () {
+        /* ---- ۱) سبک‌سازی: تنبل‌بارگذاری تصاویر و ظهور نرم کارت‌ها ---- */
+        try {
+            document.querySelectorAll('img:not([loading])').forEach(function (im, i) {
+                if (!im.closest('header') && !im.closest('.ad-slider')) { im.loading = 'lazy'; }
+                im.decoding = 'async';
+            });
+            if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                var io = new IntersectionObserver(function (es) {
+                    es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+                }, { rootMargin: '0px 0px -8% 0px', threshold: .05 });
+                var mark = function (root) {
+                    (root || document).querySelectorAll('.news-card, .blog-card, .feat-card, .widget, .special-news-box, .poll-card').forEach(function (el) {
+                        if (el.classList.contains('rv')) return;
+                        var r = el.getBoundingClientRect();
+                        if (r.top < innerHeight) return;           // بالای صفحه همان‌جا دیده شود
+                        el.classList.add('rv'); io.observe(el);
+                    });
+                };
+                mark();
+                // کارت‌هایی که بعداً با جاوااسکریپت ساخته می‌شوند
+                new MutationObserver(function (ms) { ms.forEach(function (m) { m.addedNodes.forEach(function (n) { if (n.nodeType === 1) mark(n); }); }); })
+                    .observe(document.body, { childList: true, subtree: true });
+            }
+        } catch (e) { }
+
+        /* ---- ۲) ساخت منوی پشتیبانی ---- */
+        var C = SUPPORT_CONFIG || {};
+        var isDev = !/(^|\.)mrshortfilm\.com$/.test(location.hostname);
+        var TYPES = {
+            ad: { t: 'ثبت تبلیغ', d: 'بنر، اسپانسری و تبلیغ در سایت', i: 'ri-advertisement-line', h: 'ثبت درخواست تبلیغ', p: 'نوع تبلیغ و توضیح کوتاه آن را بنویسید.', ph: 'مثلاً: بنر صفحهٔ اصلی برای مدت یک ماه / معرفی جشنواره یا فیلم...' },
+            support: { t: 'تماس با پشتیبانی', d: 'پرسش، پیشنهاد یا هر موضوع دیگر', i: 'ri-customer-service-2-line', h: 'تماس با پشتیبانی', p: 'پیام خود را بنویسید تا بررسی شود.', ph: 'پیام شما...' },
+            news: { t: 'ارسال خبر یا معرفی فیلم', d: 'خبر جشنواره، فیلم کوتاه یا اثر خودتان', i: 'ri-film-line', h: 'ارسال خبر / معرفی فیلم کوتاه', p: 'نام فیلم، کارگردان، جشنواره و لینک منبع را بنویسید.', ph: 'نام فیلم، کارگردان، جشنواره، تاریخ و لینک منبع خبر...' },
+            bug: { t: 'گزارش مشکل سایت', d: 'خطا، صفحهٔ خراب یا لینک ناکار', i: 'ri-bug-line', h: 'گزارش مشکل', p: 'آدرس صفحه و مشکل را توضیح دهید.', ph: 'مثلاً: در صفحهٔ ... وقتی ... را می‌زنم ...' }
+        };
+        var FAQ = [
+            ['چطور تبلیغ ثبت کنم؟', 'از همین منو گزینهٔ «ثبت تبلیغ» را انتخاب کنید، نوع تبلیغ و راه تماس خود را بنویسید و پیام را ارسال کنید.'],
+            ['چطور خبر یا فیلم خودم را معرفی کنم؟', 'گزینهٔ «ارسال خبر یا معرفی فیلم» را بزنید و نام فیلم، کارگردان، جشنواره و لینک منبع را بفرستید. فقط اخبار دارای منبع معتبر منتشر می‌شود.'],
+            ['آیا مستر شورت‌فیلم خبر سیاسی منتشر می‌کند؟', 'خیر؛ این سایت فقط دربارهٔ فیلم کوتاه، جشنواره‌ها و سینما می‌نویسد.'],
+            ['یک صفحه یا لینک خراب است، چه کنم؟', 'گزینهٔ «گزارش مشکل سایت» را بزنید و آدرس صفحه را بنویسید.']
+        ];
+        var root = document.createElement('div');
+        root.className = 'sp-root';
+        var menu = Object.keys(TYPES).map(function (k) {
+            var o = TYPES[k];
+            return '<li><button type="button" data-k="' + k + '"><span class="sp-ic"><i class="' + o.i + '"></i></span><span><b>' + o.t + '</b><small>' + o.d + '</small></span><i class="ri-arrow-left-s-line sp-go"></i></button></li>';
+        }).join('') + '<li><button type="button" data-k="faq"><span class="sp-ic"><i class="ri-question-line"></i></span><span><b>سؤال‌های متداول</b><small>پاسخ سریع به پرسش‌های رایج</small></span><i class="ri-arrow-left-s-line sp-go"></i></button></li>';
+        root.innerHTML =
+            '<div class="sp-bubble" role="status"><button type="button" aria-label="بستن">×</button>سلام! برای <a data-k="ad">ثبت تبلیغ</a> یا ارتباط با پشتیبانی از همین‌جا اقدام کنید.</div>' +
+            '<div class="sp-panel" id="sp-panel" role="dialog" aria-label="پشتیبانی مستر شورت‌فیلم" aria-modal="false">' +
+            '<div class="sp-head"><h3 id="sp-title">پشتیبانی مستر شورت‌فیلم</h3><p id="sp-sub">چطور می‌توانیم کمکتان کنیم؟</p>' +
+            '<button type="button" class="sp-back" hidden aria-label="بازگشت"><i class="ri-arrow-right-line"></i></button>' +
+            '<button type="button" class="sp-close" aria-label="بستن"><i class="ri-close-line"></i></button></div>' +
+            '<ul class="sp-menu">' + menu + '</ul><div class="sp-view" hidden></div></div>' +
+            '<button type="button" class="sp-fab" aria-expanded="false" aria-controls="sp-panel"><i class="ri-customer-service-2-fill"></i><span>پشتیبانی</span><i class="sp-dot" style="font-size:0"></i></button>';
+        document.body.appendChild(root);
+
+        var fab = root.querySelector('.sp-fab'), panel = root.querySelector('.sp-panel'), bubble = root.querySelector('.sp-bubble');
+        var menuEl = root.querySelector('.sp-menu'), view = root.querySelector('.sp-view');
+        var title = root.querySelector('#sp-title'), sub = root.querySelector('#sp-sub'), back = root.querySelector('.sp-back');
+
+        function setOpen(v) {
+            root.classList.toggle('open', v); fab.setAttribute('aria-expanded', v ? 'true' : 'false');
+            fab.querySelector('i').className = v ? 'ri-close-line' : 'ri-customer-service-2-fill';
+            if (v) { hideBubble(); } else { home(); }
+        }
+        function hideBubble() { bubble.classList.remove('show'); try { sessionStorage.setItem('sp-b', '1'); } catch (e) { } }
+        function home() {
+            menuEl.hidden = false; view.hidden = true; back.hidden = true;
+            title.textContent = 'پشتیبانی مستر شورت‌فیلم'; sub.textContent = 'چطور می‌توانیم کمکتان کنیم؟';
+        }
+        function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+        function open(k) {
+            menuEl.hidden = true; view.hidden = false; back.hidden = false;
+            if (k === 'faq') {
+                title.textContent = 'سؤال‌های متداول'; sub.textContent = 'پاسخ پرسش‌های رایج';
+                view.innerHTML = '<div class="sp-faq">' + FAQ.map(function (f) { return '<details><summary>' + f[0] + '</summary><p>' + f[1] + '</p></details>'; }).join('') + '</div>';
+                return;
+            }
+            var o = TYPES[k];
+            title.textContent = o.h; sub.textContent = o.p;
+            view.innerHTML =
+                '<form novalidate>' +
+                '<div class="sp-field"><label for="sp-n">نام</label><input id="sp-n" maxlength="60" autocomplete="name"></div>' +
+                '<div class="sp-field"><label for="sp-c">راه تماس (ایمیل، تلفن یا آی‌دی تلگرام) <span style="color:var(--red)">*</span></label><input id="sp-c" maxlength="80" autocomplete="email"><div class="sp-err">راه تماس را وارد کنید.</div></div>' +
+                '<div class="sp-field"><label for="sp-m">پیام <span style="color:var(--red)">*</span></label><textarea id="sp-m" maxlength="1500" placeholder="' + esc(o.ph) + '"></textarea><div class="sp-err">پیام را کامل‌تر بنویسید (حداقل ۱۰ حرف).</div></div>' +
+                '<div class="sp-actions"></div><p class="sp-note"></p></form>';
+            var acts = view.querySelector('.sp-actions'), note = view.querySelector('.sp-note');
+            var any = C.email || C.telegram || C.whatsapp;
+            if (C.email) acts.insertAdjacentHTML('beforeend', '<button class="sp-btn primary" type="button" data-s="mail"><i class="ri-mail-send-line"></i> ارسال با ایمیل</button>');
+            if (C.telegram) acts.insertAdjacentHTML('beforeend', '<button class="sp-btn' + (C.email ? '' : ' primary') + '" type="button" data-s="tg"><i class="ri-telegram-fill"></i> تلگرام</button>');
+            if (C.whatsapp) acts.insertAdjacentHTML('beforeend', '<button class="sp-btn" type="button" data-s="wa"><i class="ri-whatsapp-line"></i> واتس‌اپ</button>');
+            acts.insertAdjacentHTML('beforeend', '<button class="sp-btn' + (any ? '' : ' primary') + '" type="button" data-s="copy"><i class="ri-file-copy-line"></i> کپی پیام</button>');
+            note.textContent = any ? 'پیام در برنامهٔ انتخابی شما آماده می‌شود و با زدن «ارسال» به ما می‌رسد.' : 'برای ارسال، پیام را کپی کنید و برای ما بفرستید.';
+            if (!any && isDev) { note.className = 'sp-note dev'; note.textContent = 'نسخهٔ آزمایشی: برای فعال شدن دکمه‌های ارسال، ایمیل/تلگرام/واتس‌اپ را در SUPPORT_CONFIG ابتدای بخش پشتیبانی در assets/common.js وارد کنید.'; }
+            var form = view.querySelector('form');
+            function build() {
+                var n = form.querySelector('#sp-n').value.trim(), c = form.querySelector('#sp-c').value.trim(), m = form.querySelector('#sp-m').value.trim();
+                var okc = c.length >= 3, okm = m.length >= 10;
+                form.querySelector('#sp-c').parentNode.classList.toggle('bad', !okc);
+                form.querySelector('#sp-m').parentNode.classList.toggle('bad', !okm);
+                if (!okc || !okm) return null;
+                var subj = 'مستر شورت‌فیلم | ' + o.t;
+                return { subj: subj, body: subj + '\n\nنام: ' + (n || '-') + '\nراه تماس: ' + c + '\nصفحه: ' + location.href + '\n\n' + m };
+            }
+            function done(msg) { view.innerHTML = '<div class="sp-ok"><i class="ri-checkbox-circle-fill"></i><p>' + msg + '</p><div class="sp-actions" style="margin-top:12px"><button class="sp-btn" type="button" data-s="home">بازگشت به منو</button></div></div>'; }
+            form.addEventListener('click', function (e) {
+                var b = e.target.closest('[data-s]'); if (!b) return;
+                var d = build(); if (!d) return;
+                var s = b.getAttribute('data-s');
+                if (s === 'mail') { location.href = 'mailto:' + C.email + '?subject=' + encodeURIComponent(d.subj) + '&body=' + encodeURIComponent(d.body); done('برنامهٔ ایمیل شما باز شد؛ پیام را ارسال کنید.'); }
+                else if (s === 'tg') { copy(d.body); window.open('https://t.me/' + encodeURIComponent(C.telegram), '_blank', 'noopener'); done('پیام کپی شد؛ در گفتگوی تلگرام که باز شد آن را بچسبانید و بفرستید.'); }
+                else if (s === 'wa') { window.open('https://wa.me/' + encodeURIComponent(C.whatsapp) + '?text=' + encodeURIComponent(d.body), '_blank', 'noopener'); done('واتس‌اپ باز شد؛ پیام را ارسال کنید.'); }
+                else if (s === 'copy') { copy(d.body); done('پیام کپی شد. آن را برای ما بفرستید.'); }
+            });
+            form.addEventListener('submit', function (e) { e.preventDefault(); });
+            setTimeout(function () { var f = view.querySelector('#sp-n'); if (f) f.focus(); }, 60);
+        }
+        function copy(t) {
+            try { if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(t); return; } } catch (e) { }
+            var a = document.createElement('textarea'); a.value = t; a.style.cssText = 'position:fixed;opacity:0'; document.body.appendChild(a); a.select();
+            try { document.execCommand('copy'); } catch (e) { } a.remove();
+        }
+
+        fab.addEventListener('click', function () { setOpen(!root.classList.contains('open')); });
+        root.querySelector('.sp-close').addEventListener('click', function () { setOpen(false); fab.focus(); });
+        back.addEventListener('click', home);
+        menuEl.addEventListener('click', function (e) { var b = e.target.closest('[data-k]'); if (b) open(b.getAttribute('data-k')); });
+        view.addEventListener('click', function (e) { if (e.target.closest('[data-s="home"]')) home(); });
+        bubble.querySelector('button').addEventListener('click', hideBubble);
+        bubble.querySelector('a').addEventListener('click', function () { setOpen(true); open('ad'); });
+        document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && root.classList.contains('open')) { setOpen(false); fab.focus(); } });
+        document.addEventListener('click', function (e) { if (root.classList.contains('open') && !root.contains(e.target)) setOpen(false); });
+
+        // لینک‌های «آگهی‌دهی» و «تماس با ما» در سایت، منوی پشتیبانی را باز می‌کنند
+        window.openSupport = function (k) { setOpen(true); open(k || 'support'); };
+        document.querySelectorAll('a[href="#"]').forEach(function (a) {
+            var t = a.textContent.trim();
+            var k = /آگهی|تبلیغ/.test(t) ? 'ad' : /تماس/.test(t) ? 'support' : '';
+            if (k) a.addEventListener('click', function (e) { e.preventDefault(); window.openSupport(k); });
+        });
+
+        // پیام خوش‌آمد؛ فقط یک بار در هر نشست
+        try { if (!sessionStorage.getItem('sp-b')) setTimeout(function () { if (!root.classList.contains('open')) bubble.classList.add('show'); }, 3500); } catch (e) { }
+        setTimeout(function () { bubble.classList.remove('show'); }, 14000);
+    });
+})();

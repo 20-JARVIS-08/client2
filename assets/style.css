@@ -2487,3 +2487,292 @@ input:focus-visible + .slider { outline: 2px solid #8983f7; outline-offset: 2px;
 .blog-stats .bs-chips { display: flex; flex-wrap: wrap; gap: 8px; }
 .blog-stats .genre-chip b { margin-right: 4px; padding: 0 6px; border-radius: 10px; background: rgba(128, 128, 128, .18); font-size: 11px; font-weight: 700; }
 .blog-stats .genre-chip.active b { background: rgba(255, 255, 255, .25); }
+
+/* =====================================================================
+   طراحی نسخه ۳ — ظاهر جدید، سبک‌تر و مدرن‌تر
+   ===================================================================== */
+:root {
+    --radius: 14px;
+    --radius-sm: 9px;
+    --shadow-sm: 0 1px 2px rgba(20, 20, 30, .06), 0 2px 8px rgba(20, 20, 30, .05);
+    --shadow-md: 0 4px 14px rgba(20, 20, 30, .08), 0 12px 32px rgba(20, 20, 30, .07);
+    --ease: cubic-bezier(.2, .7, .2, 1);
+}
+:root:not([data-theme="dark"]) {
+    --gray-50: #f5f3ef;
+    --gray-100: #ebe7e0;
+    --gray-300: #c9c3b8;
+    --gray-500: #6f6a61;
+    --gray-700: #3d3a35;
+    --gray-900: #1b1a18;
+    --surface: #ffffff;
+    --red: #cf3a2a;
+    --red-dark: #9c2a1e;
+    --gold: #b8923a;
+}
+:root[data-theme="dark"] { --shadow-sm: 0 1px 2px rgba(0,0,0,.4); --shadow-md: 0 8px 28px rgba(0,0,0,.45); }
+html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+body {
+    background:
+        radial-gradient(1000px 420px at 85% -80px, rgba(207, 58, 42, .07), transparent 70%),
+        var(--gray-50);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+:root[data-theme="dark"] body {
+    background: radial-gradient(1000px 420px at 85% -80px, rgba(228, 83, 63, .10), transparent 70%), var(--gray-50);
+}
+::selection { background: var(--red); color: #fff; }
+:focus-visible { outline: 2px solid var(--red); outline-offset: 2px; border-radius: 6px; }
+
+/* --- نوار بالا و هدر --- */
+.topbar { background: #0b0c10; border-bottom: 0; padding: 5px 0; }
+header {
+    background: linear-gradient(180deg, #14161c 0%, #1a1d26 100%);
+    border-bottom: 0;
+    padding-top: 16px;
+    position: relative;
+}
+header::after {
+    content: ""; position: absolute; inset: auto 0 0 0; height: 3px;
+    background: linear-gradient(90deg, var(--red), var(--gold) 55%, var(--red));
+    opacity: .9;
+}
+.header-top { padding-bottom: 16px; }
+.logo-main { font-size: 34px; letter-spacing: -1.2px; }
+.logo-main span { background: linear-gradient(90deg, #e4533f, #f0a24b); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.header-search input {
+    background: rgba(255, 255, 255, .06);
+    border: 1px solid rgba(255, 255, 255, .12);
+    border-radius: 999px;
+    padding: 11px 18px 11px 46px;
+    transition: background .2s, border-color .2s, box-shadow .2s;
+}
+.header-search input:focus { background: rgba(255,255,255,.1); box-shadow: 0 0 0 4px rgba(207, 58, 42, .22); }
+
+/* --- منوی اصلی: چسبان و شیشه‌ای --- */
+nav {
+    position: sticky; top: 0; z-index: 800;
+    background: rgba(10, 11, 14, .86);
+    -webkit-backdrop-filter: saturate(160%) blur(14px);
+    backdrop-filter: saturate(160%) blur(14px);
+    border-bottom: 1px solid rgba(255, 255, 255, .06);
+}
+.nav-inner { padding-top: 7px; padding-bottom: 7px; gap: 2px; }
+nav a {
+    padding: 9px 15px; border-bottom: 0; border-radius: 999px;
+    transition: color .2s, background .2s;
+}
+nav a:hover { background: rgba(255, 255, 255, .08); }
+nav a.active { background: var(--red); color: #fff; }
+.dropdown-menu { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-md); }
+
+/* --- خبر فوری --- */
+.ticker { background: linear-gradient(90deg, #8f241a, var(--red)); padding: 9px 0; }
+.ticker-label { border-radius: 999px; padding: 3px 12px; }
+
+/* --- اسلایدر تبلیغات: کم‌ارتفاع‌تر و گرد --- */
+.ad-slider-track-wrap { border-radius: 18px; border: 1px solid var(--gray-100); box-shadow: var(--shadow-sm); }
+.ad-slide { min-height: 150px; }
+@media (max-width: 700px) { .ad-slide { min-height: 110px; } }
+.ad-slider-arrow { backdrop-filter: blur(6px); }
+.ad-slider-label { border-radius: 999px; }
+
+/* --- کارت‌ها و ویجت‌ها --- */
+.widget, .cat-bar, .news-item, .feat-card, .blog-card, .news-card, .poll-card, .special-news-box, .buy-cta-box, .buy-info-item {
+    border-radius: var(--radius);
+}
+.widget, .cat-bar, .poll-card { box-shadow: var(--shadow-sm); border: 1px solid var(--gray-100); }
+.news-card, .blog-card, .feat-card {
+    border: 1px solid var(--gray-100);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    transition: transform .28s var(--ease), box-shadow .28s var(--ease), border-color .2s;
+}
+.news-card:hover, .blog-card:hover, .feat-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--gray-300); }
+.news-card img, .blog-card img, .feat-card img, .nc-thumb img { transition: transform .5s var(--ease); }
+.news-card:hover img, .blog-card:hover img, .feat-card:hover img { transform: scale(1.05); }
+.news-item { transition: background .2s, transform .2s var(--ease); }
+.news-item:hover { transform: translateX(-3px); }
+.special-news-box { box-shadow: var(--shadow-md); transition: transform .3s var(--ease); }
+.special-news-box:hover { transform: translateY(-3px); }
+.cat-bar { padding: 4px; overflow: hidden; }
+.cat-btn { border-radius: var(--radius-sm); transition: background .2s, color .2s; }
+
+/* --- عنوان بخش‌ها --- */
+.section-title { border-bottom: 0; padding-bottom: 6px; }
+.section-title h2, .section-title h3, .section-title span { font-weight: 900; letter-spacing: -.2px; }
+.section-title .bar { width: 5px; border-radius: 4px; background: linear-gradient(180deg, var(--red), var(--gold)); }
+
+/* --- دکمه‌ها و فرم‌ها --- */
+.btn-primary, .buy-cta-btn {
+    border-radius: 999px;
+    transition: transform .2s var(--ease), box-shadow .2s, background .2s;
+}
+.btn-primary:hover, .buy-cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(207, 58, 42, .28); }
+.btn-outline { border-radius: 999px; }
+.form-group input, .form-group textarea, .form-group select { border-radius: var(--radius-sm); }
+.pagination a, .pagination button, .pagination span { border-radius: 10px; }
+.genre-chip { border-radius: 999px; }
+
+/* --- متن مقاله --- */
+.post-body { font-size: 16.5px; line-height: 2.1; }
+.post-body h2 { font-size: 21px; font-weight: 900; margin: 30px 0 10px; padding-right: 12px; border-right: 4px solid var(--red); line-height: 1.6; }
+.post-body-img { border-radius: var(--radius); box-shadow: var(--shadow-sm); }
+.post-header h1 { font-size: clamp(24px, 3.2vw, 34px); line-height: 1.6; font-weight: 900; letter-spacing: -.3px; }
+
+/* --- فوتر --- */
+footer {
+    background: linear-gradient(180deg, #14161c, #0a0b0e);
+    border-top: 0; position: relative; margin-top: 40px;
+}
+footer::before {
+    content: ""; position: absolute; inset: 0 0 auto 0; height: 3px;
+    background: linear-gradient(90deg, var(--red), var(--gold) 55%, var(--red));
+}
+
+/* --- سبک‌سازی رندر: بخش‌های پایین صفحه تا نزدیک شدن رندر نمی‌شوند --- */
+footer { content-visibility: auto; contain-intrinsic-size: 1px 420px; }
+
+/* --- ظهور نرم کارت‌ها هنگام اسکرول (سبک؛ فقط transform/opacity) --- */
+.rv { opacity: 0; transform: translateY(14px); transition: opacity .5s var(--ease), transform .5s var(--ease); }
+.rv.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .rv { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }
+
+/* --- موبایل --- */
+@media (max-width: 700px) {
+    .logo-main { font-size: 28px; }
+    nav a { padding: 8px 12px; font-size: 13px; }
+    .post-body { font-size: 16px; line-height: 2; }
+}
+
+/* =====================================================================
+   منوی بازشوی پشتیبانی
+   ===================================================================== */
+.sp-root { position: fixed; right: 18px; bottom: 18px; z-index: 9500; font-family: var(--font); direction: rtl; }
+.sp-fab {
+    display: inline-flex; align-items: center; gap: 9px; border: 0; cursor: pointer;
+    height: 52px; padding: 0 20px 0 18px; border-radius: 999px; color: #fff;
+    background: linear-gradient(135deg, var(--red), #e8663a);
+    font: 700 14px var(--font);
+    box-shadow: 0 10px 26px rgba(207, 58, 42, .38), 0 2px 6px rgba(0,0,0,.2);
+    transition: transform .22s var(--ease), box-shadow .22s;
+}
+.sp-fab:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(207, 58, 42, .45), 0 2px 6px rgba(0,0,0,.2); }
+.sp-fab i { font-size: 22px; line-height: 1; }
+.sp-fab .sp-dot { position: absolute; top: 2px; left: 4px; width: 12px; height: 12px; border-radius: 50%; background: #2ecc71; border: 2px solid #fff; }
+.sp-fab { position: relative; }
+.sp-root.open .sp-fab { background: #2a2d37; box-shadow: 0 8px 20px rgba(0,0,0,.35); }
+.sp-root.open .sp-dot { display: none; }
+
+.sp-bubble {
+    position: absolute; right: 0; bottom: 66px; width: 250px; padding: 12px 36px 12px 14px;
+    background: var(--surface); color: var(--gray-900); border: 1px solid var(--gray-100);
+    border-radius: 14px 14px 4px 14px; box-shadow: var(--shadow-md); font-size: 13px; line-height: 1.8;
+    opacity: 0; transform: translateY(8px) scale(.98); pointer-events: none;
+    transition: opacity .3s var(--ease), transform .3s var(--ease);
+}
+.sp-bubble.show { opacity: 1; transform: none; pointer-events: auto; }
+.sp-bubble button { position: absolute; top: 6px; right: 8px; border: 0; background: none; color: var(--gray-500); cursor: pointer; font-size: 16px; }
+.sp-bubble a { color: var(--red); font-weight: 700; cursor: pointer; }
+
+.sp-panel {
+    position: absolute; right: 0; bottom: 66px; width: 340px; max-width: calc(100vw - 28px);
+    max-height: min(560px, calc(100vh - 110px)); overflow: auto;
+    background: var(--surface); color: var(--gray-900);
+    border: 1px solid var(--gray-100); border-radius: 20px; box-shadow: 0 24px 60px rgba(0,0,0,.28);
+    opacity: 0; transform: translateY(12px) scale(.97); transform-origin: bottom right; visibility: hidden;
+    transition: opacity .22s var(--ease), transform .22s var(--ease), visibility 0s .22s;
+}
+.sp-root.open .sp-panel { opacity: 1; transform: none; visibility: visible; transition-delay: 0s; }
+.sp-head {
+    padding: 18px 18px 16px; color: #fff; position: relative;
+    background: linear-gradient(135deg, #1a1d26, #2a1512 70%, #8f241a);
+}
+.sp-head h3 { font-size: 16px; font-weight: 900; margin-bottom: 2px; }
+.sp-head p { font-size: 12.5px; color: #cfd2dc; }
+.sp-back, .sp-close {
+    position: absolute; top: 12px; left: 12px; width: 32px; height: 32px; border-radius: 50%;
+    border: 0; background: rgba(255,255,255,.12); color: #fff; cursor: pointer; font-size: 18px;
+    display: inline-flex; align-items: center; justify-content: center; transition: background .2s;
+}
+.sp-back:hover, .sp-close:hover { background: rgba(255,255,255,.22); }
+.sp-back { left: 50px; }
+.sp-back[hidden] { display: none; }
+.sp-menu { list-style: none; padding: 8px; }
+.sp-menu button {
+    width: 100%; display: flex; align-items: center; gap: 12px; text-align: right;
+    padding: 11px 10px; border: 0; background: none; border-radius: 12px; cursor: pointer;
+    font: 500 14px var(--font); color: var(--gray-900); transition: background .18s;
+}
+.sp-menu button:hover { background: var(--gray-50); }
+.sp-ic {
+    width: 40px; height: 40px; border-radius: 12px; flex: 0 0 auto; display: inline-flex;
+    align-items: center; justify-content: center; font-size: 20px; color: var(--red);
+    background: rgba(207, 58, 42, .1);
+}
+.sp-menu b { display: block; font-weight: 700; font-size: 14px; }
+.sp-menu small { display: block; font-size: 12px; color: var(--gray-500); margin-top: 1px; }
+.sp-menu .sp-go { margin-right: auto; color: var(--gray-300); font-size: 18px; }
+.sp-view { padding: 16px 18px 18px; }
+.sp-view[hidden], .sp-menu[hidden] { display: none; }
+.sp-field { margin-bottom: 12px; }
+.sp-field label { display: block; font-size: 12.5px; font-weight: 700; margin-bottom: 5px; color: var(--gray-700); }
+.sp-field input, .sp-field textarea, .sp-field select {
+    width: 100%; padding: 10px 12px; border: 1px solid var(--gray-100); border-radius: 10px;
+    background: var(--gray-50); color: var(--gray-900); font: 400 14px var(--font); direction: rtl;
+    transition: border-color .2s, box-shadow .2s;
+}
+.sp-field textarea { min-height: 96px; resize: vertical; line-height: 1.8; }
+.sp-field input:focus, .sp-field textarea:focus, .sp-field select:focus {
+    outline: none; border-color: var(--red); box-shadow: 0 0 0 3px rgba(207, 58, 42, .16);
+}
+.sp-field .sp-err { color: var(--red); font-size: 12px; margin-top: 4px; display: none; }
+.sp-field.bad .sp-err { display: block; }
+.sp-field.bad input, .sp-field.bad textarea { border-color: var(--red); }
+.sp-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+.sp-btn {
+    flex: 1 1 130px; display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+    padding: 11px 12px; border-radius: 999px; border: 1px solid var(--gray-100); cursor: pointer;
+    font: 700 13.5px var(--font); background: var(--surface); color: var(--gray-900); text-decoration: none;
+    transition: transform .18s var(--ease), background .2s, box-shadow .2s;
+}
+.sp-btn:hover { transform: translateY(-1px); }
+.sp-btn.primary { background: var(--red); border-color: var(--red); color: #fff; }
+.sp-btn.primary:hover { box-shadow: 0 6px 16px rgba(207, 58, 42, .3); }
+.sp-note { font-size: 12px; color: var(--gray-500); margin-top: 10px; line-height: 1.8; }
+.sp-note.dev { background: rgba(184, 146, 58, .14); border: 1px dashed var(--gold); border-radius: 10px; padding: 8px 10px; color: var(--gray-700); }
+.sp-ok { text-align: center; padding: 18px 6px 6px; }
+.sp-ok i { font-size: 42px; color: #2ecc71; }
+.sp-ok p { margin-top: 6px; font-size: 14px; line-height: 1.9; }
+.sp-faq details { border-bottom: 1px solid var(--gray-100); padding: 10px 0; }
+.sp-faq summary { cursor: pointer; font-weight: 700; font-size: 13.5px; list-style: none; display: flex; justify-content: space-between; gap: 8px; }
+.sp-faq summary::-webkit-details-marker { display: none; }
+.sp-faq summary::after { content: "+"; color: var(--red); font-size: 18px; line-height: 1; }
+.sp-faq details[open] summary::after { content: "−"; }
+.sp-faq p { font-size: 13px; color: var(--gray-700); line-height: 1.95; margin-top: 8px; }
+@media (max-width: 520px) {
+    .sp-root { right: 12px; bottom: 12px; }
+    .sp-fab span { display: none; }
+    .sp-fab { width: 52px; padding: 0; justify-content: center; }
+    .sp-panel { position: fixed; right: 10px; left: 10px; bottom: 76px; width: auto; max-width: none; }
+    .sp-bubble { width: 220px; }
+    .to-top { bottom: 76px; left: 14px; }
+}
+@media print { .sp-root, .to-top { display: none !important; } }
+@media (prefers-reduced-motion: reduce) { .sp-panel, .sp-bubble, .sp-fab { transition: none !important; } }
+
+/* اسکرول‌بار ظریف برای منوی پشتیبانی */
+.sp-panel { scrollbar-width: thin; scrollbar-color: rgba(120,120,130,.35) transparent; }
+.sp-panel::-webkit-scrollbar { width: 5px; }
+.sp-panel::-webkit-scrollbar-track { background: transparent; }
+.sp-panel::-webkit-scrollbar-thumb { background: rgba(120,120,130,.3); border-radius: 99px; }
+.sp-panel::-webkit-scrollbar-thumb:hover { background: rgba(120,120,130,.55); }
+.sp-panel { overflow-x: hidden; overscroll-behavior: contain; }
+
+/* پنهان‌کردن کامل اسکرول‌بار منوی پشتیبانی (اسکرول با چرخ ماوس/لمس همچنان کار می‌کند) */
+.sp-panel, .sp-view, .sp-menu { scrollbar-width: none !important; -ms-overflow-style: none; }
+.sp-panel::-webkit-scrollbar, .sp-view::-webkit-scrollbar, .sp-menu::-webkit-scrollbar { width: 0 !important; height: 0 !important; display: none; }
+
+/* ارتفاع بنر تبلیغات در دسکتاپ */
+@media (min-width: 901px) { .ad-slide { min-height: 220px; } }

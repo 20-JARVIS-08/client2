@@ -1,0 +1,24 @@
+{
+  "name": "مستر شورت‌فیلم",
+  "short_name": "مستر شورت‌فیلم",
+  "description": "اخبار فیلم کوتاه ایران و جهان",
+  "lang": "fa",
+  "dir": "rtl",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#14161c",
+  "theme_color": "#14161c",
+  "icons": [
+    {
+      "src": "/favicon-48x48.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-64x64.png",
+      "sizes": "64x64",
+      "type": "image/png"
+    }
+  ]
+}

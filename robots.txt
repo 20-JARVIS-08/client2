@@ -1,5 +1,8 @@
 User-agent: *
 Allow: /
 Disallow: /blog-admin.html
+Disallow: /blog-post.html
+Disallow: /Mrshortfilm.html
+Disallow: /*?id=
 
 Sitemap: https://mrshortfilm.com/sitemap.xml

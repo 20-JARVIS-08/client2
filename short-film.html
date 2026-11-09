@@ -8,7 +8,7 @@
     <meta name="description" content="آخرین اخبار فیلم کوتاه ایران و جهان در مستر شورت‌فیلم؛ از درخشش فیلم کوتاه «ماندالا» در جشنواره‌های بین‌المللی تا مهم‌ترین رویدادهای روز سینمای کوتاه.">
     <meta name="keywords" content="فیلم کوتاه, اخبار فیلم کوتاه, ماندالا, مستر شورت‌فیلم, سینمای ایران">
     <meta name="author" content="مستر شورت‌فیلم">
-    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <link rel="canonical" href="https://mrshortfilm.com/short-film.html">
 
     <!-- Open Graph -->
@@ -61,6 +61,10 @@
 
     <link rel="manifest" href="site.webmanifest">
     <script>(function(){try{var t=localStorage.getItem('mrsf-theme');if(t==='dark'){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
+    <link rel="alternate" hreflang="fa" href="https://mrshortfilm.com/short-film.html">
+    <link rel="alternate" hreflang="x-default" href="https://mrshortfilm.com/short-film.html">
+    <meta name="theme-color" content="#14161c">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "CollectionPage", "name": "اخبار فیلم کوتاه ایران و جهان | مستر شورت‌فیلم", "description": "آخرین اخبار فیلم کوتاه ایران و جهان در مستر شورت‌فیلم؛ از درخشش فیلم کوتاه «ماندالا» در جشنواره‌های بین‌المللی تا مهم‌ترین رویدادهای روز سینمای کوتاه.", "url": "https://mrshortfilm.com/short-film.html", "inLanguage": "fa-IR", "isPartOf": {"@type": "WebSite", "name": "مستر شورت‌فیلم", "url": "https://mrshortfilm.com/"}}</script>
 </head>
 
 <body>
@@ -195,7 +199,7 @@
         function thumbHTML(f) {
             if (!f.image) return thumbPlaceholder(f);
             const fallback = encodeURIComponent(thumbPlaceholder(f));
-            return `<img src="${f.image}" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.parentElement.innerHTML=decodeURIComponent('${fallback}')">`;
+            return `<img src="${f.image}" alt="${String(f.title||'').replace(/&/g,'&amp;').replace(/\"/g,'&quot;')}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.parentElement.innerHTML=decodeURIComponent('${fallback}')">`;
         }
 
         function renderFilms() {
